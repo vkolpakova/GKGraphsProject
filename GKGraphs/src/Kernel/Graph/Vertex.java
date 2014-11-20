@@ -42,4 +42,9 @@ public abstract class Vertex<E> {
 		return false;
 	}
 	
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	
 }

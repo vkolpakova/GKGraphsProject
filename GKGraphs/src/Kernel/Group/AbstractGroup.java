@@ -3,6 +3,7 @@ package Kernel.Group;
 import java.util.List;
 
 import Kernel.Graph.PrimeNumberGraph;
+import Kernel.Utils.MainLogger;
 
 /**
  * Абстрактный класс объекта, являющегося группой. </br>
@@ -46,6 +47,7 @@ public abstract class AbstractGroup {
 	public AbstractGroup(String name) {
 		super();
 		this.name = name;
+		MainLogger.info("*AbstractGroup* Group name: " + name);
 	}
 	
 	public AbstractGroup(String name, int order) {

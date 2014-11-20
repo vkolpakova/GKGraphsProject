@@ -2,6 +2,9 @@ package Kernel.Group;
 
 import java.util.List;
 
+import Kernel.Utils.LieTypeGroupNameParser;
+import Kernel.Utils.MainLogger;
+
 /**
  * Класс объекта, представляющего собой группу Лиева типа. </br>
  * Дополнительно характеризуется рангом, характеристикой поля, типом.
@@ -9,8 +12,26 @@ import java.util.List;
  * @author v.kolpakova
  */
 public class LieTypeGroup extends AbstractGroup {
-	
-	// TODO реализовать вычисление типа группы по названию
+		
+	public LieTypeGroup(String name) {
+		super(name);
+		try {
+			GroupType type = LieTypeGroupNameParser.computeGroupType(name);
+			this.grType = type;
+			MainLogger.info("*LieTypeGroup* Group type: " + type.name());
+			int n = LieTypeGroupNameParser.computeN(name);
+			this.n = n;
+			MainLogger.info("*LieTypeGroup* Group range = " + Integer.toString(n));
+			int q = LieTypeGroupNameParser.computeQ(name);
+			this.q = q;
+			MainLogger.info("*LieTypeGroup* Field order = " + Integer.toString(q));
+			int p = LieTypeGroupNameParser.computeP(name);
+			MainLogger.info("*LieTypeGroup* Field characteristic = " + Integer.toString(p));
+			computeGroupOrder();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public LieTypeGroup(String name, int n, int p, int q) {
 		super(name);
@@ -91,8 +112,14 @@ public class LieTypeGroup extends AbstractGroup {
 		this.grType = grType;
 	}
 	
+	/**
+	 * Вычисляет тип группы Лиева типа
+	 */
 	protected void computeGroupType() {}
 	
+	/**
+	 * Вычисляет порядок группы
+	 */
 	protected void computeGroupOrder() {}
 	
 }
