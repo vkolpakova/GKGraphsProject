@@ -31,7 +31,7 @@ public class PrimeNumberGraph {
 		for (Edge edge : edgesList) {
 			String vertexA = edge.getVertexA().getVertex().toString();
 			String vertexB = edge.getVertexB().getVertex().toString();
-			MainLogger.info("Vertex A = " + vertexA + "; Vertex B = " + vertexB);
+			MainLogger.info("*PrimeNumberGraph* " + "Vertex A = " + vertexA + "; Vertex B = " + vertexB);
 		}
 	}
 	

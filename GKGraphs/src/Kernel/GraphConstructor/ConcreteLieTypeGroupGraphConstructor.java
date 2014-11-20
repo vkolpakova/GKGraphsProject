@@ -20,10 +20,10 @@ public class ConcreteLieTypeGroupGraphConstructor<G extends LieTypeGroup> extend
 		int order = this.group.getOrder();
 		List<Integer> primeDevisors = ArithmeticUtils.getAllPrimeDevisors(order);
 		List<Edge> fullEdgeList = getFullEdgesList(primeDevisors);
-		twoOddNonadjacenceVertexes(fullEdgeList);
-		withCharNonadjacenceVertexes(fullEdgeList);
-		withTwoNonadjanceVertexes(fullEdgeList);
-		return new PrimeNumberGraph(fullEdgeList);
+		List<Edge> step1List = twoOddNonadjacenceVertexes(fullEdgeList);
+		List<Edge> step2List = withCharNonadjacenceVertexes(step1List);
+		List<Edge> step3List = withTwoNonadjanceVertexes(step2List);
+		return new PrimeNumberGraph(step3List);
 	}
 
 	private final List<Edge> getFullEdgesList(List<Integer> allPrimeDevisorsList) {

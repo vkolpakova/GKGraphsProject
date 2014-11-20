@@ -45,6 +45,7 @@ public class ArithmeticUtils {
         for (int i = 2; i <= number; i ++) {
             if (isPrimeNumber(i) && number % i == 0) {
             	MainLogger.info("Number=" + ((Integer)number).toString() + ", prime divisor=" + ((Integer)i).toString() + ", ");
+            	number = number / i;
                 result.add(i);
             }
         }

@@ -1,5 +1,6 @@
 package Kernel.GraphConstructor.Сriterion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Kernel.Graph.Edge;
@@ -40,12 +41,14 @@ public abstract class AbstractСriterion {
 	/**
 	 * Производит удаление всех ребер, если они удовлетворяют условию критерия
 	 */
-	public void checkAll() {
+	public List<Edge> checkAll() {
+		List<Edge> result = new ArrayList<Edge>(edgeList);
 		for (Edge edge : edgeList) {
 			if (check(edge)) {
-				edgeList.remove(edge);
+				result.remove(edge);
 			}
 		}
+		return result;
 	}
 	
 }

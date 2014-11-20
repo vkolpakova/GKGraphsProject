@@ -30,27 +30,27 @@ public abstract class LieTypeGroupGraphConstructor extends AbstractGraphConstruc
 	 * Метод удаляет все пары нечетных простых чисел, не являющиеся ребром
 	 * @param inputList
 	 */
-	protected void twoOddNonadjacenceVertexes(List<Edge> inputList) {
+	protected List<Edge> twoOddNonadjacenceVertexes(List<Edge> inputList) {
 		this.cr1.setEdgeList(inputList);
-		cr1.checkAll();
+		return cr1.checkAll();
 	}
 	
 	/**
 	 * Метод удаляет все пары "простое нечетное число --- характеристика поля", не являющиеся ребром
 	 * @param inputList
 	 */
-	protected void withCharNonadjacenceVertexes(List<Edge> inputList) {
+	protected List<Edge> withCharNonadjacenceVertexes(List<Edge> inputList) {
 		this.cr2.setEdgeList(inputList);
-		cr2.checkAll();
+		return cr2.checkAll();
 	}
 	
 	/**
 	 * Метод удаляет все пары "простое нечетное число --- 2", не являющиеся ребром
 	 * @param inputList
 	 */
-	protected void withTwoNonadjanceVertexes(List<Edge> inputList) {
+	protected List<Edge> withTwoNonadjanceVertexes(List<Edge> inputList) {
 		this.cr3.setEdgeList(inputList);
-		cr3.checkAll();
+		return cr3.checkAll();
 	}
 	
 }
