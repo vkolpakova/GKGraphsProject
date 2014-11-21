@@ -1,8 +1,8 @@
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.GraphConstructor.LieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
-import Kernel.Utils.LieTypeGroupGraphConstructorResolver;
-import Kernel.Utils.LieTypeGroupTypeResolver;
+import Kernel.Resolvers.LieTypeGroupGraphConstructorResolver;
+import Kernel.Resolvers.LieTypeGroupTypeResolver;
 
 public class Main {
 	

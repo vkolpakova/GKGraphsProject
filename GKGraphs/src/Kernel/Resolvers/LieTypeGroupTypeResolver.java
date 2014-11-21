@@ -1,8 +1,10 @@
-package Kernel.Utils;
+package Kernel.Resolvers;
 
 import Implementations.LieTypeGroups.A.ALieTypeGroup;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Group.LieTypeGroup.GroupType;
+import Kernel.Utils.LieTypeGroupNameParser;
+import Kernel.Utils.MainLogger;
 
 /**
  * Класс вычисляет, конкструктор какого класса вызвать на основе обозначения конкретной группы Лиева типа.
