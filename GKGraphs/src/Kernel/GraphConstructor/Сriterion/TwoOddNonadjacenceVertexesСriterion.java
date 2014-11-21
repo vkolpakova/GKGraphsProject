@@ -6,6 +6,8 @@ import Kernel.Graph.Edge;
 import Kernel.Group.AbstractGroup;
 
 public class TwoOddNonadjacenceVertexesСriterion extends AbstractСriterion {
+	
+	// TODO организовать в суперклассе проверку на то, что вершины удовлетворяют условию (нечетные простые + не равны характеристике)
 
 	public TwoOddNonadjacenceVertexesСriterion(AbstractGroup group) {
 		super(group);

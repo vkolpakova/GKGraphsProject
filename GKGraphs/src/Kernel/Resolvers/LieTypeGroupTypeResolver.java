@@ -1,6 +1,7 @@
 package Kernel.Resolvers;
 
 import Implementations.LieTypeGroups.A.ALieTypeGroup;
+import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Utils.LieTypeGroupNameParser;
@@ -27,6 +28,8 @@ public class LieTypeGroupTypeResolver {
 			MainLogger.info("*LieTypeGroupTypeResolver* Field characteristic = " + Integer.toString(p));
 			if (type == GroupType.A) {
 				group = new ALieTypeGroup(name, n, p, q);
+			} else if (type == GroupType.B) {
+				group = new BLieTypeGroup(name, n, p, q);
 			}
 			// TODO с появлением конкретных типов реализовать соотв. логику
 			

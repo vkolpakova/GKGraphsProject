@@ -53,21 +53,6 @@ public class ArithmeticUtils {
 	}
 	
 	/**
-	 * Метод вычисляет значение функции e
-	 * @param p
-	 * @param q
-	 * @return
-	 */
-	public static int e(int p, int q) {
-		for (int i=1; i < MAX_E_CICLE_ITERRATOR; i++) {
-			if ((Math.pow(q, i) - 1) % p == 0) {
-				return i;
-			}
-		}
-		return 0;
-	}
-	
-	/**
 	 * Метод вычисляет n-часть числа q
 	 * @param q
 	 * @param n
@@ -84,6 +69,30 @@ public class ArithmeticUtils {
 			}
 			return nPow/n;
 		}
+	}
+	
+	/**
+	 * Метод вычисляет значение функции e
+	 * @param p
+	 * @param q
+	 * @return
+	 */
+	public static int e(int p, int q) {
+		for (int i=1; i < MAX_E_CICLE_ITERRATOR; i++) {
+			if ((Math.pow(q, i) - 1) % p == 0) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	/**
+	 * Метод вычисляет значение функции ню
+	 * @param m
+	 * @return m/2, если m четно, m, если m нечетно
+	 */
+	public static int nu(int m) {
+		return (m % 2 == 0) ? (m/2) : m; 
 	}
 	
 }

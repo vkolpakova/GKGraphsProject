@@ -16,14 +16,14 @@ public class ALieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCha
 		int b = (Integer)edge.getVertexB().getVertex();
 		int p = ((ALieTypeGroup)this.group).getP();
 		if (a == p) {
-			return subcheck(a, b);
+			return subcheck(b);
 		} else if (b == p) {
-			return subcheck(b, a);
+			return subcheck(a);
 		}
 		return false;
 	}
 	
-	private boolean subcheck(int p, int r) {
+	private boolean subcheck(int r) {
 		return (r != 2) && 
 				(ArithmeticUtils.e(r, ((ALieTypeGroup)this.group).getQ()) > ((ALieTypeGroup)this.group).getN());
 	}
