@@ -4,7 +4,7 @@ import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.MainLogger;
 
 /**
- * Реализация конкретной группы типа B_n(q).
+ * Реализация конкретной группы типа B_n(q) или C_n(q)
  * 
  * @author v.kolpakova
  *

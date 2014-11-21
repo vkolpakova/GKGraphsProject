@@ -2,6 +2,7 @@ package Kernel.Resolvers;
 
 import Implementations.LieTypeGroups.A.ALieTypeGroup;
 import Implementations.LieTypeGroups.B.BLieTypeGroup;
+import Implementations.LieTypeGroups._A._ALieTypeGroup;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Utils.LieTypeGroupNameParser;
@@ -26,9 +27,13 @@ public class LieTypeGroupTypeResolver {
 			MainLogger.info("*LieTypeGroupTypeResolver* Field order = " + Integer.toString(q));
 			int p = LieTypeGroupNameParser.computeP(name);
 			MainLogger.info("*LieTypeGroupTypeResolver* Field characteristic = " + Integer.toString(p));
+			
 			if (type == GroupType.A) {
 				group = new ALieTypeGroup(name, n, p, q);
-			} else if (type == GroupType.B) {
+			} else if (type == GroupType._A) {
+				group = new _ALieTypeGroup(name, n, p, q);
+			} else if (type == GroupType.B || type == GroupType.C) {
+				// поскольку критерии для групп типа B и C совпадают, отождествляем оба типа с типом B
 				group = new BLieTypeGroup(name, n, p, q);
 			}
 			// TODO с появлением конкретных типов реализовать соотв. логику

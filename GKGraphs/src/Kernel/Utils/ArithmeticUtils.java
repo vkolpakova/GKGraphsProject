@@ -90,12 +90,30 @@ public class ArithmeticUtils {
 	}
 	
 	/**
-	 * Метод вычисляет значение функции ню
+	 * Метод вычисляет значение функции эта
+	 * TODO test 
 	 * @param m
 	 * @return m/2, если m четно; m, если m нечетно
 	 */
-	public static int nu(int m) {
+	public static int eta(int m) {
 		return (m % 2 == 0) ? (m/2) : m; 
+	}
+	
+	/**
+	 * Метод вычисляет значение функции ню
+	 *  TODO test
+	 * @param m
+	 * @return
+	 */
+	public static int nu(int m) {
+		int modulo = m % 4;
+		if (modulo == 0) {
+			return m;
+		} else if (modulo == 2) {
+			return m / 2;
+		} else {
+			return 2 * m;
+		}
 	}
 	
 }

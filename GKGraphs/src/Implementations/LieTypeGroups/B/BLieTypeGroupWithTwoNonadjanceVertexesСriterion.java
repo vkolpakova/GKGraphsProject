@@ -22,7 +22,7 @@ public class BLieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 			int n = this.ltGroup.getN();
 			int r = (a == 2) ? b : a;
 			int k = ArithmeticUtils.e(r, q);
-			if (ArithmeticUtils.nu(k) == n) {
+			if (ArithmeticUtils.eta(k) == n) {
 				return subcheck(n, k, q);
 			} else {
 				return false;

@@ -15,15 +15,15 @@ public class BLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 		if (super.check(edge)) {
 			int q = this.ltGroup.getQ();
 			int n = this.ltGroup.getN();
-			int nuK, nuL;
+			int etaK, etaL;
 			// TODO подумать над рефакторингом, чтобы избавиться от приведения типов
 			int k = ArithmeticUtils.e(((Integer)edge.getVertexA().getVertex()), q);
 			int l = ArithmeticUtils.e(((Integer)edge.getVertexB().getVertex()), q);
 			if ((k % 2 != 0) && (l % 2 != 0)) {
-				nuK = ArithmeticUtils.nu(k);
-				nuL = ArithmeticUtils.nu(l);
-				if (nuK+nuL > n) {
-					return condition(nuK, nuL);
+				etaK = ArithmeticUtils.eta(k);
+				etaL = ArithmeticUtils.eta(l);
+				if (etaK+etaL > n) {
+					return condition(etaK, etaL);
 				} else {
 					return false;
 				}
@@ -35,21 +35,21 @@ public class BLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 		}
 	}
 	
-	private boolean condition(int nuK, int nuL) {
+	private boolean condition(int etaK, int etaL) {
 		boolean result = false;
-		if (nuK <= nuL) {
-			result = !checkDivisionIsOddZNumber(nuK, nuL);
+		if (etaK <= etaL) {
+			result = !checkDivisionIsOddZNumber(etaK, etaL);
 		} else {
-			result = !checkDivisionIsOddZNumber(nuL, nuK);
+			result = !checkDivisionIsOddZNumber(etaL, etaK);
 		}
 		return result;
 	}
 	
-	private boolean checkDivisionIsOddZNumber(int nuK, int nuL) {
-		if (nuL % nuK != 0) {
+	private boolean checkDivisionIsOddZNumber(int etaK, int etaL) {
+		if (etaL % etaK != 0) {
 			return false;
 		} else {
-			return ((nuL / nuK) % 2) != 0;
+			return ((etaL / etaK) % 2) != 0;
 		}
 	}
 	

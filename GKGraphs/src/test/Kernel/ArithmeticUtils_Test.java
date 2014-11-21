@@ -47,4 +47,24 @@ public class ArithmeticUtils_Test {
 		Assert.assertTrue(res4 == 25);
 	}
 	
+	@Test
+	public void etaTest() {
+		int res1 = ArithmeticUtils.eta(1);
+		Assert.assertTrue(res1 == 1);
+		int res2 = ArithmeticUtils.eta(6);
+		Assert.assertTrue(res2 == 3);
+		int res3 = ArithmeticUtils.eta(7);
+		Assert.assertTrue(res3 == 7);
+	}
+	
+	@Test
+	public void nuTest() {
+		int res1 = ArithmeticUtils.nu(24);
+		Assert.assertTrue(res1 == 24);
+		int res2 = ArithmeticUtils.nu(18);
+		Assert.assertTrue(res2 == 9);
+		int res3 = ArithmeticUtils.nu(7);
+		Assert.assertTrue(res3 == 14);
+	}
+	
 }

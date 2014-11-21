@@ -25,7 +25,7 @@ public class BLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCha
 	}
 	
 	private boolean subcheck(int q, int r) {
-		return ArithmeticUtils.nu(ArithmeticUtils.e(r, q)) > this.ltGroup.getN()-2;
+		return ArithmeticUtils.eta(ArithmeticUtils.e(r, q)) > this.ltGroup.getN()-2;
 	}
 	
 }
