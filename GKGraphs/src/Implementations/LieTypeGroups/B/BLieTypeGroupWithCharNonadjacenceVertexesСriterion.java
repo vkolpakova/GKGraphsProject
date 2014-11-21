@@ -14,8 +14,8 @@ public class BLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCha
 	protected boolean check(Edge edge) {
 		int a = (Integer)edge.getVertexA().getVertex();
 		int b = (Integer)edge.getVertexB().getVertex();
-		int p = ((BLieTypeGroup)this.group).getP();
-		int q = ((BLieTypeGroup)this.group).getQ();
+		int p = this.ltGroup.getP();
+		int q = this.ltGroup.getQ();
 		if (a == p) {
 			return subcheck(q, b);
 		} else if (b == p) {
@@ -25,7 +25,7 @@ public class BLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCha
 	}
 	
 	private boolean subcheck(int q, int r) {
-		return ArithmeticUtils.nu(ArithmeticUtils.e(r, q)) > ((BLieTypeGroup)this.group).getN()-2;
+		return ArithmeticUtils.nu(ArithmeticUtils.e(r, q)) > this.ltGroup.getN()-2;
 	}
 	
 }

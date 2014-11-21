@@ -21,13 +21,13 @@ public class ALieTypeGroup extends LieTypeGroup {
 	
 	@Override
 	protected void computeGroupOrder() {
-		int qPower = (int) (0.5 * this.n * (n+1));
-		int multiplicator = (int) Math.pow(q, qPower);
+		// int qPower = (int) (0.5 * this.n * (n+1));
+		// int multiplicator = (int) Math.pow(q, qPower);
 		int multiplication = 1;
 		for (int i=1; i<=n; i++) {
 			multiplication *= Math.pow(q, i+1) - 1;
 		}
-		this.order = multiplicator * multiplication;
+		this.order = p * multiplication;
 	}
 	
 }

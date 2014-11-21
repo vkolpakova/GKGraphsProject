@@ -1,6 +1,7 @@
 package Implementations.LieTypeGroups.B;
 
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.MainLogger;
 
 /**
  * Реализация конкретной группы типа B_n(q).
@@ -21,12 +22,13 @@ public class BLieTypeGroup extends LieTypeGroup {
 	
 	@Override
 	protected void computeGroupOrder() {
-		int qPow = (int) Math.pow(q, n*n);
+		// int qPow = (int) Math.pow(q, n*n);
 		int mult = 1;
 		for (int i=1; i<=n; i++) {
 			mult *= Math.pow(q, 2*i) - 1;
 		}
-		order = qPow * mult;
+		order = p * mult;
+		MainLogger.info("*BLieTypeGroup* Order = " + Integer.toString(order));
 	}
 	
 }

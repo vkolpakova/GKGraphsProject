@@ -44,8 +44,11 @@ public class ArithmeticUtils {
 		List<Integer> result = new ArrayList<Integer>();
         for (int i = 2; i <= number; i ++) {
             if (isPrimeNumber(i) && number % i == 0) {
-            	MainLogger.info("Number=" + ((Integer)number).toString() + ", prime divisor=" + ((Integer)i).toString() + ", ");
-            	number = number / i;
+            	MainLogger.info("*ArithmeticUtils* Number=" + ((Integer)number).toString() + ", prime divisor=" + ((Integer)i).toString() + ", ");
+            	// optimization part
+            	while ((number % i) == 0) {
+            		number = number / i;
+            	}
                 result.add(i);
             }
         }
@@ -89,7 +92,7 @@ public class ArithmeticUtils {
 	/**
 	 * Метод вычисляет значение функции ню
 	 * @param m
-	 * @return m/2, если m четно, m, если m нечетно
+	 * @return m/2, если m четно; m, если m нечетно
 	 */
 	public static int nu(int m) {
 		return (m % 2 == 0) ? (m/2) : m; 

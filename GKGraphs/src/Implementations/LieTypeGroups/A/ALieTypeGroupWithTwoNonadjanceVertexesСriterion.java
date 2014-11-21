@@ -14,7 +14,7 @@ public class ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 	protected boolean check(Edge edge) {
 		int a = (Integer)edge.getVertexA().getVertex();
 		int b = (Integer)edge.getVertexB().getVertex();
-		int q = ((ALieTypeGroup)this.group).getQ();
+		int q = this.ltGroup.getQ();
 		int k_a = ArithmeticUtils.e(a, q);
 		int k_b = ArithmeticUtils.e(b, q);
 		if (k_a == 1) {
@@ -28,8 +28,8 @@ public class ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 	}
 	
 	private boolean subcheck(int r, int k) {
-		int n = ((ALieTypeGroup)this.group).getN();
-		int q_modif = ((ALieTypeGroup)this.group).getQ() - 1;
+		int n = this.ltGroup.getN();
+		int q_modif = this.ltGroup.getQ() - 1;
 		if (k == n) {
 			int rPartN = ArithmeticUtils.nPart(n, r);
 			int rPartQModif = ArithmeticUtils.nPart(q_modif, r);

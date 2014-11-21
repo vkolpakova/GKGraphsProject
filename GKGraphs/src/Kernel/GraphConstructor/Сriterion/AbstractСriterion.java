@@ -6,6 +6,15 @@ import java.util.List;
 import Kernel.Graph.Edge;
 import Kernel.Group.AbstractGroup;
 
+/**
+ * Абстрактный класс критерия вида: </br>
+ * две вершины не связанны в графе Грюнберга --- Кегеля <=> они удовлетворяют условию метода check(). </br>
+ * 
+ * Такая постановка обусловлена формулировкой соотв. критериев для групп Лиева типа.
+ * 
+ * @author v.kolpakova
+ *
+ */
 public abstract class AbstractСriterion {
 	
 	protected AbstractGroup group;

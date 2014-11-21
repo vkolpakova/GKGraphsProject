@@ -3,15 +3,22 @@ package Kernel.GraphConstructor.Сriterion;
 import java.util.List;
 
 import Kernel.Graph.Edge;
-import Kernel.Group.AbstractGroup;
+import Kernel.Group.LieTypeGroup;
 
-public class WithTwoNonadjanceVertexesСriterion extends AbstractСriterion {
+/**
+ * Критерий несмежности простого нечетного числа с 2 (в некоторых случаях - с вершиной, удовлетворяющей нек. арифметическому условию)
+ *  в графе Грюнберга --- Кегеля группы Лиева типа.
+ * 
+ * @author v.kolpakova
+ *
+ */
+public class WithTwoNonadjanceVertexesСriterion extends AbstractLieTypeGroupCriterion {
 
-	public WithTwoNonadjanceVertexesСriterion(AbstractGroup group) {
+	public WithTwoNonadjanceVertexesСriterion(LieTypeGroup group) {
 		super(group);
 	}
 	
-	public WithTwoNonadjanceVertexesСriterion(List<Edge> edgeList, AbstractGroup group) {
+	public WithTwoNonadjanceVertexesСriterion(List<Edge> edgeList, LieTypeGroup group) {
 		super(edgeList, group);
 	}
 

@@ -118,7 +118,9 @@ public class LieTypeGroup extends AbstractGroup {
 	protected void computeGroupType() {}
 	
 	/**
-	 * Вычисляет порядок группы
+	 * Вычисляет порядок группы. </br>
+	 * <b>Внимание:</b> вместо множителя = 'степень q' необходимо использовать q или p, 
+	 * чтобы не выйти за границы int и уменьшить время факторизации.
 	 */
 	protected void computeGroupOrder() {}
 	
