@@ -3,6 +3,7 @@ package Kernel.Resolvers;
 import Implementations.LieTypeGroups.A.ALieTypeGroup;
 import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Implementations.LieTypeGroups.D.DLieTypeGroup;
+import Implementations.LieTypeGroups.G.GLieTypeGroup;
 import Implementations.LieTypeGroups._A._ALieTypeGroup;
 import Implementations.LieTypeGroups._D._DLieTypeGroup;
 import Implementations.LieTypeGroups.__D.__DLieTypeGroup;
@@ -44,6 +45,8 @@ public class LieTypeGroupTypeResolver {
 				group = new _DLieTypeGroup(name, n, p, q);
 			} else if (type == GroupType.__D) {
 				group = new __DLieTypeGroup(name, n, p, q);
+			} else if (type == GroupType.G) {
+				group = new GLieTypeGroup(name, n, p, q);
 			}
 			// TODO с появлением конкретных типов реализовать соотв. логику	
 		} catch (Exception e) {
