@@ -1,6 +1,7 @@
 package Implementations.LieTypeGroups.D;
 
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.MainLogger;
 
 /**
  * Реализация конкретной группы типа D_n(q).
@@ -27,6 +28,7 @@ public class DLieTypeGroup extends LieTypeGroup {
 			multiplication *= Math.pow(this.q, 2 * i) - 1;
 		}
 		this.order = multiplicator * multiplication;
+		MainLogger.info("*DLieTypeGroup* Order = " + Integer.toString(order));
 	}
 	
 }

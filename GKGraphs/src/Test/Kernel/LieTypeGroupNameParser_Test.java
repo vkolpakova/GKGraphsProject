@@ -1,4 +1,4 @@
-package test.Kernel;
+package Test.Kernel;
 
 import org.junit.Assert;
 import org.junit.Test;

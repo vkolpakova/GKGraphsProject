@@ -1,4 +1,4 @@
-package test.Kernel;
+package Test.Kernel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -65,6 +65,18 @@ public class ArithmeticUtils_Test {
 		Assert.assertTrue(res2 == 9);
 		int res3 = ArithmeticUtils.nu(7);
 		Assert.assertTrue(res3 == 14);
+	}
+	
+	@Test
+	public void NODTest() {
+		int res1 = ArithmeticUtils.NOD(2, 5);
+		Assert.assertTrue(res1 == 1);
+		int res2 = ArithmeticUtils.NOD(30, 55);
+		Assert.assertTrue(res2 == 5);
+		int res3 = ArithmeticUtils.NOD(315, 140);
+		Assert.assertTrue(res3 == 35);
+		int res4 = ArithmeticUtils.NOD(155, 155);
+		Assert.assertTrue(res4 == 155);
 	}
 	
 }
