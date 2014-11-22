@@ -6,6 +6,8 @@ import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Implementations.LieTypeGroups.B.BLieTypeGroupConcreteGraphConstructor;
 import Implementations.LieTypeGroups.D.DLieTypeGroup;
 import Implementations.LieTypeGroups.D.DLieTypeGroupConcreteGraphConstructor;
+import Implementations.LieTypeGroups.F.FLieTypeGroup;
+import Implementations.LieTypeGroups.F.FLieTypeGroupConcreteGraphConstructor;
 import Implementations.LieTypeGroups.G.GLieTypeGroup;
 import Implementations.LieTypeGroups.G.GLieTypeGroupConcreteGraphConstructor;
 import Implementations.LieTypeGroups._A._ALieTypeGroup;
@@ -41,6 +43,8 @@ public class LieTypeGroupGraphConstructorResolver  {
 			constr = new __DLieTypeGroupConcreteGraphConstructor((__DLieTypeGroup)group);
 		} else if (group instanceof GLieTypeGroup) {
 			constr = new GLieTypeGroupConcreteGraphConstructor((GLieTypeGroup)group);
+		} else if (group instanceof FLieTypeGroup) {
+			constr = new FLieTypeGroupConcreteGraphConstructor((FLieTypeGroup) group);
 		}
 		// TODO с появлением новых имплементаций LieTypeGroupGraphConstructor реализовать соотв. логику
 		return constr;

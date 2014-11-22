@@ -4,6 +4,7 @@ import java.util.List;
 
 import Kernel.Graph.Edge;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.CriterionUtils;
 
 /**
  * Критерий несмежности простого нечетного числа с 2 (в некоторых случаях - с вершиной, удовлетворяющей нек. арифметическому условию)
@@ -25,6 +26,10 @@ public class WithTwoNonadjanceVertexesСriterion extends AbstractLieTypeGroupCri
 	@Override
 	protected boolean check(Edge edge) {
 		return false;
+	}
+	
+	protected int returnR(int a, int b) {
+		return CriterionUtils.returnRWithCondition(a, b, 2);
 	}
 	
 }

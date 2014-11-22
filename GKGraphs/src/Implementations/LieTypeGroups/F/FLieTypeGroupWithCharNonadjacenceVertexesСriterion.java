@@ -1,12 +1,12 @@
-package Implementations.LieTypeGroups.G;
+package Implementations.LieTypeGroups.F;
 
 import Kernel.Graph.Edge;
-import Kernel.GraphConstructor.Сriterion.WithTwoNonadjanceVertexesСriterion;
+import Kernel.GraphConstructor.Сriterion.WithCharNonadjacenceVertexesСriterion;
 import Kernel.Utils.ArithmeticUtils;
 
-public class GLieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNonadjanceVertexesСriterion {
+public class FLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCharNonadjacenceVertexesСriterion {
 
-	public GLieTypeGroupWithTwoNonadjanceVertexesСriterion(GLieTypeGroup group) {
+	public FLieTypeGroupWithCharNonadjacenceVertexesСriterion(FLieTypeGroup group) {
 		super(group);
 	}
 	
@@ -17,7 +17,7 @@ public class GLieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 		int r = super.returnR(a, b);
 		if (r != 0) {
 			int k = ArithmeticUtils.e(r, this.ltGroup.getQ());
-			return ((k == 3) || (k == 6));
+			return ((k == 8) || (k == 12));
 		} else {
 			return false;
 		}

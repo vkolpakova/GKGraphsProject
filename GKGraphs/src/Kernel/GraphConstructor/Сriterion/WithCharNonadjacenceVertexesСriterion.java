@@ -4,6 +4,7 @@ import java.util.List;
 
 import Kernel.Graph.Edge;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.CriterionUtils;
 
 /**
  * Критерий несмежности простого нечетного числа с характеристикой в графе Грюнберга --- Кегеля группы Лиева типа.
@@ -26,6 +27,10 @@ public class WithCharNonadjacenceVertexesСriterion extends AbstractLieTypeGroup
 	@Override
 	protected boolean check(Edge edge) {
 		return false;
+	}
+	
+	protected int returnR(int a, int b) {
+		return CriterionUtils.returnRWithCondition(a, b, this.ltGroup.getP());
 	}
 	
 }

@@ -102,4 +102,20 @@ public class CriterionUtils {
 		return (a != 2) ? a : b;
 	}
 	
+	/**
+	 * На входе дана пара чисел a и b, одно из которых равно cond. </br>
+	 * Метод возвращает число из пары, отличное от cond, и 0, если оба числа не равны cond.
+	 * @param a
+	 * @param b
+	 * @param cond
+	 * @return
+	 */
+	public static int returnRWithCondition(int a, int b, int cond) {
+		if ((a != cond) && (b != cond)) {
+			return 0;
+		} else {
+			return (a == cond) ? b : a;
+		}
+	}
+	
 }
