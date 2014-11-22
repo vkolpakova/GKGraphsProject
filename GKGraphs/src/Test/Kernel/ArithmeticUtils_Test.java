@@ -79,4 +79,12 @@ public class ArithmeticUtils_Test {
 		Assert.assertTrue(res4 == 155);
 	}
 	
+	@Test
+	public void primeDivMultiplicationTest() {
+		int res1 = ArithmeticUtils.primeDivMultiplication(11);
+		Assert.assertTrue(res1 == 11);
+		int res2 = ArithmeticUtils.primeDivMultiplication(100);
+		Assert.assertTrue(res2 == 10);
+	}
+	
 }

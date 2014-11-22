@@ -56,6 +56,20 @@ public class ArithmeticUtils {
 	}
 	
 	/**
+	 * Возвращает произведение всех простых делителей числа
+	 * @param number
+	 * @return
+	 */
+	public static int primeDivMultiplication(int number) {
+		int result = 1;
+		List<Integer> intList = getAllPrimeDevisors(number);
+		for (int div : intList) {
+			result *= div;
+		}
+		return result;
+	}
+	
+	/**
 	 * Метод вычисляет n-часть числа q
 	 * @param q
 	 * @param n
@@ -106,7 +120,6 @@ public class ArithmeticUtils {
 	
 	/**
 	 * Метод вычисляет значение функции эта
-	 * TODO test 
 	 * @param m
 	 * @return m/2, если m четно; m, если m нечетно
 	 */
@@ -116,7 +129,6 @@ public class ArithmeticUtils {
 	
 	/**
 	 * Метод вычисляет значение функции ню
-	 *  TODO test
 	 * @param m
 	 * @return
 	 */

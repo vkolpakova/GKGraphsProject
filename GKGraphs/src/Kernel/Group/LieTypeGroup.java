@@ -119,7 +119,8 @@ public class LieTypeGroup extends AbstractGroup {
 	
 	/**
 	 * Вычисляет порядок группы. </br>
-	 * <b>Внимание:</b> вместо множителя = 'степень q' необходимо использовать q или p, 
+	 * <b>Внимание:</b> вместо множителя = 'степень q' необходимо использовать p и 
+	 * разлагать каждый сомножитель с пом. метода {@link ArithmeticUtils.primeDivMultiplication()}, 
 	 * чтобы не выйти за границы int и уменьшить время факторизации.
 	 */
 	protected void computeGroupOrder() {}
