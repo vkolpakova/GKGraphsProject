@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class ArithmeticUtils {
 	
-	private static int MAX_E_CICLE_ITERRATOR = 100;
-	private static int MAX_NPART_CICLE_ITERRATOR = 20;
+	private static final int MAX_E_CICLE_ITERRATOR = 100;
+	private static final int MAX_NPART_CICLE_ITERRATOR = 20;
 	
 	/**
 	 * Проверка, является ли заданное целое число простым
@@ -140,6 +140,48 @@ public class ArithmeticUtils {
 			return m / 2;
 		} else {
 			return 2 * m;
+		}
+	}
+	
+	/**
+	 * Возвращает степень числа p, которая равна q
+	 * TODO test
+	 * @param q --- некоторая степень p
+	 * @param p
+	 * @return
+	 */
+	public static int getPow(int q, int p) {
+		int result = 0;
+		while ((q % p) == 0) {
+			q /= p;
+			result++;
+		}
+		return result;
+	}
+	
+	/**
+	 * Метод вычисляет значение функции m_i(B, n)
+	 * TODO test
+	 * @param i
+	 * @param q
+	 * @return
+	 */
+	public static int m_iB(int i, int q) {
+		int twoPow = getPow(q, 2);
+		if ((twoPow % 2) == 0) {
+			try {
+				throw new Exception("Uncorrect q (even number)!");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		int n = twoPow / 2;
+		if (i == 1) {
+			return (int) (Math.pow(2, twoPow + 1) - 1); // m1
+		} else if (i == 2) {
+			return (int) (Math.pow(2, twoPow + 1) - Math.pow(2, n + 1) + 1); // m2
+		} else {
+			return (int) (Math.pow(2, twoPow + 1) - Math.pow(2, n + 1) + 1); // m3
 		}
 	}
 	

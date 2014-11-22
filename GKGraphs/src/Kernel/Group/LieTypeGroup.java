@@ -57,7 +57,7 @@ public class LieTypeGroup extends AbstractGroup {
 	}
 
 	public enum GroupType {
-		A, _A, B, C, D, _D, __D, G, F, E6, E7, E8;
+		A, _A, B, C, D, _D, __D, G, F, Sz, Ri;
 	}
 		
 	/**

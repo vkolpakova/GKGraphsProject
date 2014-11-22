@@ -5,6 +5,7 @@ import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Implementations.LieTypeGroups.D.DLieTypeGroup;
 import Implementations.LieTypeGroups.F.FLieTypeGroup;
 import Implementations.LieTypeGroups.G.GLieTypeGroup;
+import Implementations.LieTypeGroups.Sz.SzLieTypeGroup;
 import Implementations.LieTypeGroups._A._ALieTypeGroup;
 import Implementations.LieTypeGroups._D._DLieTypeGroup;
 import Implementations.LieTypeGroups.__D.__DLieTypeGroup;
@@ -50,6 +51,8 @@ public class LieTypeGroupTypeResolver {
 				group = new GLieTypeGroup(name, n, p, q);
 			} else if (type == GroupType.F) {
 				group = new FLieTypeGroup(name, n, p, q);
+			} else if (type == GroupType.Sz) {
+				group = new SzLieTypeGroup(name, n, p, q);
 			}
 			// TODO с появлением конкретных типов реализовать соотв. логику	
 		} catch (Exception e) {

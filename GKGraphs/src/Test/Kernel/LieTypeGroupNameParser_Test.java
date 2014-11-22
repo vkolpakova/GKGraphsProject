@@ -17,9 +17,7 @@ public class LieTypeGroupNameParser_Test {
 	private static final String GR7 = "__D_300(16)";
 	private static final String GR8 = "F_4(61)";
 	private static final String GR9 = "G_4(4)";
-	private static final String GR10 = "E6_14(19)";
-	private static final String GR11 = "E7_9(81)";
-	private static final String GR12 = "E8_5(25)";
+	private static final String GR10 = "Sz(8)";
 	
 	@Test
 	public void computeGroupTypeTest() {
@@ -33,9 +31,8 @@ public class LieTypeGroupNameParser_Test {
 			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR7).equals(GroupType.__D));
 			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR8).equals(GroupType.F));
 			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR9).equals(GroupType.G));
-			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR10).equals(GroupType.E6));
-			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR11).equals(GroupType.E7));
-			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR12).equals(GroupType.E8));
+			Assert.assertTrue(LieTypeGroupNameParser.computeGroupType(GR10).equals(GroupType.Sz));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
@@ -53,9 +50,7 @@ public class LieTypeGroupNameParser_Test {
 			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR7) == 300);
 			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR8) == 4);
 			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR9) == 4);
-			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR10) == 14);
-			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR11) == 9);
-			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR12) == 5);
+			Assert.assertTrue(LieTypeGroupNameParser.computeN(GR10) == 2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
@@ -73,9 +68,7 @@ public class LieTypeGroupNameParser_Test {
 			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR7) == 16);
 			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR8) == 61);
 			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR9) == 4);
-			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR10) == 19);
-			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR11) == 81);
-			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR12) == 25);
+			Assert.assertTrue(LieTypeGroupNameParser.computeQ(GR10) == 8);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
@@ -93,9 +86,7 @@ public class LieTypeGroupNameParser_Test {
 			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR7) == 2);
 			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR8) == 61);
 			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR9) == 2);
-			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR10) == 19);
-			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR11) == 3);
-			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR12) == 5);
+			Assert.assertTrue(LieTypeGroupNameParser.computeP(GR10) == 2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
