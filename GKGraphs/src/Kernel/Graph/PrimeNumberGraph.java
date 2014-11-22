@@ -5,6 +5,12 @@ import java.util.List;
 
 import Kernel.Utils.MainLogger;
 
+/**
+ * Класс, представляющий собой объект графа Грюнберга --- Кегеля некоторой конечной группы
+ * 
+ * @author v.kolpakova
+ *
+ */
 public class PrimeNumberGraph {
 
 	private List<Edge> edgesList;
