@@ -3,6 +3,7 @@ package Implementations.LieTypeGroups.B;
 import Kernel.Graph.Edge;
 import Kernel.GraphConstructor.Сriterion.TwoOddNonadjacenceVertexesСriterion;
 import Kernel.Utils.ArithmeticUtils;
+import Kernel.Utils.CriterionUtils;
 
 public class BLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNonadjacenceVertexesСriterion {
 	
@@ -22,34 +23,12 @@ public class BLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 			if ((k % 2 != 0) && (l % 2 != 0)) {
 				etaK = ArithmeticUtils.eta(k);
 				etaL = ArithmeticUtils.eta(l);
-				if (etaK+etaL > n) {
-					return condition(etaK, etaL);
-				} else {
-					return false;
-				}
+				return CriterionUtils.thirdCondition(etaK, etaL, n);
 			} else {
 				return false;
 			}
 		} else {
 			return false;
-		}
-	}
-	
-	private boolean condition(int etaK, int etaL) {
-		boolean result = false;
-		if (etaK <= etaL) {
-			result = !checkDivisionIsOddZNumber(etaK, etaL);
-		} else {
-			result = !checkDivisionIsOddZNumber(etaL, etaK);
-		}
-		return result;
-	}
-	
-	private boolean checkDivisionIsOddZNumber(int etaK, int etaL) {
-		if (etaL % etaK != 0) {
-			return false;
-		} else {
-			return ((etaL / etaK) % 2) != 0;
 		}
 	}
 	

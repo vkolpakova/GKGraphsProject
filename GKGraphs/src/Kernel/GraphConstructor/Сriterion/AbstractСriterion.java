@@ -5,6 +5,7 @@ import java.util.List;
 
 import Kernel.Graph.Edge;
 import Kernel.Group.AbstractGroup;
+import Kernel.Utils.MainLogger;
 
 /**
  * Абстрактный класс критерия вида: </br>
@@ -55,6 +56,8 @@ public abstract class AbstractСriterion {
 		for (Edge edge : edgeList) {
 			if (check(edge)) {
 				result.remove(edge);
+				MainLogger.info("*AbstractСriterion* remove edge {" + 
+						edge.getVertexA().getVertex().toString() + ", " + edge.getVertexB().getVertex().toString() + "}");
 			}
 		}
 		return result;

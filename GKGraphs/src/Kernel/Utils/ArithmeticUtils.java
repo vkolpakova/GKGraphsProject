@@ -75,6 +75,21 @@ public class ArithmeticUtils {
 	}
 	
 	/**
+	 * Метод вычисляет НОД двух чисел a и b
+	 * @param a
+	 * @param b
+	 * @return НОД(a, b)
+	 */
+	public static int NOD(int a, int b) {
+		while (b != 0) {
+            int tmp = a % b;
+            a = b;
+            b = tmp;
+        }
+        return a;
+	}
+	
+	/**
 	 * Метод вычисляет значение функции e
 	 * @param p
 	 * @param q
