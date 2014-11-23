@@ -26,21 +26,22 @@ public class TwoOddNonadjacenceVertexesСriterion extends AbstractLieTypeGroupCr
 
 	@Override
 	protected boolean check(Edge edge) {
-		boolean result = true;
+		boolean result1 = true;
+		boolean result2 = true;
 		Vertex<?> a = edge.getVertexA();
 		Vertex<?> b = edge.getVertexB();
 		if (a instanceof SimpleVertex) {
-			result = checkSimpleVertex((SimpleVertex)a);
+			result1 = checkSimpleVertex((SimpleVertex)a);
 		}
 		if (b instanceof SimpleVertex) {
-			result = checkSimpleVertex((SimpleVertex)b);
+			result2 = checkSimpleVertex((SimpleVertex)b);
 		}
-		return result;
+		return (result1 && result2);
 	}
 	
 	protected boolean checkSimpleVertex(SimpleVertex v) {
 		int vValue = v.getVertex();
-		return (vValue % 2 != 0) && (ArithmeticUtils.isPrimeNumber(vValue) && (vValue != this.ltGroup.getP()));
+		return ((vValue != 2) && (ArithmeticUtils.isPrimeNumber(vValue)) && (vValue != this.ltGroup.getP()));
 	}
 	
 }

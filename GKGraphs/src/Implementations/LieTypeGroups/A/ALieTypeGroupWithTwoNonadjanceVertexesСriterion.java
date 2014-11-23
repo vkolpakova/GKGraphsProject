@@ -17,10 +17,10 @@ public class ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 		int q = this.ltGroup.getQ();
 		int k_a = ArithmeticUtils.e(a, q);
 		int k_b = ArithmeticUtils.e(b, q);
-		if (k_a == 1) {
-			return subcheck(b, k_b);
-		} else if (k_b == 1) {
-			return subcheck(a, k_a);
+		if ((k_a == 1) && (b != 2) && (b != this.ltGroup.getP())) {
+			return subcheck(a, k_b);
+		} else if (k_b == 1 && (a != 2) && (a != this.ltGroup.getP())) {
+			return subcheck(b, k_a);
 		} else {
 			return false;
 		}
@@ -28,7 +28,7 @@ public class ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 	}
 	
 	private boolean subcheck(int r, int k) {
-		int n = this.ltGroup.getN();
+		int n = this.ltGroup.getN() + 1;
 		int q_modif = this.ltGroup.getQ() - 1;
 		if (k == n) {
 			int rPartN = ArithmeticUtils.nPart(n, r);
@@ -40,6 +40,10 @@ public class ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 			} else {
 				return false;
 			}
+		} else if (k == (n - 1)) {
+			int rPartN = ArithmeticUtils.nPart(n, r);
+			int rPartQModif = ArithmeticUtils.nPart(q_modif, r);
+			return (rPartQModif <= rPartN) ? true : false;
 		} else {
 			return false;
 		}

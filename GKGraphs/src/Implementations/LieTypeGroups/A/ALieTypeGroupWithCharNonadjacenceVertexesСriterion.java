@@ -25,7 +25,7 @@ public class ALieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCha
 	
 	private boolean subcheck(int r) {
 		return (r != 2) && 
-				(ArithmeticUtils.e(r, this.ltGroup.getQ()) > this.ltGroup.getN());
+				(ArithmeticUtils.e(r, this.ltGroup.getQ()) > (this.ltGroup.getN() - 1));
 	}
 	
 }

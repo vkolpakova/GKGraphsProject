@@ -17,11 +17,11 @@ public class ALieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 			// TODO подумать над рефакторингом, чтобы избавиться от приведения типов
 			int k = ArithmeticUtils.e(((Integer)edge.getVertexA().getVertex()), q);
 			int l = ArithmeticUtils.e(((Integer)edge.getVertexB().getVertex()), q);
-			if ((k%2 != 0) && (l%2 != 0)) {
+			if ((k >= 2) && (l >= 2)) {
 				if (k <= l) {
-					return (k+l > this.ltGroup.getN() + 1) && (k % l != 0);
+					return ((k+l) > (this.ltGroup.getN() + 1)) && ((l % k) != 0);
 				} else {
-					return (k+l > this.ltGroup.getN() + 1) && (l % k != 0);
+					return ((k+l) > (this.ltGroup.getN() + 1)) && ((k % l) != 0);
 				}
 			} else {
 				return false;
