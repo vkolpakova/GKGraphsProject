@@ -28,7 +28,7 @@ public class _ALieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCh
 	
 	private boolean subcheck(int r, int q, int n) {
 		if (r != 2) {
-			return (ArithmeticUtils.nu(ArithmeticUtils.e(r, q)) > n - 1);
+			return (ArithmeticUtils.nu(ArithmeticUtils.e(r, q)) > (n - 1));
 		} else {
 			return false;
 		}

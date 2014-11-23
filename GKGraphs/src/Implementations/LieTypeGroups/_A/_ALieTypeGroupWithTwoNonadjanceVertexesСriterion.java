@@ -30,12 +30,9 @@ public class _ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNo
 	}
 	
 	private int returnR(int a, int b, int q) {
-		if ((a == 2) || (b == 2)) {
-			return 0;
-		}
-		if ((q + 1) % a == 0) {
+		if ((((q + 1) % a) == 0) && (b != this.ltGroup.getP())) {
 			return a;
-		} else if ((q + 1) % b == 0) {
+		} else if (((q + 1) % b == 0) && (a != this.ltGroup.getP())) {
 			return b;
 		} else {
 			return 0;
@@ -44,7 +41,7 @@ public class _ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNo
 	
 	private boolean checkFirstCondition(int nuK, int n, int r, int q) {
 		if (nuK == (n + 1)) {
-			int nr = ArithmeticUtils.nPart(n, r);
+			int nr = ArithmeticUtils.nPart((n + 1), r);
 			int qmodifr = ArithmeticUtils.nPart((q + 1), r);
 			return (nr < qmodifr) || ((nr == qmodifr) && (2 < qmodifr));
 		} else {
@@ -54,7 +51,7 @@ public class _ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNo
 	}
 	
 	private boolean checkSecondCondition(int nuK, int n, int r, int q) {
-		return (nuK == n) ? (ArithmeticUtils.nPart((q + 1), r) <= ArithmeticUtils.nPart(n, r)) : false;
+		return (nuK == n) ? (ArithmeticUtils.nPart((q + 1), r) <= ArithmeticUtils.nPart((n + 1), r)) : false;
 	}
 		
 }

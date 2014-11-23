@@ -20,9 +20,9 @@ public class _ALieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNo
 			int nuK = ArithmeticUtils.nu(k);
 			int nuL = ArithmeticUtils.nu(l);
 			if ((2 <= nuK) && (nuK <= nuL) && (nuK + nuL > this.ltGroup.getN() + 1)) {
-				return (nuK % nuL != 0);
-			} else if ((2 <= nuL) && (nuL <= nuK) && (nuK + nuL > this.ltGroup.getN() + 1)) {
 				return (nuL % nuK != 0);
+			} else if ((2 <= nuL) && (nuL <= nuK) && (nuK + nuL > this.ltGroup.getN() + 1)) {
+				return (nuK % nuL != 0);
 			} else {
 				return false;
 			}
