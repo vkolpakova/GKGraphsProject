@@ -22,7 +22,7 @@ public class SzLieTypeGroup extends LieTypeGroup {
 	}
 	
 	 @Override
-	protected void computeGroupOrder() { //q^2 + 1, q -1
+	protected void computeGroupOrder() {
 		int m1 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 2) + 1));
 		int m2 = ArithmeticUtils.primeDivMultiplication(q - 1);
 		this.order = p * m1 * m2;

@@ -2,6 +2,7 @@ package Kernel.Utils;
 
 import Kernel.Graph.Edge;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Group.LieTypeGroup.GroupType;
 
 /**
  * Класс утилитарных методов для критериев несмежности двух вершин в графе Грюнберга --- Кегеля группы Лиева типа
@@ -116,6 +117,27 @@ public class CriterionUtils {
 		} else {
 			return (a == cond) ? b : a;
 		}
+	}
+	
+	/**
+	 * Критерий несмежности двух нечетных простых чисел в графе Грюнберга --- Кегеля группы типа Sz или Ri
+	 * @param edge
+	 * @param type
+	 * @param q
+	 * @return
+	 */
+	public static boolean SzRiLieTypeGroupTwoOddNonadjacenceVertexesСriterion(Edge edge, GroupType type, int q) {
+		int a = (Integer)edge.getVertexA().getVertex();
+		int b = (Integer)edge.getVertexB().getVertex();
+		int aE = ArithmeticUtils.e(a, q);
+		int bE = ArithmeticUtils.e(b, q);
+		int r = (aE <= bE) ? a : b;
+		int s = (aE <= bE) ? b : a;
+		int k = (aE <= bE) ? aE : bE;
+		int l = (aE <= bE) ? bE : aE;
+		int mk = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(k, q) : ArithmeticUtils.m_iB(k, q) ;
+		int ml = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(l, q) : ArithmeticUtils.m_iB(l, q) ;
+		return (((mk % r) == 0) && ((ml % s) == 0) && (k != l));
 	}
 	
 }

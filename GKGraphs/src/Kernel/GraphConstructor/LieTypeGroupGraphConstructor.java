@@ -10,8 +10,19 @@ import Kernel.Group.LieTypeGroup;
 
 public abstract class LieTypeGroupGraphConstructor extends AbstractGraphConstructor<LieTypeGroup> {
 
+	/**
+	 * Критерий несмежности двух нечетных простых чисел
+	 */
 	protected TwoOddNonadjacenceVertexesСriterion cr1;
+	
+	/**
+	 * Критерий несмежности нечетного простого числа с характеристикой поля
+	 */
 	protected WithCharNonadjacenceVertexesСriterion cr2;
+	
+	/**
+	 * Критерий несмежности нечетного простого числа с числом 2 (или другим, удовл. некоторому условию)
+	 */
 	protected WithTwoNonadjanceVertexesСriterion cr3;
 	
 	public LieTypeGroupGraphConstructor(LieTypeGroup group) {

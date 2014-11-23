@@ -8,7 +8,7 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("Sz(8)");
+		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("Ri(27)");
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
 		graph.printConsole();

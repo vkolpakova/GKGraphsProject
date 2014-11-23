@@ -20,6 +20,7 @@ public class LieTypeGroupNameParser  {
 	private static final String RIGHT_BRACKET = ")";
 	
 	private static final String SZ = "Sz";
+	private static final String RI = "Ri";
 	
 	public static GroupType computeGroupType(String name) throws Exception {
 		if (name.startsWith(GroupType.A.name())) {
@@ -42,15 +43,17 @@ public class LieTypeGroupNameParser  {
 			return GroupType.F;
 		} else if (name.startsWith(GroupType.Sz.name())) {
 			return GroupType.Sz;
+		} else if (name.startsWith(RI)) {
+			return GroupType.Ri;
 		} else {
 			throw new Exception("Uncorrect group type");
 		}
 	}
 	
 	public static int computeN(String name) throws Exception {
-		if (name.startsWith(SZ)) {
+		if ((name.startsWith(SZ)) || (name.startsWith(RI))) {
 			return 2;
-		}
+		} 
 		// обозначение может начинаться с _ или __
 		int bIndex = name.lastIndexOf(UNDERLINE) + 1;
 		int eIndex = name.indexOf(LEFT_BRACKET);
