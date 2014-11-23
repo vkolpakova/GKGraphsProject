@@ -17,7 +17,7 @@ public class ConcreteLieTypeGroupGraphConstructor<G extends LieTypeGroup> extend
 	
 	@Override
 	public PrimeNumberGraph constructGKGraph() {
-		int order = this.group.getOrder();
+		long order = this.group.getOrder();
 		List<Integer> primeDevisors = ArithmeticUtils.getAllPrimeDevisors(order);
 		List<Edge> fullEdgeList = getFullEdgesList(primeDevisors);
 		List<Edge> step1List = twoOddNonadjacenceVertexes(fullEdgeList);

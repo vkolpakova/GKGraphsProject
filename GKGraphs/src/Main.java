@@ -8,11 +8,11 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("Ri(27)");
+		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("_D_4(3)");
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
 		graph.printConsole();
 		System.out.println("End");
 	}
-	
+	 
 }

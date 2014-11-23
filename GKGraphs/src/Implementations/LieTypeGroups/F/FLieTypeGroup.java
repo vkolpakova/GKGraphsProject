@@ -23,12 +23,12 @@ public class FLieTypeGroup extends LieTypeGroup {
 	
 	@Override
 	protected void computeGroupOrder() {
-		int m1 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 12) - 1));
-		int m2 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 8) - 1));
-		int m3 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 6) - 1));
-		int m4 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 2) - 1));
-		this.order = p * m1 * m2 * m3 * m4;
-		MainLogger.info("*FLieTypeGroup* Order = " + Integer.toString(order));
+		double m1 = ArithmeticUtils.primeDivMultiplication(Math.pow(q, 12) - 1);
+		double m2 = ArithmeticUtils.primeDivMultiplication(Math.pow(q, 8) - 1);
+		double m3 = ArithmeticUtils.primeDivMultiplication(Math.pow(q, 6) - 1);
+		double m4 = ArithmeticUtils.primeDivMultiplication(Math.pow(q, 2) - 1);
+		this.order = (long) (p * m1 * m2 * m3 * m4);
+		MainLogger.info("*FLieTypeGroup* Order = " + Long.toString(order));
 	}
 	
 }

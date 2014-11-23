@@ -23,10 +23,10 @@ public class GLieTypeGroup extends LieTypeGroup {
 	
 	@Override
 	protected void computeGroupOrder() {
-		int m1 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 6) - 1));
-		int m2 = ArithmeticUtils.primeDivMultiplication((int) (Math.pow(q, 2) - 1));
-		this.order = this.p * m1 * m2;
-		MainLogger.info("*GLieTypeGroup* Order = " + Integer.toString(order));
+		double m1 = ArithmeticUtils.primeDivMultiplication(Math.pow(q, 6) - 1);
+		double m2 = ArithmeticUtils.primeDivMultiplication(Math.pow(q, 2) - 1);
+		this.order = (long) (this.p * m1 * m2);
+		MainLogger.info("*GLieTypeGroup* Order = " + Long.toString(order));
 	}
 	
 }

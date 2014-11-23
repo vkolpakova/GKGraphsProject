@@ -1,6 +1,7 @@
 package Implementations.LieTypeGroups._A;
 
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.ArithmeticUtils;
 import Kernel.Utils.MainLogger;
 
 /**
@@ -22,14 +23,12 @@ public class _ALieTypeGroup extends LieTypeGroup {
 	
 	@Override
 	protected void computeGroupOrder() {
-		// int qPower = (int) (0.5 * this.n * (n+1));
-		// int multiplicator = (int) Math.pow(q, qPower);
-		int multiplication = 1;
+		double multiplication = 1;
 		for (int i=1; i<=n; i++) {
-			multiplication *= Math.pow(q, i + 1) - Math.pow(-1, i + 1);
+			multiplication *= ArithmeticUtils.primeDivMultiplication(Math.pow(q, i + 1) - Math.pow(-1, i + 1));
 		}
-		this.order = p * multiplication;
-		MainLogger.info("*_ALieTypeGroup* Order = " + Integer.toString(order));
+		this.order = (long) (p * multiplication);
+		MainLogger.info("*_ALieTypeGroup* Order = " + Long.toString(order));
 	}
 	
 }

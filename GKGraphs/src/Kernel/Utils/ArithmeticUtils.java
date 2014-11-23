@@ -40,11 +40,11 @@ public class ArithmeticUtils {
 	 * @param number
 	 * @return
 	 */
-	public static List<Integer> getAllPrimeDevisors(int number) {
+	public static List<Integer> getAllPrimeDevisors(double number) {
 		List<Integer> result = new ArrayList<Integer>();
         for (int i = 2; i <= number; i ++) {
             if (isPrimeNumber(i) && number % i == 0) {
-            	MainLogger.info("*ArithmeticUtils* Number=" + ((Integer)number).toString() + ", prime divisor=" + ((Integer)i).toString() + ", ");
+            	MainLogger.info("*ArithmeticUtils* Number=" + ((Double)number).toString() + ", prime divisor=" + ((Integer)i).toString() + ", ");
             	// optimization part
             	while ((number % i) == 0) {
             		number = number / i;
@@ -60,7 +60,7 @@ public class ArithmeticUtils {
 	 * @param number
 	 * @return
 	 */
-	public static int primeDivMultiplication(int number) {
+	public static int primeDivMultiplication(double number) {
 		int result = 1;
 		List<Integer> intList = getAllPrimeDevisors(number);
 		for (int div : intList) {

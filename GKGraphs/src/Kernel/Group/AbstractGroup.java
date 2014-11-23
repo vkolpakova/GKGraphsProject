@@ -27,7 +27,7 @@ public abstract class AbstractGroup {
 	/**
 	 * Порядок группы
 	 */
-	protected int order;
+	protected long order;
 	
 	/**
 	 * Множество простых делителей порядка группы (если они заданы символами)
@@ -80,7 +80,7 @@ public abstract class AbstractGroup {
 		this.graph = graph;
 	}
 
-	public int getOrder() {
+	public long getOrder() {
 		return order;
 	}
 
