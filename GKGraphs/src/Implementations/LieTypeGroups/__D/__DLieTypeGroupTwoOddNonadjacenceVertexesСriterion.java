@@ -17,7 +17,7 @@ public class __DLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddN
 			int s = (int) edge.getVertexB().getVertex();
 			int k = ArithmeticUtils.e(r, this.ltGroup.getQ());
 			int l = ArithmeticUtils.e(s, this.ltGroup.getQ());
-			return ((((l == 6) && (k == 3)) || ((l == 6) && (l == 3))) || (((l == 12) && (k < l)) || ((k == 12) && (l <k))));
+			return ((((l == 6) && (k == 3)) || ((k == 6) && (l == 3))) || (((l == 12) && (k < l)) || ((k == 12) && (l <k))));
 		} else {
 			return false;
 		}
