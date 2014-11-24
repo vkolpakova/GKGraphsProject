@@ -52,7 +52,7 @@ public class CriterionUtils {
 		if (etaK % etaL != 0) {
 			return false;
 		} else {
-			return ((etaK / etaL) % 2) != 0;
+			return (((etaK / etaL) % 2) != 0);
 		}
 	}
 	
@@ -80,10 +80,10 @@ public class CriterionUtils {
 	public static boolean epsilonDLieTypeGroupWithTwoNonadjanceVertexesСriterion(LieTypeGroup epsilonDGroup, Edge edge, String epsilon) {
 		int a = (Integer)edge.getVertexA().getVertex();
 		int b = (Integer)edge.getVertexB().getVertex();
-		if (((a != 2) && (b != 2)) || (a == epsilonDGroup.getP()) || (b == epsilonDGroup.getP())) {
+		if (((a != 2) && (b != 2)) || (epsilonDGroup.getP() == 2) || (a == epsilonDGroup.getP()) || b == epsilonDGroup.getP()) {
 			return false;
 		} else {
-			int r = returnR(a, b);
+			int r = returnRWithCondition(a, b, 2);
 			int k = ArithmeticUtils.e(r, epsilonDGroup.getQ());
 			int etaK = ArithmeticUtils.eta(k);
 			boolean cond1, cond2, cond3, cond4;
@@ -93,7 +93,7 @@ public class CriterionUtils {
 						(ArithmeticUtils.NOD(4, num) == ArithmeticUtils.nPart(num, 2));
 				int e2q = ArithmeticUtils.e(2, epsilonDGroup.getQ());
 				cond2 = (etaK == k) && (k == epsilonDGroup.getN() - 1) && ((epsilonDGroup.getN() % 2) == 0) && (e2q == 2);
-				cond3 = (etaK == (k / 2)) && (etaK == (epsilonDGroup.getN() - 1)) && (e2q == 1);
+				cond3 = ((k % 2) == 0) && (etaK == (k / 2)) && (etaK == (epsilonDGroup.getN() - 1)) && (e2q == 1);
 				return cond1 || cond2 || cond3;
 			} else if (epsilon.equals(MINUS)) {
 				int num = (int) (Math.pow(epsilonDGroup.getQ(), epsilonDGroup.getN()) + 1);
@@ -105,10 +105,6 @@ public class CriterionUtils {
 			}
 		}
 		return false;
-	}
-	
-	private static int returnR(int a, int b) {
-		return (a != 2) ? a : b;
 	}
 	
 	/**
