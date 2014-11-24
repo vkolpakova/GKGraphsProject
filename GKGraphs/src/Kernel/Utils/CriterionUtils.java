@@ -100,7 +100,7 @@ public class CriterionUtils {
 				cond1 = (etaK == epsilonDGroup.getN()) && 
 						(ArithmeticUtils.NOD(4, num) == ArithmeticUtils.nPart(num, 2));
 				int e2q = ArithmeticUtils.e(2, epsilonDGroup.getQ());
-				cond4 = (etaK == (k / 2)) && (etaK == (epsilonDGroup.getN() - 1)) && (e2q == 2);
+				cond4 = ((k % 2) == 0) && (etaK == (k / 2)) && (etaK == (epsilonDGroup.getN() - 1)) && (e2q == 2);
 				return cond1 || cond4;
 			}
 		}
