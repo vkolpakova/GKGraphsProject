@@ -166,7 +166,7 @@ public class ArithmeticUtils {
 	 * @param q
 	 * @return
 	 */
-	public static int m_iB(int i, int q) {
+	public static int m_iB(int x, int q) {
 		int twoPow = getPow(q, 2);
 		if ((twoPow % 2) == 0) {
 			try {
@@ -176,12 +176,14 @@ public class ArithmeticUtils {
 			}
 		}
 		int n = twoPow / 2;
-		if (i == 1) {
-			return (int) (Math.pow(2, twoPow) - 1); // m1
-		} else if (i == 2) {
-			return (int) (Math.pow(2, twoPow) - Math.pow(2, n + 1) + 1); // m2
+		if ((((int) (Math.pow(2, twoPow) - 1)) % x) == 0) {
+			return 1; // m1
+		} else if ((((int) (Math.pow(2, twoPow) - Math.pow(2, n + 1) + 1)) % x) == 0) {
+			return 2; // m2
+		} else if ((((int) (Math.pow(2, twoPow) - Math.pow(2, n + 1) + 1)) % x) == 0) {
+			return 3; // m3
 		} else {
-			return (int) (Math.pow(2, twoPow) - Math.pow(2, n + 1) + 1); // m3
+			return 0;
 		}
 	}
 	

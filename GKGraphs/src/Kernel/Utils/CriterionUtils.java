@@ -139,9 +139,9 @@ public class CriterionUtils {
 		int s = (aE <= bE) ? b : a;
 		int k = (aE <= bE) ? aE : bE;
 		int l = (aE <= bE) ? bE : aE;
-		int mk = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(k, q) : ArithmeticUtils.m_iB(k, q) ;
-		int ml = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(l, q) : ArithmeticUtils.m_iB(l, q) ;
-		return (((mk % r) == 0) && ((ml % s) == 0) && (k != l));
+		int mk = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(k, q) : ArithmeticUtils.m_iB(r, q) ;
+		int ml = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(l, q) : ArithmeticUtils.m_iB(s, q) ;
+		return (mk != ml);
 	}
 	
 }
