@@ -137,10 +137,8 @@ public class CriterionUtils {
 		int bE = ArithmeticUtils.e(b, q);
 		int r = (aE <= bE) ? a : b;
 		int s = (aE <= bE) ? b : a;
-		int k = (aE <= bE) ? aE : bE;
-		int l = (aE <= bE) ? bE : aE;
-		int mk = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(k, q) : ArithmeticUtils.m_iB(r, q) ;
-		int ml = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(l, q) : ArithmeticUtils.m_iB(s, q) ;
+		int mk = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(r, q) : ArithmeticUtils.m_iB(r, q) ;
+		int ml = (type == GroupType.Ri) ? ArithmeticUtils.m_iG(s, q) : ArithmeticUtils.m_iB(s, q) ;
 		return (mk != ml);
 	}
 	

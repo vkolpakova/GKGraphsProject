@@ -16,9 +16,8 @@ public class RiLieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNo
 		int b = (Integer)edge.getVertexB().getVertex();
 		int r = super.returnR(a, b);
 		if (r != 0) {
-			int m3 = ArithmeticUtils.m_iG(3, this.ltGroup.getQ());
-			int m4 = ArithmeticUtils.m_iG(4, this.ltGroup.getQ());
-			return (((m3 % r) == 0) || ((m4 % r) == 0));
+			int mr = ArithmeticUtils.m_iG(r, this.ltGroup.getQ());
+			return ((mr == 3) || (mr == 4));
 		} else {
 			return false;
 		}

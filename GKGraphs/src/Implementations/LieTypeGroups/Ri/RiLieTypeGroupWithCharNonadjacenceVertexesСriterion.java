@@ -16,9 +16,8 @@ public class RiLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCh
 		int b = (Integer)edge.getVertexB().getVertex();
 		int r = super.returnR(a, b);
 		if (r != 0) {
-			int k = ArithmeticUtils.e(r, this.ltGroup.getQ());
-			int mk = ArithmeticUtils.m_iG(k, this.ltGroup.getQ());
-			return (((mk % r) == 0) && (r != 2));
+			int mk = ArithmeticUtils.m_iG(r, this.ltGroup.getQ());
+			return ((mk != 0) && (r != 2));
 		} else {
 			return false;
 		}

@@ -194,7 +194,7 @@ public class ArithmeticUtils {
 	 * @param q
 	 * @return
 	 */
-	public static int m_iG(int i, int q) {
+	public static int m_iG(int x, int q) {
 		int threePow = getPow(q, 3);
 		if ((threePow % 2) == 0) {
 			try {
@@ -204,14 +204,16 @@ public class ArithmeticUtils {
 			}
 		}
 		int n = threePow / 2;
-		if (i == 1) {
-			return (int) (Math.pow(3, threePow) - 1); // m1
-		} else if (i == 2) {
-			return (int) (Math.pow(3, threePow) + 1); // m2
-		} else if (i == 3) {
-			return (int) (Math.pow(3, threePow) - Math.pow(3, n + 1) + 1); // m3
+		if ((((int) (Math.pow(3, threePow) - 1)) % x) == 0) {
+			return 1; // m1
+		} else if ((((int) (Math.pow(3, threePow) + 1)) % x) == 0) {
+			return 2; // m2
+		} else if ((((int) (Math.pow(3, threePow) - Math.pow(3, n + 1) + 1)) % x) == 0) {
+			return 3; // m3
+		} else if ((((int) (Math.pow(3, threePow) + Math.pow(3, n + 1) + 1)) % x) == 0) {
+			return 4; // m4
 		} else {
-			return (int) (Math.pow(3, threePow) + Math.pow(3, n + 1) + 1); // m4
+			return 0;
 		}
 	}
 	
