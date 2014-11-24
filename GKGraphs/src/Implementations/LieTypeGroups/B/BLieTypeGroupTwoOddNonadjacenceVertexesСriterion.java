@@ -20,13 +20,9 @@ public class BLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 			// TODO подумать над рефакторингом, чтобы избавиться от приведения типов
 			int k = ArithmeticUtils.e(((Integer)edge.getVertexA().getVertex()), q);
 			int l = ArithmeticUtils.e(((Integer)edge.getVertexB().getVertex()), q);
-			if ((k % 2 != 0) && (l % 2 != 0)) {
-				etaK = ArithmeticUtils.eta(k);
-				etaL = ArithmeticUtils.eta(l);
-				return CriterionUtils.thirdCondition(etaK, etaL, n);
-			} else {
-				return false;
-			}
+			etaK = ArithmeticUtils.eta(k);
+			etaL = ArithmeticUtils.eta(l);
+			return CriterionUtils.thirdCondition(k, l, etaK, etaL, n);
 		} else {
 			return false;
 		}

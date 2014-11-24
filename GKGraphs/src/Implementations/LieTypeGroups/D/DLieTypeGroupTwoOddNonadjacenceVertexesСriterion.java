@@ -28,7 +28,7 @@ public class DLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 	
 	private boolean subcheck(int k, int l, int etaK, int etaL) {
 		return (2*(etaK + etaL) > 2*this.ltGroup.getN() - (1 - Math.pow(-1, k+l))) && 
-				(CriterionUtils.thirdCondition(etaK, etaL, this.ltGroup.getN()));
+				(CriterionUtils.thirdCondition(etaK, etaL));
 	}
 	
 }

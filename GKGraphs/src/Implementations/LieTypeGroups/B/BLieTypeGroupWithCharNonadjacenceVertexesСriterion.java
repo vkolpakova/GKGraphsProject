@@ -16,16 +16,16 @@ public class BLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCha
 		int b = (Integer)edge.getVertexB().getVertex();
 		int p = this.ltGroup.getP();
 		int q = this.ltGroup.getQ();
-		if (a == p) {
+		if ((a == p) && (b != 2)) {
 			return subcheck(q, b);
-		} else if (b == p) {
+		} else if ((b == p) && (a != 2)) {
 			return subcheck(q, a);
 		}
 		return false;
 	}
 	
 	private boolean subcheck(int q, int r) {
-		return ArithmeticUtils.eta(ArithmeticUtils.e(r, q)) > this.ltGroup.getN()-2;
+		return (ArithmeticUtils.eta(ArithmeticUtils.e(r, q)) > (this.ltGroup.getN() - 1));
 	}
 	
 }

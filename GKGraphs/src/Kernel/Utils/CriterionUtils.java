@@ -16,23 +16,31 @@ public class CriterionUtils {
 	public static final String MINUS = "-";
 	
 	/**
-	 * Метод определяет, удовлетворяют ли две вершины условию (3)
+	 * Метод определяет, удовлетворяют ли две вершины условию (3) + доп. условия
+	 * @param k
+	 * @param l
 	 * @param etaK
 	 * @param etaL
 	 * @param n
 	 * @return
 	 */
-	public static boolean thirdCondition(int etaK, int etaL, int n) {
+	public static boolean thirdCondition(int k, int l, int etaK, int etaL, int n) {
 		if (etaK + etaL > n) {
-			return condition(etaK, etaL);
+			return thirdCondition(k, l);
 		} else {
 			return false;
 		}
 	}
 	
-	private static boolean condition(int etaK, int etaL) {
+	/**
+	 * Метод определяет, удовлетворяют ли две вершины условию (3)
+	 * @param etaK
+	 * @param etaL
+	 * @return
+	 */
+	public static boolean thirdCondition(int etaK, int etaL) {
 		boolean result = false;
-		if (etaK <= etaL) {
+		if (etaL <= etaK) {
 			result = !checkDivisionIsOddZNumber(etaK, etaL);
 		} else {
 			result = !checkDivisionIsOddZNumber(etaL, etaK);
@@ -41,10 +49,10 @@ public class CriterionUtils {
 	}
 	
 	private static boolean checkDivisionIsOddZNumber(int etaK, int etaL) {
-		if (etaL % etaK != 0) {
+		if (etaK % etaL != 0) {
 			return false;
 		} else {
-			return ((etaL / etaK) % 2) != 0;
+			return ((etaK / etaL) % 2) != 0;
 		}
 	}
 	
