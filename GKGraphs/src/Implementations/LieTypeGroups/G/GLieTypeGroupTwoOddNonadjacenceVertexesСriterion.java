@@ -21,7 +21,7 @@ public class GLieTypeGroupTwoOddNonadjacenceVertexesСriterion extends TwoOddNon
 			//int s = (aE <= bE) ? b : a;
 			int k = (aE <= bE) ? aE : bE;
 			int l = (aE <= bE) ? bE : aE;
-			return (((r != 3) && ((l == 3) || (l == 6))) || ((r == 3) && (l == (9 - 3 * k))));
+			return ((k != l) && (((r != 3) && ((l == 3) || (l == 6))) || ((r == 3) && (l == (9 - 3 * k)))));
 		} else {
 			return false;
 		}
