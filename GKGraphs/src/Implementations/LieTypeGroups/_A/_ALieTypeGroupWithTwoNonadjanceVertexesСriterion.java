@@ -26,13 +26,13 @@ public class _ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNo
 			s = a;
 		}
 		int nuK = ArithmeticUtils.nu(ArithmeticUtils.e(s, q));
-		return checkFirstCondition(nuK, n, r, q) || checkSecondCondition(nuK, nuK, r, q);
+		return checkFirstCondition(nuK, n, r, q) || checkSecondCondition(nuK, n, r, q);
 	}
 	
 	private int returnR(int a, int b, int q) {
-		if ((((q + 1) % a) == 0) && (b != this.ltGroup.getP())) {
+		if ((((q + 1) % a) == 0) && (b != this.ltGroup.getP()) && (b != 2)) {
 			return a;
-		} else if (((q + 1) % b == 0) && (a != this.ltGroup.getP())) {
+		} else if (((q + 1) % b == 0) && (a != this.ltGroup.getP())  && (a != 2)) {
 			return b;
 		} else {
 			return 0;

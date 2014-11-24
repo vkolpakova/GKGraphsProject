@@ -15,6 +15,7 @@ public class AbstractLieTypeGroup_Test {
 		this.group = LieTypeGroupTypeResolver.resolve(name);
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(group);
 		this.graph = constr.constructGKGraph();
+		this.graph.printConsole();
 	}
 	
 }
