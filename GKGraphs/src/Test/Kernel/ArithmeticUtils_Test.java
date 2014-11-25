@@ -1,5 +1,6 @@
 package Test.Kernel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import Kernel.Utils.ArithmeticUtils;
+import Kernel.Utils.MainLogger;
 
 public class ArithmeticUtils_Test {
 		
@@ -85,6 +87,29 @@ public class ArithmeticUtils_Test {
 		Assert.assertTrue(res1 == 11);
 		int res2 = ArithmeticUtils.primeDivMultiplication(100);
 		Assert.assertTrue(res2 == 10);
+	}
+	
+	@Test
+	public void partitionTest() {
+		List<List<Integer>> res = ArithmeticUtils.partition(4);
+		List<List<Integer>> testList = new ArrayList<List<Integer>>(5);
+		List<Integer> l1 = new ArrayList<Integer>(Arrays.asList(1, 1, 1, 1));
+		List<Integer> l2 = new ArrayList<Integer>(Arrays.asList(2, 1, 1));
+		List<Integer> l3 = new ArrayList<Integer>(Arrays.asList(2, 2));
+		List<Integer> l4 = new ArrayList<Integer>(Arrays.asList(3, 1));
+		List<Integer> l5 = new ArrayList<Integer>(Arrays.asList(4));
+		testList.add(l1);
+		testList.add(l2);
+		testList.add(l3);
+		testList.add(l4);
+		testList.add(l5);
+		Assert.assertTrue(res.equals(testList));
+		for (List<Integer> list : res) {
+			int index = res.indexOf(list);
+			for (int n : list) {
+				MainLogger.info("List #"+index+" "+Integer.toString(n));
+			}
+		}
 	}
 	
 }

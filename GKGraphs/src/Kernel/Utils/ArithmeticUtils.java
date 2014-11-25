@@ -217,4 +217,39 @@ public class ArithmeticUtils {
 		}
 	}
 	
+	/**
+	 * Метод получает разложение числа n
+	 * @param n
+	 * @return коллекцию разложений
+	 */
+	public static List<List<Integer>> partition(int n) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		List<Integer> list = new ArrayList<Integer>(n);
+		int l = n;
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = 1;
+			list.add(1);
+		}
+		result.add(list);
+		do {
+			int i = l - 1;
+			int sum = 0;
+			do {
+				sum += arr[i--];
+			} while ((i > 0) && arr[i - 1] <= arr[i]);
+			arr[i]++;
+			l = i + sum;
+			for (int j = i + 1; j < l; j++) {
+				arr[j] = 1;
+			}
+			list = new ArrayList<Integer>(l);
+			for (int j = 0; j < l; j++) {
+				list.add(arr[j]);
+			}
+			result.add(list);
+		} while (l > 1);
+		return result;
+	}
+	
 }
