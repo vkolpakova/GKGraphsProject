@@ -54,7 +54,6 @@ public class LieTypeGroupGraphConstructorResolver  {
 		} else if (group instanceof RiLieTypeGroup) {
 			constr = new RiLieTypeGroupConcreteGraphConstructor((RiLieTypeGroup) group);
 		}
-		// TODO с появлением новых имплементаций LieTypeGroupGraphConstructor реализовать соотв. логику
 		return constr;
 	}
 	

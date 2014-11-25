@@ -57,7 +57,6 @@ public class LieTypeGroupTypeResolver {
 			} else if (type == GroupType.Ri) {
 				group = new RiLieTypeGroup(name, n, p, q);
 			}
-			// TODO с появлением конкретных типов реализовать соотв. логику	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

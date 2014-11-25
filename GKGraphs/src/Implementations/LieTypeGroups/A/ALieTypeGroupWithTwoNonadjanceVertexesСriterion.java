@@ -19,7 +19,7 @@ public class ALieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoNon
 		int k_b = ArithmeticUtils.e(b, q);
 		if ((k_a == 1) && (b != 2) && (b != this.ltGroup.getP())) {
 			return subcheck(a, k_b);
-		} else if (k_b == 1 && (a != 2) && (a != this.ltGroup.getP())) {
+		} else if ((k_b == 1) && (a != 2) && (a != this.ltGroup.getP())) {
 			return subcheck(b, k_a);
 		} else {
 			return false;

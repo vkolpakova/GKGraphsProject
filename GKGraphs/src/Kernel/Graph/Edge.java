@@ -43,7 +43,9 @@ public class Edge {
 	public boolean equals(Object arg0) {
 		if (arg0 instanceof Edge) {
 			Edge edge = (Edge) arg0;
-			return (this.a.equals(edge.getVertexA()) && this.b.equals(edge.getVertexB()));
+			// ребра ненаправленные
+			return ((this.a.equals(edge.getVertexA()) && this.b.equals(edge.getVertexB())) ||
+					(this.a.equals(edge.getVertexB()) && this.b.equals(edge.getVertexA())));
 		}
 		return false;
 	}

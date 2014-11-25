@@ -8,6 +8,12 @@ import Kernel.GraphConstructor.Сriterion.WithCharNonadjacenceVertexesСriterion
 import Kernel.GraphConstructor.Сriterion.WithTwoNonadjanceVertexesСriterion;
 import Kernel.Group.LieTypeGroup;
 
+/**
+ * Конструктор графа Грюнберга --- Кегеля группы лиева типа
+ * 
+ * @author v.kolpakova
+ *
+ */
 public abstract class LieTypeGroupGraphConstructor extends AbstractGraphConstructor<LieTypeGroup> {
 
 	/**
