@@ -125,4 +125,9 @@ public class LieTypeGroup extends AbstractGroup {
 	 */
 	protected void computeGroupOrder() {}
 	
+	/**
+	 * Метод возвращает индекс группы в её группе Inndiag
+	 */
+	public int getInInndiagIndex() { return 1; }
+	
 }

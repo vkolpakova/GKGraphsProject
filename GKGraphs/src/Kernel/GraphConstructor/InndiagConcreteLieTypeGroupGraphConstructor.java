@@ -34,22 +34,26 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 	
 	@Override
 	public PrimeNumberGraph constructGKGraph() {
-		// в графе Inndiag как подграф содержится граф группы
-		List<Edge> edgesList = groupGraph.getEdgesList();
-		this.torOrdersPartitions = computeTorOrdersPartitions();
-		for (List<Integer> intList : this.torOrdersPartitions) {
-			List<Edge> fullTorEdgesList = getFullTorEdgesList(intList);
-			for (Edge edge : fullTorEdgesList) {
-				if (!edgesList.contains(edge)) {
-					// добавляются полученные в Inndiag ребра
-					edgesList.add(edge);
-					MainLogger.info("*InndiagConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
-					+ edge.getVertexB().getVertex().toString() + "}");
+		if (group.getInInndiagIndex() > 1) {
+			// в графе Inndiag как подграф содержится граф группы
+			List<Edge> edgesList = groupGraph.getEdgesList();
+			this.torOrdersPartitions = computeTorOrdersPartitions();
+			for (List<Integer> intList : this.torOrdersPartitions) {
+				List<Edge> fullTorEdgesList = getFullTorEdgesList(intList);
+				for (Edge edge : fullTorEdgesList) {
+					if (!edgesList.contains(edge)) {
+						// добавляются полученные в Inndiag ребра
+						edgesList.add(edge);
+						MainLogger.info("*InndiagConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
+						+ edge.getVertexB().getVertex().toString() + "}");
+					}
 				}
 			}
+			// FIXME ВНИМАНИЕ! нарушается лексико-графический порядок (тесты)
+			return new PrimeNumberGraph(edgesList);
+		} else {
+			return groupGraph;
 		}
-		// FIXME ВНИМАНИЕ! нарушается лексико-графический порядок (тесты)
-		return new PrimeNumberGraph(edgesList);
 	}
 	
 	/**

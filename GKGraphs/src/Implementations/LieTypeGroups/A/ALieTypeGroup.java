@@ -31,4 +31,9 @@ public class ALieTypeGroup extends LieTypeGroup {
 		MainLogger.info("*ALieTypeGroup* Order = " + Long.toString(order));
 	}
 	
+	@Override
+	public int getInInndiagIndex() {
+		return (this.n == 1) ? ArithmeticUtils.NOD(2, this.q - 1) : ArithmeticUtils.NOD(this.n + 1, this.q - 1);
+	}
+	
 }

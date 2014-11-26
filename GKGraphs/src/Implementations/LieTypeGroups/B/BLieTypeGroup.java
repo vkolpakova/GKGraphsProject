@@ -31,4 +31,9 @@ public class BLieTypeGroup extends LieTypeGroup {
 		MainLogger.info("*BLieTypeGroup* Order = " + Long.toString(order));
 	}
 	
+	@Override
+	public int getInInndiagIndex() {
+		return ArithmeticUtils.NOD(2, this.q - 1);
+	}
+	
 }
