@@ -11,7 +11,7 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("B_2(27)");
+		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("D_4(7)");
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
 		gr.setGraph(graph);
