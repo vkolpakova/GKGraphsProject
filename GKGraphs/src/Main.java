@@ -19,15 +19,15 @@ public class Main {
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
 		gr.setGraph(graph);
-		MainLogger.info("==Group==");
+		MainLogger.info("=====Group=====");
 		graph.printConsole();
 		InndiagConcreteLieTypeGroupGraphConstructor<?> inndiagConstr = InndiagLieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph inndiagGraph = inndiagConstr.constructGKGraph();
-		MainLogger.info("==Inndiag==");
+		MainLogger.info("=====Inndiag=====");
 		inndiagGraph.printConsole();
 		FieldAutConcreteLieTypeGroupGraphConstructor<?> fieldConstr = FieldAutLieTypeGroupGraphConstructorResolver.resolve(gr);
 		Map<Integer, PrimeNumberGraph> grMap = fieldConstr.constructGraphs();
-		MainLogger.info("==FieldAut==");
+		MainLogger.info("======FieldAut=====");
 		for (int x : grMap.keySet()) {
 			MainLogger.info("Element order = "+Integer.toString(x));
 			PrimeNumberGraph fGraph = grMap.get(x);

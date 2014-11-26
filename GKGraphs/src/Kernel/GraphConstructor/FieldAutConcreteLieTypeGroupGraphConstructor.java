@@ -1,6 +1,7 @@
 package Kernel.GraphConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
+import Kernel.Utils.MainLogger;
 
 /**
  * Конструктор графа Грюнберга --- Кегеля группы InndiagPhi для конкретной группы лиева типа
@@ -34,6 +36,9 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 	
 	public FieldAutConcreteLieTypeGroupGraphConstructor(LieTypeGroup group) {
 		super(group);
+		this.centralizationsMap = new HashMap<Integer, LieTypeGroup>();
+		this.graphsMap= new HashMap<Integer, PrimeNumberGraph>();
+		computeCentralizationsMap();
 	}
 	
 	protected void computeCentralizationsMap() {
@@ -65,7 +70,10 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 			List<Edge> fullCentrEdgesList = getFullCentrEdgesList(x, centrPrimeDivList);
 			for (Edge edge : fullCentrEdgesList) {
 				if (!this.groupGraph.getEdgesList().contains(edge)) {
+					// доюавляются полученные в InndiagPhi ребра
 					resultEdgesList.add(edge);
+					MainLogger.info("*FieldAutConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
+							+ edge.getVertexB().getVertex().toString() + "}");
 				}
 			}
 			return new PrimeNumberGraph(resultEdgesList);
@@ -74,7 +82,22 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 		}
 	}
 	
+	/**
+	 * Метод возвращает Map с графами Грюнберга --- Кегеля групп вида Inndiag*f,
+	 * где f --- полевой автоморфизм некоторого простого порядка
+	 * @return
+	 */
 	public Map<Integer, PrimeNumberGraph> constructGraphs() {
+		if (this.graphsMap.isEmpty()) {
+			int phiOrder = this.group.getFieldAutGroupOrder();
+			if (phiOrder != 1) {
+				List<Integer> primeDivPhiOrderList = ArithmeticUtils.getAllPrimeDevisors(phiOrder);
+				for (int div : primeDivPhiOrderList) {
+					PrimeNumberGraph graph = constructGKGraph(div);
+					this.graphsMap.put(div, graph);
+				}
+			}
+ 		}
 		return this.graphsMap;
 	}
 	
