@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Map;
 
 import Kernel.Graph.PrimeNumberGraph;
@@ -15,7 +16,7 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("A_1(1024)");
+		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("_A_4(4)");
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
 		gr.setGraph(graph);
@@ -26,12 +27,14 @@ public class Main {
 		MainLogger.info("=====Inndiag=====");
 		inndiagGraph.printConsole();
 		FieldAutConcreteLieTypeGroupGraphConstructor<?> fieldConstr = FieldAutLieTypeGroupGraphConstructorResolver.resolve(gr);
-		Map<Integer, PrimeNumberGraph> grMap = fieldConstr.constructGraphs();
+		Map<Integer, List<PrimeNumberGraph>> grMap = fieldConstr.constructGraphs();
 		MainLogger.info("======FieldAut=====");
 		for (int x : grMap.keySet()) {
 			MainLogger.info("Element order = "+Integer.toString(x));
-			PrimeNumberGraph fGraph = grMap.get(x);
-			fGraph.printConsole();
+			List<PrimeNumberGraph> fGraphList = grMap.get(x);
+			for (PrimeNumberGraph fGraph : fGraphList) {
+				fGraph.printConsole();
+			}
 		}
 		System.out.println("End");
 	}

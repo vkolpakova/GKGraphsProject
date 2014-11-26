@@ -23,28 +23,28 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 	/**
 	 * Коллекция Map для хранения полевых автоморфизмов и их централизаторов. </br>
 	 * <b>Ключ:</b> порядок автоморфизма (простое число); </br>
-	 * <b>Значение:</b> группа лиева типа, которой изоморфен централизатор соотв. автоморфизма.
+	 * <b>Значение:</b> группы лиева типа, которым изоморфен централизатор соотв. автоморфизма.
 	 */
-	protected Map<Integer, LieTypeGroup> centralizationsMap;
+	protected Map<Integer, List<LieTypeGroup>> centralizationsMap;
 	
 	/**
 	 * Коллекция Map для хранения полевых автоморфизмов и графов Грюнберга --- Кегеля подгрупп вида Pf </br>
 	 * <b>Ключ:</b> порядок автоморфизма (простое число); </br>
 	 * <b>Значение:</b> граф соотв. подгруппы в Aut
 	 */
-	protected Map<Integer, PrimeNumberGraph> graphsMap;
+	protected Map<Integer, List<PrimeNumberGraph>> graphsMap;
 	
 	public FieldAutConcreteLieTypeGroupGraphConstructor(LieTypeGroup group) {
 		super(group);
-		this.centralizationsMap = new HashMap<Integer, LieTypeGroup>();
-		this.graphsMap= new HashMap<Integer, PrimeNumberGraph>();
+		this.centralizationsMap = new HashMap<Integer, List<LieTypeGroup>>();
+		this.graphsMap= new HashMap<Integer, List<PrimeNumberGraph>>();
 		computeCentralizationsMap();
 	}
 	
 	protected void computeCentralizationsMap() {
 		List<Integer> fieldGroupOrderPrimeDivList = ArithmeticUtils.getAllPrimeDevisors(this.group.getFieldAutGroupOrder());
 		for (int x : fieldGroupOrderPrimeDivList) {
-			LieTypeGroup centralizer = computeCentralizer(x);
+			List<LieTypeGroup> centralizer = computeCentralizer(x);
 			this.centralizationsMap.put(x, centralizer);
 		}
 	}
@@ -54,32 +54,36 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 	 * @param x --- порядок полевого автоморфизма
 	 * @return
 	 */
-	protected abstract LieTypeGroup computeCentralizer(int x);
+	protected abstract List<LieTypeGroup> computeCentralizer(int x);
 
 	/**
 	 * Метод возвращает граф группы Inndiag*f, где f  --- полевой автоморфизм простого порядка x
 	 * @param x --- порядок полевого автоморфизма (простое число)
 	 * @return
 	 */
-	public PrimeNumberGraph constructGKGraph(int x) {
+	public List<PrimeNumberGraph> constructGKGraph(int x) {
+		List<PrimeNumberGraph> result = new ArrayList<PrimeNumberGraph>();
 		int phiOrder = this.group.getFieldAutGroupOrder();
 		if (phiOrder != 1) {
 			List<Edge> resultEdgesList = new ArrayList<Edge>(this.groupGraph.getEdgesList());
-			LieTypeGroup centralizator = centralizationsMap.get(x);
-			List<Integer> centrPrimeDivList = ArithmeticUtils.getAllPrimeDevisors(centralizator.getOrder());
-			List<Edge> fullCentrEdgesList = getFullCentrEdgesList(x, centrPrimeDivList);
-			for (Edge edge : fullCentrEdgesList) {
-				if (!this.groupGraph.getEdgesList().contains(edge)) {
-					// доюавляются полученные в InndiagPhi ребра
-					resultEdgesList.add(edge);
-					MainLogger.info("*FieldAutConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
-							+ edge.getVertexB().getVertex().toString() + "}");
+			List<LieTypeGroup> centralizators = centralizationsMap.get(x);
+			for (LieTypeGroup centralizator : centralizators) {
+				List<Integer> centrPrimeDivList = ArithmeticUtils.getAllPrimeDevisors(centralizator.getOrder());
+				List<Edge> fullCentrEdgesList = getFullCentrEdgesList(x, centrPrimeDivList);
+				for (Edge edge : fullCentrEdgesList) {
+					if (!this.groupGraph.getEdgesList().contains(edge)) {
+						// доюавляются полученные в InndiagPhi ребра
+						resultEdgesList.add(edge);
+						MainLogger.info("*FieldAutConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
+								+ edge.getVertexB().getVertex().toString() + "}");
+					}
 				}
+				result.add(new PrimeNumberGraph(resultEdgesList));
 			}
-			return new PrimeNumberGraph(resultEdgesList);
 		} else {
-			return this.groupGraph;
+			result.add(this.groupGraph);
 		}
+		return result;
 	}
 	
 	/**
@@ -87,13 +91,13 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 	 * где f --- полевой автоморфизм некоторого простого порядка
 	 * @return
 	 */
-	public Map<Integer, PrimeNumberGraph> constructGraphs() {
+	public Map<Integer, List<PrimeNumberGraph>> constructGraphs() {
 		if (this.graphsMap.isEmpty()) {
 			int phiOrder = this.group.getFieldAutGroupOrder();
 			if (phiOrder != 1) {
 				List<Integer> primeDivPhiOrderList = ArithmeticUtils.getAllPrimeDevisors(phiOrder);
 				for (int div : primeDivPhiOrderList) {
-					PrimeNumberGraph graph = constructGKGraph(div);
+					List<PrimeNumberGraph> graph = constructGKGraph(div);
 					this.graphsMap.put(div, graph);
 				}
 			}

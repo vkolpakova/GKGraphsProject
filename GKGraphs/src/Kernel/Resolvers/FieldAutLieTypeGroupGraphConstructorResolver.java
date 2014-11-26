@@ -2,6 +2,8 @@ package Kernel.Resolvers;
 
 import Implementations.LieTypeGroups.A.ALieTypeGroup;
 import Implementations.LieTypeGroups.A.ALieTypeGroupFieldAutConcreteGraphConstructor;
+import Implementations.LieTypeGroups._A._ALieTypeGroup;
+import Implementations.LieTypeGroups._A._ALieTypeGroupFieldAutConcreteGraphConstructor;
 import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
@@ -18,6 +20,8 @@ public class FieldAutLieTypeGroupGraphConstructorResolver {
 		FieldAutConcreteLieTypeGroupGraphConstructor<?> constr = null;
 		if (group instanceof ALieTypeGroup) {
 			constr = new ALieTypeGroupFieldAutConcreteGraphConstructor((ALieTypeGroup) group);
+		} else if (group instanceof _ALieTypeGroup) {
+			constr = new _ALieTypeGroupFieldAutConcreteGraphConstructor((_ALieTypeGroup) group);
 		}
 		return constr;
 	}

@@ -1,5 +1,8 @@
 package Implementations.LieTypeGroups.A;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
@@ -11,12 +14,13 @@ public class ALieTypeGroupFieldAutConcreteGraphConstructor extends FieldAutConcr
 	}
 
 	@Override
-	protected LieTypeGroup computeCentralizer(int x) {
+	protected List<LieTypeGroup> computeCentralizer(int x) {
+		List<LieTypeGroup> result = new ArrayList<LieTypeGroup>();
 		int m = ArithmeticUtils.getPow(this.group.getQ(), this.group.getP());
 		if ((m % x) == 0) {
-			return new ALieTypeGroup("*", this.group.getN(), this.group.getP(), (int) Math.pow(this.group.getP(), (m / x)));
+			result.add(new ALieTypeGroup("*", this.group.getN(), this.group.getP(), (int) Math.pow(this.group.getP(), (m / x))));
 		}
-		return null;
+		return result;
 	}
 	
 }

@@ -30,7 +30,7 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 	public PrimeNumberGraph constructGKGraph() {
 		if (group.getInInndiagIndex() > 1) {
 			// в графе Inndiag как подграф содержится граф группы
-			List<Edge> edgesList = groupGraph.getEdgesList();
+			List<Edge> edgesList = new ArrayList<Edge>(groupGraph.getEdgesList());
 			this.torOrdersPartitions = computeTorOrdersPartitions();
 			for (List<Integer> intList : this.torOrdersPartitions) {
 				List<Edge> fullTorEdgesList = getFullTorEdgesList(intList);
