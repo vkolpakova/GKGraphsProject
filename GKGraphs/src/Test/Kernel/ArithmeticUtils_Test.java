@@ -3,6 +3,8 @@ package Test.Kernel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -109,6 +111,64 @@ public class ArithmeticUtils_Test {
 			for (int n : list) {
 				MainLogger.info("List #"+index+" "+Integer.toString(n));
 			}
+		}
+	}
+	
+	@Test
+	public void combinationTest() {
+		int n = 10;
+		Integer[] arr = new Integer[n];
+		for (int i = 0; i < 10; i ++) {
+			arr[i] = 0;
+		}
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		ArithmeticUtils.combination(result, arr, 10, 0);
+		for (List<Integer> list : result) {
+			String str = "";
+			for (int num : list) {
+				str = str.concat(Integer.toString(num).concat(", "));
+			}
+			System.out.println(str);
+		}
+	}
+	
+	@Test
+	public void getFullPartitionMapForConcreteCombinationTest() {
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		List<Integer> numList = new ArrayList(Arrays.asList(new Integer(1), new Integer(2), new Integer(3)));
+		List<Map<Integer, List<Integer>>> result = ArithmeticUtils.getFullPartitionMapForConcreteCombination(numList);
+		for (Map<Integer, List<Integer>> res : result) {
+			List<Integer> subset = res.get(1);
+			List<Integer> complement = res.get(0);
+			String str = "";
+			for (Integer num : subset) {
+				str = str.concat(Integer.toString(num)).concat(", ");
+			}
+			System.out.println("Subset: "+str);
+			str = "";
+			for (Integer num : complement) {
+				str = str.concat(Integer.toString(num)).concat(", ");
+			}
+			System.out.println("Complement: "+str);
+		}
+	}
+	
+	@Test
+	public void getAllPartitionsForAllCombinationsTest() {
+		Set<Map<Integer, List<Integer>>> result = ArithmeticUtils.getAllPartitionsForAllCombinations(3);
+		for (Map<Integer, List<Integer>> map : result) {
+			List<Integer> subset = map.get(1);
+			List<Integer> complement = map.get(0);
+			String str = "";
+			for (Integer num : subset) {
+				str = str.concat(Integer.toString(num)).concat(", ");
+			}
+			System.out.println("Subset: "+str);
+			str = "";
+			for (Integer num : complement) {
+				str = str.concat(Integer.toString(num)).concat(", ");
+			}
+			System.out.println("Complement: "+str);
 		}
 	}
 	

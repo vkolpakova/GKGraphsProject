@@ -1,7 +1,12 @@
 package Kernel.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Класс утилитарных арифметических методов.
@@ -249,6 +254,73 @@ public class ArithmeticUtils {
 			}
 			result.add(list);
 		} while (l > 1);
+		return result;
+	}
+	
+	/**
+	 * Рекурсивный метод получения коллекции всех возможных подмножеств некоторого множества. </br>
+	 * Элемент коллекции - упорядоченная коллекция из 0 (элемент не содержится в подмножестве) и 1 (элемент содержится в подмножестве)
+	 * @param arr --- массив из 0 размерности, равной мощности множества
+	 * @param n --- мощность множества
+	 * @param curPos --- текущая позиция (при вызове выставлять 0)
+	 * @return
+	 */
+	public static void combination(List<List<Integer>> resList, Integer[] arr, int n, int curPos) {
+		if (n == curPos) {
+			List<Integer> list = new ArrayList<Integer>(Arrays.asList(arr));
+			resList.add(list);
+		} else {
+			arr[curPos] = 0;
+			combination(resList, arr, n, curPos + 1);
+			arr[curPos] = 1;
+			combination(resList, arr, n, curPos + 1);
+		}
+	}
+	
+	/**
+	 * Метод формирует для всех разбиений числа все возможные разбиения его на подножество и его дополнение
+	 * всеми возможными вариантами
+	 * @param numSet --- множество чисел
+	 * @return
+	 */
+	public static List<Map<Integer, List<Integer>>> getFullPartitionMapForConcreteCombination(List<Integer> numSet) {
+		List<Map<Integer, List<Integer>>> result = new ArrayList<Map<Integer, List<Integer>>>();
+		Integer[] arr = new Integer[numSet.size()];
+		for (int i = 0; i < numSet.size(); i ++) {
+			arr[i] = 0;
+		}
+		List<List<Integer>> allCombinations = new ArrayList<List<Integer>>();
+		combination(allCombinations, arr, numSet.size(), 0);
+		for (List<Integer> combination : allCombinations) {
+			Map<Integer, List<Integer>> resultMap = new HashMap<Integer, List<Integer>>();
+			List<Integer> subset = new ArrayList<Integer>();
+			List<Integer> complement = new ArrayList<Integer>();
+			for (int i = 0; i < numSet.size(); i ++) {
+				if (combination.get(i) == 1) {
+					subset.add(numSet.get(i));
+				} else {
+					complement.add(numSet.get(i));
+				}
+			}
+			resultMap.put(1, subset);
+			resultMap.put(0, complement);
+			result.add(resultMap);
+		}
+		return result;
+	}
+	
+	/**
+	 * Метод возвращает все возможные разложения множества всех возможных разложений числа n на слагаемые 
+	 * @param n
+	 * @return
+	 */
+	public static Set<Map<Integer, List<Integer>>> getAllPartitionsForAllCombinations(int n) {
+		Set<Map<Integer, List<Integer>>> result = new HashSet<Map<Integer, List<Integer>>>();
+		List<List<Integer>> partitions = partition(n);
+		for (List<Integer> partition : partitions) {
+			List<Map<Integer, List<Integer>>> combinations = getFullPartitionMapForConcreteCombination(partition);
+			result.addAll(combinations);
+		}
 		return result;
 	}
 	
