@@ -12,6 +12,30 @@ import Kernel.Utils.MainLogger;
  * @author v.kolpakova
  */
 public class LieTypeGroup extends AbstractGroup {
+	
+	public enum GroupType {
+		A, _A, B, C, D, _D, __D, G, F, Sz, Ri;
+	}
+		
+	/**
+	 * Лиев ранг
+	 */
+	protected int n;
+	
+	/**
+	 * Характеристика поля
+	 */
+	protected int p;
+	
+	/**
+	 * Порядок поля, степень числа p
+	 */
+	protected int q;
+	
+	/**
+	 * Тип группы
+	 */
+	protected GroupType grType;
 		
 	public LieTypeGroup(String name) {
 		super(name);
@@ -55,30 +79,6 @@ public class LieTypeGroup extends AbstractGroup {
 		this.p = p;
 		this.q = q;
 	}
-
-	public enum GroupType {
-		A, _A, B, C, D, _D, __D, G, F, Sz, Ri;
-	}
-		
-	/**
-	 * Лиев ранг
-	 */
-	protected int n;
-	
-	/**
-	 * Характеристика поля
-	 */
-	protected int p;
-	
-	/**
-	 * Порядок поля, степень числа p
-	 */
-	protected int q;
-	
-	/**
-	 * Тип группы
-	 */
-	protected GroupType grType;
 
 	public int getN() {
 		return n;
@@ -129,5 +129,16 @@ public class LieTypeGroup extends AbstractGroup {
 	 * Метод возвращает индекс группы в её группе Inndiag
 	 */
 	public int getInInndiagIndex() { return 1; }
+	
+	/**
+	 * Метод возвращает порядок группы полевых автоморфизмов группы
+	 */
+	public int getFieldAutGroupOrder() { return 1; }
+	
+	/**
+	 * Метод возвращает порядок группы, порожденной графовыми автоморфизмами группы
+	 * @return
+	 */
+	public int getGraphAutGroupOrder() { return 1; }
 	
 }

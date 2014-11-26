@@ -15,12 +15,7 @@ import Kernel.Utils.MainLogger;
  * @author v.kolpakova
  *
  */
-public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieTypeGroup> extends AbstractGraphConstructor<LieTypeGroup> {
-	
-	/**
-	 * Граф Грюнберга --- Кегеля конкретной группы лиева типа
-	 */
-	protected PrimeNumberGraph groupGraph;
+public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieTypeGroup> extends AutSubgroupConcreteLieTypeGroupGraphConstructor<LieTypeGroup> {
 	
 	/**
 	 * Коллекция коллекций простых делителей всех возможных порядков максимальных торов группы лиева типа
@@ -29,7 +24,6 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 
 	public InndiagConcreteLieTypeGroupGraphConstructor(G group) {
 		super(group);
-		this.groupGraph = group.getGraph();
 	}
 	
 	@Override

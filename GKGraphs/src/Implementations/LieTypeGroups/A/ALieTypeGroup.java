@@ -36,4 +36,9 @@ public class ALieTypeGroup extends LieTypeGroup {
 		return (this.n == 1) ? ArithmeticUtils.NOD(2, this.q - 1) : ArithmeticUtils.NOD(this.n + 1, this.q - 1);
 	}
 	
+	@Override
+	public int getFieldAutGroupOrder() {
+		return ArithmeticUtils.NOD(this.n + 1, this.q - 1);
+	}
+	
 }
