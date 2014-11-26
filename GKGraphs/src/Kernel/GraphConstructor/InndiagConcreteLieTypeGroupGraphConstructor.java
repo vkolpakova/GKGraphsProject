@@ -7,6 +7,7 @@ import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.MainLogger;
 
 /**
  * Конструктор графа Грюнберга --- Кегеля группы Inndiag для конкретной группы лиева типа
@@ -42,6 +43,8 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 				if (!edgesList.contains(edge)) {
 					// добавляются полученные в Inndiag ребра
 					edgesList.add(edge);
+					MainLogger.info("*InndiagConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
+					+ edge.getVertexB().getVertex().toString() + "}");
 				}
 			}
 		}
