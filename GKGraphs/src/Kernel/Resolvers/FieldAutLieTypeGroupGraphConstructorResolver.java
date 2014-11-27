@@ -4,8 +4,12 @@ import Implementations.LieTypeGroups.A.ALieTypeGroup;
 import Implementations.LieTypeGroups.A.ALieTypeGroupFieldAutConcreteGraphConstructor;
 import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Implementations.LieTypeGroups.B.BLieTypeGroupFieldAutConcreteGraphConstructor;
+import Implementations.LieTypeGroups.D.DLieTypeGroup;
+import Implementations.LieTypeGroups.D.DLieTypeGroupFieldAutConcreteGraphConstructor;
 import Implementations.LieTypeGroups._A._ALieTypeGroup;
 import Implementations.LieTypeGroups._A._ALieTypeGroupFieldAutConcreteGraphConstructor;
+import Implementations.LieTypeGroups._D._DLieTypeGroup;
+import Implementations.LieTypeGroups._D._DLieTypeGroupFieldAutConcreteGraphConstructor;
 import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
@@ -26,6 +30,10 @@ public class FieldAutLieTypeGroupGraphConstructorResolver {
 			constr = new _ALieTypeGroupFieldAutConcreteGraphConstructor((_ALieTypeGroup) group);
 		} else if (group instanceof BLieTypeGroup) {
 			constr = new BLieTypeGroupFieldAutConcreteGraphConstructor((BLieTypeGroup) group);
+		} else if (group instanceof DLieTypeGroup) {
+			constr = new DLieTypeGroupFieldAutConcreteGraphConstructor((DLieTypeGroup) group);
+		} else if (group instanceof _DLieTypeGroup) {
+			constr = new _DLieTypeGroupFieldAutConcreteGraphConstructor((_DLieTypeGroup) group);
 		}
 		return constr;
 	}
