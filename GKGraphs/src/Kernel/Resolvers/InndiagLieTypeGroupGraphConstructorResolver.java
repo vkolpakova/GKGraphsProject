@@ -11,6 +11,7 @@ import Implementations.LieTypeGroups._A._ALieTypeGroupInndiagConcreteGraphConstr
 import Implementations.LieTypeGroups._D._DLieTypeGroup;
 import Implementations.LieTypeGroups._D._DLieTypeGroupInndiagConcreteGraphConstructor;
 import Kernel.GraphConstructor.InndiagConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.SimpleInndiagConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 /**
@@ -34,6 +35,8 @@ public class InndiagLieTypeGroupGraphConstructorResolver {
 			constr = new DLieTypeGroupInndiagConcreteGraphConstructor((DLieTypeGroup) group);
 		} else if (group instanceof _DLieTypeGroup) {
 			constr = new _DLieTypeGroupInndiagConcreteGraphConstructor((_DLieTypeGroup)group);
+		} else {
+			constr = new SimpleInndiagConcreteLieTypeGroupGraphConstructor(group);
 		}
 		return constr;
 	}

@@ -33,4 +33,9 @@ public class __DLieTypeGroup extends LieTypeGroup {
 		MainLogger.info("*__DLieTypeGroup* Order = " + Long.toString(order));
 	}
 	
+	@Override
+	public int getFieldAutGroupOrder() {
+		return (3 * ArithmeticUtils.getPow(this.q, this.p));
+	}
+	
 }
