@@ -68,6 +68,7 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 				result.add(new PrimeNumberGraph(resultEdgesList));
 			}
 		} else {
+			// в случае, если полевых автоморфизмов нет, возвращаем исходный граф группы
 			result.add(this.groupGraph);
 		}
 		return result;

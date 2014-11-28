@@ -73,4 +73,7 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 	 */
 	protected abstract List<List<Integer>> computeTorOrdersPartitions();
 	
+	@Override
+	protected void computeCentralizationsMap() { }
+	
 }

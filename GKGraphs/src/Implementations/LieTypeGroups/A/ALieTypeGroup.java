@@ -41,4 +41,9 @@ public class ALieTypeGroup extends LieTypeGroup {
 		return ArithmeticUtils.getPow(this.q, this.p);
 	}
 	
+	@Override
+	public int getGraphAutGroupOrder() {
+		return (this.n == 1) ? super.getGraphAutGroupOrder() : 2;
+	}
+	
 }

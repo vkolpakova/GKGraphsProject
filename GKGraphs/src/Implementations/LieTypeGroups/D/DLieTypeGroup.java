@@ -33,8 +33,19 @@ public class DLieTypeGroup extends LieTypeGroup {
 	}
 	
 	@Override
+	public int getInInndiagIndex() {
+		return (int) (((this.n % 2) == 0) ? (Math.pow(ArithmeticUtils.NOD(2, this.q - 1), 2)) :
+			(ArithmeticUtils.NOD((int) (Math.pow(this.q, n) - 1), 4)));
+	}
+	
+	@Override
 	public int getFieldAutGroupOrder() {
 		return ArithmeticUtils.getPow(this.q, this.p);
+	}
+	
+	@Override
+	public int getGraphAutGroupOrder() {
+		return (this.n == 4) ? 6 : 2;
 	}
 	
 }

@@ -34,4 +34,9 @@ public class GLieTypeGroup extends LieTypeGroup {
 		return ArithmeticUtils.getPow(this.q, this.p);
 	}
 	
+	@Override
+	public int getGraphAutGroupOrder() {
+		return (this.p == 3) ? 2 : super.getGraphAutGroupOrder();
+	}
+	
 }
