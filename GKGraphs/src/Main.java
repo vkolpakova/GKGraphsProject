@@ -18,7 +18,7 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("A_2(16)");
+		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("B_2(25)");
 		// построение графа простой группы P Лиева типа
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
