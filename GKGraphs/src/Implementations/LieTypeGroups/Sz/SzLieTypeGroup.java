@@ -28,5 +28,10 @@ public class SzLieTypeGroup extends LieTypeGroup {
 		this.order = (long) (p * m1 * m2);
 		MainLogger.info("*SzLieTypeGroup* Order = " + Long.toString(order));
 	}
+	 
+	@Override
+	public int getFieldAutGroupOrder() {
+		return ArithmeticUtils.getPow(this.q, 2);
+	}
 	
 }

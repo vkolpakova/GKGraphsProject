@@ -29,4 +29,9 @@ public class RiLieTypeGroup extends LieTypeGroup {
 		MainLogger.info("*RiLieTypeGroup* Order = " + Long.toString(order));
 	}
 	
+	@Override
+	public int getFieldAutGroupOrder() {
+		return ArithmeticUtils.getPow(this.q, 3);
+	}
+	
 }
