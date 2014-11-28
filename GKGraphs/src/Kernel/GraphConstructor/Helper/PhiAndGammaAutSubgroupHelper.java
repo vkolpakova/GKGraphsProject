@@ -69,6 +69,10 @@ public class PhiAndGammaAutSubgroupHelper {
 					List<PrimeNumberGraph> graph = constructGKGraph(div);
 					constructor.getGraphsMap().put(div, graph);
 				}
+			} else {
+				List<PrimeNumberGraph> result = new ArrayList<PrimeNumberGraph>();
+				result.add(constructor.getGroupGraph());
+				constructor.getGraphsMap().put(1, result);
 			}
  		}
 		return constructor.getGraphsMap();
