@@ -19,20 +19,6 @@ import Kernel.Utils.MainLogger;
  *
  */
 public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends LieTypeGroup> extends AutSubgroupConcreteLieTypeGroupGraphConstructor<LieTypeGroup> {
-
-	/**
-	 * Коллекция Map для хранения полевых автоморфизмов и их централизаторов. </br>
-	 * <b>Ключ:</b> порядок автоморфизма (простое число); </br>
-	 * <b>Значение:</b> группы лиева типа, которым изоморфен централизатор соотв. автоморфизма.
-	 */
-	protected Map<Integer, List<LieTypeGroup>> centralizationsMap;
-	
-	/**
-	 * Коллекция Map для хранения полевых автоморфизмов и графов Грюнберга --- Кегеля подгрупп вида Pf </br>
-	 * <b>Ключ:</b> порядок автоморфизма (простое число); </br>
-	 * <b>Значение:</b> граф соотв. подгруппы в Aut
-	 */
-	protected Map<Integer, List<PrimeNumberGraph>> graphsMap;
 	
 	public FieldAutConcreteLieTypeGroupGraphConstructor(LieTypeGroup group) {
 		super(group);
@@ -41,6 +27,7 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 		computeCentralizationsMap();
 	}
 	
+	@Override
 	protected void computeCentralizationsMap() {
 		List<Integer> fieldGroupOrderPrimeDivList = ArithmeticUtils.getAllPrimeDevisors(this.group.getFieldAutGroupOrder());
 		for (int x : fieldGroupOrderPrimeDivList) {
