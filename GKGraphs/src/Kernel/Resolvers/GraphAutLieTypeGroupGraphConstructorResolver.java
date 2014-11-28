@@ -8,6 +8,8 @@ import Implementations.LieTypeGroups.D.DLieTypeGroup;
 import Implementations.LieTypeGroups.D.DLieTypeGroupGraphAutConcreteGraphConstructor;
 import Implementations.LieTypeGroups.F.FLieTypeGroup;
 import Implementations.LieTypeGroups.F.FLieTypeGroupGraphAutConcreteGraphConstructor;
+import Implementations.LieTypeGroups.G.GLieTypeGroup;
+import Implementations.LieTypeGroups.G.GLieTypeGroupGraphAutConcreteGraphConstructor;
 import Kernel.GraphConstructor.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.SimpleGraphConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
@@ -31,6 +33,8 @@ public class GraphAutLieTypeGroupGraphConstructorResolver {
 			constr = new DLieTypeGroupGraphAutConcreteGraphConstructor((DLieTypeGroup) group);
 		} else if (group instanceof FLieTypeGroup) {
 			constr = new FLieTypeGroupGraphAutConcreteGraphConstructor((FLieTypeGroup) group);
+		} else if (group instanceof GLieTypeGroup) {
+			constr = new GLieTypeGroupGraphAutConcreteGraphConstructor((GLieTypeGroup) group);
 		} else {
 			constr = new SimpleGraphConcreteLieTypeGroupGraphConstructor(group);
 		}
