@@ -74,6 +74,11 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 	protected abstract List<List<Integer>> computeTorOrdersPartitions();
 	
 	@Override
-	protected void computeCentralizationsMap() { }
+	protected void computeCentralizationsMap() { } // заглушка абстрактного метода суперкласса
+	
+	@Override
+	public int getOrder() {
+		return this.group.getInInndiagIndex();
+	}
 	
 }

@@ -42,9 +42,45 @@ public abstract class AutSubgroupConcreteLieTypeGroupGraphConstructor<G extends 
 		computeCentralizationsMap();
 	}
 	
+	public PrimeNumberGraph getGroupGraph() {
+		return groupGraph;
+	}
+
+	public void setGroupGraph(PrimeNumberGraph groupGraph) {
+		this.groupGraph = groupGraph;
+	}
+
+	public Map<Integer, List<LieTypeGroup>> getCentralizationsMap() {
+		return centralizationsMap;
+	}
+
+	public void setCentralizationsMap(Map<Integer, List<LieTypeGroup>> centralizationsMap) {
+		this.centralizationsMap = centralizationsMap;
+	}
+
+	public Map<Integer, List<PrimeNumberGraph>> getGraphsMap() {
+		return graphsMap;
+	}
+
+	public void setGraphsMap(Map<Integer, List<PrimeNumberGraph>> graphsMap) {
+		this.graphsMap = graphsMap;
+	}
+
 	/**
 	 * В методе происходит заполнение поля {@link #centralizationsMap}
 	 */
 	protected abstract void computeCentralizationsMap();
+	
+	/**
+	 * Метод возвращает порядок соотв. подгруппы группы автоморфизмов
+	 */
+	public abstract int getOrder();
+	
+	/**
+	 * Метод осуществляет проверку, является ли соотв. подгруппа группы автоморфизмов тривиальной
+	 */
+	public boolean checkNotTrivial() {
+		return (getOrder() != 1);
+	}
 	
 }
