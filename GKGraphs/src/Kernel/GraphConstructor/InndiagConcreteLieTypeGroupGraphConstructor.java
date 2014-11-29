@@ -3,10 +3,14 @@ package Kernel.GraphConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
+import Kernel.Graph.Vertex;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Utils.ArithmeticUtils;
 import Kernel.Utils.MainLogger;
 
 /**
@@ -31,6 +35,7 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 		if (group.getInInndiagIndex() > 1) {
 			// в графе Inndiag как подграф содержится граф группы
 			List<Edge> edgesList = new ArrayList<Edge>(groupGraph.getEdgesList());
+			List<Vertex<?>> verticesList = computeVerticesList(ArithmeticUtils.getAllPrimeDevisors(this.group.getOrder()));
 			this.torOrdersPartitions = computeTorOrdersPartitions();
 			for (List<Integer> intList : this.torOrdersPartitions) {
 				List<Edge> fullTorEdgesList = getFullTorEdgesList(intList);
@@ -43,8 +48,7 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 					}
 				}
 			}
-			// FIXME ВНИМАНИЕ! нарушается лексико-графический порядок (тесты)
-			return new PrimeNumberGraph(edgesList);
+			return new PrimeNumberGraph(verticesList, edgesList);
 		} else {
 			return groupGraph;
 		}
@@ -65,6 +69,19 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 			}
 		}
 		return result;
+	}
+	
+	/**
+	 * Метод строит коллекцию вершин графа, состоящую из простых делителей порядка группы
+	 * @param primeDevisors
+	 * @return
+	 */
+	private List<Vertex<?>> computeVerticesList(List<Integer> primeDevisors) {
+		List<Vertex<?>> vList = Lists.newArrayList();
+		for (int i : primeDevisors) {
+			vList.add(new SimpleVertex(i));
+		}
+		return vList;
 	}
 	
 	/**

@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
+
 import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
+import Kernel.Graph.Vertex;
 import Kernel.GraphConstructor.AutSubgroupConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
@@ -34,6 +37,7 @@ public class PhiAndGammaAutSubgroupHelper {
 	protected List<PrimeNumberGraph> constructGKGraph(int x) {
 		List<PrimeNumberGraph> result = new ArrayList<PrimeNumberGraph>();
 		if (constructor.checkNotTrivial()) {
+			List<Vertex<?>> verticesList = computeVerticesList(ArithmeticUtils.getAllPrimeDevisors(constructor.getGroup().getOrder()));
 			List<Edge> resultEdgesList = new ArrayList<Edge>(constructor.getGroupGraph().getEdgesList());
 			List<LieTypeGroup> centralizators = constructor.getCentralizationsMap().get(x);
 			for (LieTypeGroup centralizator : centralizators) {
@@ -47,7 +51,7 @@ public class PhiAndGammaAutSubgroupHelper {
 								+ edge.getVertexB().getVertex().toString() + "}");
 					}
 				}
-				result.add(new PrimeNumberGraph(resultEdgesList));
+				result.add(new PrimeNumberGraph(verticesList, resultEdgesList));
 			}
 		} else {
 			// в случае, если автоморфизмов соотв. типа нет, возвращаем исходный граф группы
@@ -92,6 +96,19 @@ public class PhiAndGammaAutSubgroupHelper {
 			}
 		}
 		return result;
+	}
+	
+	/**
+	 * Метод строит коллекцию вершин графа, состоящую из простых делителей порядка группы
+	 * @param primeDevisors
+	 * @return
+	 */
+	protected List<Vertex<?>> computeVerticesList(List<Integer> primeDevisors) {
+		List<Vertex<?>> vList = Lists.newArrayList();
+		for (int i : primeDevisors) {
+			vList.add(new SimpleVertex(i));
+		}
+		return vList;
 	}
 	
 }
