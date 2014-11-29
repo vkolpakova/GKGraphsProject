@@ -9,6 +9,8 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.google.common.collect.Lists;
+
 import Kernel.Utils.ArithmeticUtils;
 import Kernel.Utils.MainLogger;
 
@@ -121,7 +123,7 @@ public class ArithmeticUtils_Test {
 		for (int i = 0; i < 10; i ++) {
 			arr[i] = 0;
 		}
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		List<List<Integer>> result = Lists.newArrayList();
 		ArithmeticUtils.combination(result, arr, 10, 0);
 		for (List<Integer> list : result) {
 			String str = "";
