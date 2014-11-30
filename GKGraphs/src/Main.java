@@ -18,6 +18,11 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
+		processConcreteLieTypeGroup();
+		System.out.println("End");
+	}
+	
+	protected static void processConcreteLieTypeGroup() {
 		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("D_4(5)");
 		// построение графа простой группы P Лиева типа
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
@@ -52,8 +57,10 @@ public class Main {
 				gGraph.printConsole();
 			}
 		}
-		
-		System.out.println("End");
+	}
+	
+	protected static void processSeries() {
+		// TODO реализовать
 	}
 	 
 }

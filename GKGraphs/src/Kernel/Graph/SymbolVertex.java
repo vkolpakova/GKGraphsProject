@@ -11,6 +11,12 @@ package Kernel.Graph;
  *
  */
 public class SymbolVertex extends Vertex<String> {
+	
+	public static final String TWO = "2";
+	public static final String THREE = "3";
+	public static final String P = "p";
+	public static final String Q = "q";
+	public static final String M = "m";
 
 	public SymbolVertex(String v) {
 		super(v);
