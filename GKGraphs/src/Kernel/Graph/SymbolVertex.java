@@ -17,6 +17,8 @@ public class SymbolVertex extends Vertex<String> {
 	public static final String P = "p";
 	public static final String Q = "q";
 	public static final String M = "m";
+	public static final String LEFT_BRACE = "{";
+	public static final String RIGHT_BRACE = "}";
 
 	public SymbolVertex(String v) {
 		super(v);

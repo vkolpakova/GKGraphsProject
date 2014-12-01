@@ -1,6 +1,7 @@
 package Kernel.Group;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -44,17 +45,17 @@ public class Series extends AbstractGroup {
 	 */
 	protected GroupType grType;
 	
-	public Series(String name, List<Component> components, int n) {
+	public Series(String name, int n) {
 		super(name);
-		this.components = components;
+		//constructComponents();
 		this.n = n;
 		this.p = SymbolVertex.P;
 		this.m = SymbolVertex.M;
 	}
 	
-	public Series(String name, List<Component> components, int n, String p, String m) {
+	public Series(String name, int n, String p, String m) {
 		super(name);
-		this.components = components;
+		//constructComponents();
 		this.n = n;
 		this.p = p;
 		this.m = m;
@@ -101,6 +102,36 @@ public class Series extends AbstractGroup {
 	}
 	
 	/**
+	 * В методе реализуется построение коллекции компонент
+	 */
+	protected void constructComponents() {
+		this.components = Lists.newArrayList();
+	}
+	
+	/**
+	 * Метод записывает в конкретную компоненту коллекцию вершин
+	 * @param name
+	 * @param verticesList
+	 */
+	public void setVeticesForConcreteComponent(String name, List<SymbolVertex> verticesList) {
+		for (Component component : components) {
+			if (component.getName().equals(name)) {
+				component.setVertices(verticesList);
+			}
+		}
+	}
+	
+	/**
+	 * Метод заполняет множества вершин у всех компонент на основе переданной коллекции
+	 * @param inputMap : key --- наименование компоненты, value --- множество вершин
+	 */
+	public void setVerticesForAllComponent(Map<String, List<SymbolVertex>> inputMap) {
+		for (String name : inputMap.keySet()) {
+			setVeticesForConcreteComponent(name, inputMap.get(name));
+		}
+	}
+	
+	/**
 	 * Метод возвращает значение m для заданной вершины
 	 * @param v
 	 * @return
@@ -144,6 +175,10 @@ public class Series extends AbstractGroup {
 	 * Класс, описывающий компоненту связности графа Грюнберга --- Кегеля группы
 	 */
 	public class Component {
+		
+		public static final String PI_1 = "pi_1";
+		public static final String PI_2 = "pi_2";
+		public static final String PI_3 = "pi_3";
 		
 		/**
 		 * Число, равное значению функции {@link ArithmeticUtils#e(int, int)}} для всех вершин компоненты

@@ -15,12 +15,12 @@ import Kernel.Group.LieTypeGroup.GroupType;
  */
 public class LieTypeGroupNameParser  {
 	
-	private static final String UNDERLINE = "_";
-	private static final String LEFT_BRACKET = "(";
-	private static final String RIGHT_BRACKET = ")";
+	public static final String UNDERLINE = "_";
+	public static final String LEFT_BRACKET = "(";
+	public static final String RIGHT_BRACKET = ")";
 	
-	private static final String SZ = "Sz";
-	private static final String RI = "Ri";
+	public static final String SZ = "Sz";
+	public static final String RI = "Ri";
 	
 	public static GroupType computeGroupType(String name) throws Exception {
 		if (name.startsWith(GroupType.A.name())) {

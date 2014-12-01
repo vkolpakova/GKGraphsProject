@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.Series;
@@ -34,12 +35,14 @@ public class ASeries extends Series {
 	
 	protected Map<SymbolVertex, String> verticesCondMap;
 	
-	public ASeries(String name, List<Component> components, int n) {
-		super(name, components, n);
+	public ASeries(String name, int n) {
+		super(name, n);
+		this.verticesCondMap = Maps.newHashMap();
 	}
 	
-	public ASeries(String name, List<Component> components, int n, String p, String m) {
-		super(name, components, n, p, m);
+	public ASeries(String name, int n, String p, String m) {
+		super(name, n, p, m);
+		this.verticesCondMap = Maps.newHashMap();
 	}
 	
 	public Map<SymbolVertex, String> getVerticesCondMap() {
@@ -58,7 +61,7 @@ public class ASeries extends Series {
 	 * Метод строит verticesCondMap на основе заданной 1-й компоненты с условиями
 	 * @param oneComponentMap
 	 */
-	protected void constructVerticesCondMap(Map<SymbolVertex, String> oneComponentMap) {
+	public void constructVerticesCondMap(Map<SymbolVertex, String> oneComponentMap) {
 		List<SymbolVertex> vertices = Lists.newArrayList();
 		Component oneComponent = null;
 		for (Component component : this.components) {
