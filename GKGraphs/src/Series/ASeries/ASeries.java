@@ -33,6 +33,9 @@ public class ASeries extends Series {
 	public static final List<String> ALL_3_CONDITIONS = Lists.newArrayList(CONDITION3_1_1, CONDITION3_1_2, CONDITION3_2_1, CONDITION3_2_2, CONDITION3_2_3, ELSE);
 	public static final List<String> ALL_R_CONDITIONS = Lists.newArrayList(CONDITIONR_1, CONDITIONR_2, CONDITIONR_3, ELSE);
 	
+	/**
+	 * Коллекция вершина --- условие
+	 */
 	protected Map<SymbolVertex, String> verticesCondMap;
 	
 	public ASeries(String name, int n) {

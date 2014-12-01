@@ -18,6 +18,8 @@ public class LieTypeGroupNameParser  {
 	public static final String UNDERLINE = "_";
 	public static final String LEFT_BRACKET = "(";
 	public static final String RIGHT_BRACKET = ")";
+	public static final String LEFT_BRACE = "{";
+	public static final String RIGHT_BRACE = "}";
 	
 	public static final String SZ = "Sz";
 	public static final String RI = "Ri";
