@@ -18,6 +18,7 @@ public abstract class AbstractSeriesCriterion extends AbstractСriterion {
 
 	public AbstractSeriesCriterion(Series group) {
 		super(group);
+		this.series = group;
 	}
 
 	public AbstractSeriesCriterion(Series series, List<Edge> edgeList) {

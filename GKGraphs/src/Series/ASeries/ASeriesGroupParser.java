@@ -42,13 +42,15 @@ public class ASeriesGroupParser extends SeriesGroupParser {
 		public Map<SymbolVertex, String> parseConditions() throws Exception {
 			Map<SymbolVertex, String> result = Maps.newHashMap();
 			int startCondStr = this.inputStr.indexOf(CONDITIONS);
-			int startInd = this.inputStr.indexOf(LieTypeGroupNameParser.LEFT_BRACE, startCondStr) + 1;
-			int endInd = this.inputStr.indexOf(LieTypeGroupNameParser.RIGHT_BRACE, startCondStr);
-			String conditionsStr = inputStr.substring(startInd, endInd);
-			String[] units = conditionsStr.split(V_SEPARATOR);
-			for (String unit : units) {
-				String[] values = unit.split(V_AND_C_SEPARATOR);
-				result.put(new SymbolVertex(values[0]), values[1]);
+			if (startCondStr >= 0) {
+				int startInd = this.inputStr.indexOf(LieTypeGroupNameParser.LEFT_BRACE, startCondStr) + 1;
+				int endInd = this.inputStr.indexOf(LieTypeGroupNameParser.RIGHT_BRACE, startCondStr);
+				String conditionsStr = inputStr.substring(startInd, endInd);
+				String[] units = conditionsStr.split(V_SEPARATOR);
+				for (String unit : units) {
+					String[] values = unit.split(V_AND_C_SEPARATOR);
+					result.put(new SymbolVertex(values[0]), values[1]);
+				}
 			}
 			return result;
 		}

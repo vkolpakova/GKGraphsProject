@@ -8,10 +8,10 @@ import Series.ASeries.Criterion.AWithTwoNonadjanceVerticesSeriesСriterion;
 public class ASeriesGraphConstructor extends SeriesGraphConstructor {
 
 	public ASeriesGraphConstructor(ASeries group) {
-		super(group); // FIXME возможна проблема в конструкторе при передаче null
-		this.cr1 = new ATwoOddNonadjacenceVerticesSeriesСriterion(null, group);
-		this.cr2 = new AWithCharNonadjacenceVertexesSeriesСriterion(null, group);
-		this.cr3 = new AWithTwoNonadjanceVerticesSeriesСriterion(null, group);
+		super(group);
+		this.cr1 = new ATwoOddNonadjacenceVerticesSeriesСriterion(this, group);
+		this.cr2 = new AWithCharNonadjacenceVertexesSeriesСriterion(this, group);
+		this.cr3 = new AWithTwoNonadjanceVerticesSeriesСriterion(this, group);
 	}
 	
 }

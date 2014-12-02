@@ -8,7 +8,7 @@ import Series.ASeries.ASeries;
 
 /**
  * Реализация серии групп лиева типа вида A_1(q).
- * 
+ * TODO test
  * @author v.kolpakova
  *
  */

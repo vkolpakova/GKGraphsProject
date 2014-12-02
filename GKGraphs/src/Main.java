@@ -6,19 +6,24 @@ import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.InndiagConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.LieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.SeriesGraphConstructor;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Group.Series;
 import Kernel.Resolvers.FieldAutLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.GraphAutLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.InndiagLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.LieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.LieTypeGroupTypeResolver;
+import Kernel.Resolvers.SeriesGraphConstructorResolver;
+import Kernel.Resolvers.SeriesResolver;
 import Kernel.Utils.MainLogger;
 
 public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		processConcreteLieTypeGroup();
+		//processConcreteLieTypeGroup();
+		processSeries();
 		System.out.println("End");
 	}
 	
@@ -60,7 +65,13 @@ public class Main {
 	}
 	
 	protected static void processSeries() {
-		// TODO реализовать
+		String seriesStr = "A_2(p),pi_1 = {2, 3, r, s, p}, pi_2 = {u}";
+		// построение графа группы, принадлежащей некоторой серии
+		// TODO неправильно!!! Компонента для q^2 - 1 содержит вершины как с e =1, так и с e = 2
+		Series series = SeriesResolver.resolve(seriesStr);
+		SeriesGraphConstructor constr = SeriesGraphConstructorResolver.resolve(series);
+		PrimeNumberGraph grGraph = constr.constructGKGraph();
+		grGraph.printConsole();
 	}
 	 
 }

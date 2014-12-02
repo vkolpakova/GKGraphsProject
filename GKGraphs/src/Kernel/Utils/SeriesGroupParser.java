@@ -15,7 +15,7 @@ import Kernel.Group.LieTypeGroup.GroupType;
  * @author v.kolpakova
  *
  */
-public abstract class SeriesGroupParser {
+public class SeriesGroupParser {
 	
 	public static final String SEPARATOR = ", "; // TODO убрать зашивку на пробел (заменить на любое кол-во пробелов справа и слева)
 	public static final String INVOLUTION = "^";
@@ -45,17 +45,18 @@ public abstract class SeriesGroupParser {
 	 * @throws Exception
 	 */
 	public int parseN() throws Exception {
-		int bIndex = this.input.lastIndexOf(LieTypeGroupNameParser.UNDERLINE) + 1;
+		// FOXME придумать  более универсальный способ, т.к. для "длинных" n это не подходит!!!
 		int eIndex = this.input.indexOf(LieTypeGroupNameParser.LEFT_BRACKET);
-		if (bIndex >= 0 && eIndex >= 0) {
-			return Integer.parseInt(this.input.substring(bIndex, eIndex));
+		if (eIndex >= 0) {
+			return Integer.parseInt(this.input.substring(eIndex - 1, eIndex));
 		} else {
 			throw new Exception("Uncorrect group range");
 		}
 	}
 	
 	/**
-	 * Метод парсит q серии групп
+	 * Метод парсит q серии групп.
+	 * <b>Формат:</b> p^m, p --- простое число, m --- натуральное
 	 * @return q
 	 * @throws Exception
 	 */
@@ -91,7 +92,7 @@ public abstract class SeriesGroupParser {
 	public String parseM() throws Exception {
 		String q = parseQ();
 		if (q.contains(INVOLUTION)) {
-			return q.substring(q.indexOf(INVOLUTION) + 1, q.indexOf(INVOLUTION) + q.length());
+			return q.substring(q.indexOf(INVOLUTION) + 1, q.length());
 		} else {
 			return q;
 		}

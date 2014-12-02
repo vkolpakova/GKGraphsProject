@@ -8,7 +8,6 @@ import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.Series.Component;
-import Kernel.Utils.SeriesGroupParser;
 import Series.ASeries.ASeriesGroupParser;
 
 public class A1SeriesGroupParser extends ASeriesGroupParser {
