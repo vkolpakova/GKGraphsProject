@@ -34,8 +34,8 @@ public class AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjanc
 	}
 	
 	protected boolean checkEdge(SymbolVertex a, SymbolVertex b) {
-		List<SymbolVertex> oneCompVertecies = this.series.getComponentByM(1).getVertices();
-		if (!((oneCompVertecies.contains(a)) || (oneCompVertecies.contains(b)))) {
+		List<SymbolVertex> oneKeyVertecies = this.series.getVerticesByM(1);
+		if (!((oneKeyVertecies.contains(a)) || (oneKeyVertecies.contains(b)))) {
 			return false;
 		}
 		String p = this.series.getP();

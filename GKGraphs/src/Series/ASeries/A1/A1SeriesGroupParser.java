@@ -25,23 +25,52 @@ public class A1SeriesGroupParser extends ASeriesGroupParser {
 		}
 		
 		@Override
-		public Map<String, List<SymbolVertex>> parseComponents() throws Exception {
-			Map<String, List<SymbolVertex>> result = Maps.newHashMap();
+		public Map<String, Map<Integer, List<SymbolVertex>>> parseComponents() throws Exception {
+			Map<String, Map<Integer, List<SymbolVertex>>> result = Maps.newHashMap();
 			A1SeriesGroupParser parentParser = new A1SeriesGroupParser(inputStr);
+			// TODO refactoring
 			if ((parentParser).parseP().equals(SymbolVertex.TWO)) {
 				List<SymbolVertex> verList1 = Lists.newArrayList(new SymbolVertex(SymbolVertex.TWO));
-				result.put(Component.PI_1, verList1);
+				Map<Integer, List<SymbolVertex>> verMap1 = Maps.newHashMap();
+				verMap1.put(0, verList1);
+				result.put(Component.PI_1, verMap1);
 				List<SymbolVertex> verList2 = getVerticesList(Component.PI_2);
-				result.put(Component.PI_2, verList2);
+				Map<Integer, List<SymbolVertex>> verMap2 = Maps.newHashMap();
+				verMap2.put(1, verList2);
+				result.put(Component.PI_2, verMap2);
 				List<SymbolVertex> verList3 = getVerticesList(Component.PI_3);
-				result.put(Component.PI_3, verList3);
+				Map<Integer, List<SymbolVertex>> verMap3 = Maps.newHashMap();
+				verMap3.put(2, verList3);
+				result.put(Component.PI_3, verMap3);
 			} else {
-				List<SymbolVertex> verList1 = getVerticesList(Component.PI_1);
-				result.put(Component.PI_1, verList1);
-				List<SymbolVertex> verList2 = Lists.newArrayList(new SymbolVertex(parentParser.parseP()));
-				result.put(Component.PI_2, verList2);
-				List<SymbolVertex> verList3 = getVerticesList(Component.PI_3);
-				result.put(Component.PI_3, verList3);
+				EpsilonParser eParser = new EpsilonParser(inputStr);
+				if (eParser.parseEpsilon().equals(A1Series.EPSILON_PLUS)) {
+					List<SymbolVertex> verList1 = getVerticesList(Component.PI_1);
+					Map<Integer, List<SymbolVertex>> verMap1 = Maps.newHashMap();
+					verMap1.put(1, verList1);
+					result.put(Component.PI_1, verMap1);
+					List<SymbolVertex> verList2 = Lists.newArrayList(new SymbolVertex(parentParser.parseP()));
+					Map<Integer, List<SymbolVertex>> verMap2 = Maps.newHashMap();
+					verMap2.put(0, verList2);
+					result.put(Component.PI_2, verMap2);
+					List<SymbolVertex> verList3 = getVerticesList(Component.PI_3);
+					Map<Integer, List<SymbolVertex>> verMap3 = Maps.newHashMap();
+					verMap3.put(2, verList3);
+					result.put(Component.PI_3, verMap3);
+				} else {
+					List<SymbolVertex> verList1 = getVerticesList(Component.PI_1);
+					Map<Integer, List<SymbolVertex>> verMap1 = Maps.newHashMap();
+					verMap1.put(2, verList1);
+					result.put(Component.PI_1, verMap1);
+					List<SymbolVertex> verList2 = Lists.newArrayList(new SymbolVertex(parentParser.parseP()));
+					Map<Integer, List<SymbolVertex>> verMap2 = Maps.newHashMap();
+					verMap2.put(0, verList2);
+					result.put(Component.PI_2, verMap2);
+					List<SymbolVertex> verList3 = getVerticesList(Component.PI_3);
+					Map<Integer, List<SymbolVertex>> verMap3 = Maps.newHashMap();
+					verMap3.put(1, verList3);
+					result.put(Component.PI_3, verMap3);
+				}
 			}
 			return result;
 		}

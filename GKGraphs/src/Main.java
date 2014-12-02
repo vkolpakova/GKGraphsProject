@@ -65,7 +65,7 @@ public class Main {
 	}
 	
 	protected static void processSeries() {
-		String seriesStr = "A_2(p),pi_1 = {2, 3, r, s, p}, pi_2 = {u}";
+		String seriesStr = "A_2(p),pi_1_1 = {2}, pi_1_2 = {2, 3, r, s}, pi_2 = {u}";
 		// построение графа группы, принадлежащей некоторой серии
 		// TODO неправильно!!! Компонента для q^2 - 1 содержит вершины как с e =1, так и с e = 2
 		Series series = SeriesResolver.resolve(seriesStr);

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import Kernel.Graph.SymbolVertex;
-import Kernel.Group.Series.Component;
 
 import com.google.common.collect.Lists;
 //import com.google.common.collect.Maps;
@@ -17,10 +16,9 @@ import com.google.common.collect.Lists;
  */
 public class ASeriesGenerator {
 	
-	@SuppressWarnings("unused")
 	public static List<ASeries> generate(ASeries series) {
 		List<ASeries> result = Lists.newArrayList();
-		List<Map<SymbolVertex, String>> vertexCondMapList = Lists.newArrayList();
+		/*List<Map<SymbolVertex, String>> vertexCondMapList = Lists.newArrayList();
 		//Map<SymbolVertex, String> vertexCondMap = Maps.newHashMap();
 		Component oneComponent = series.getComponentByM(1);
 		List<SymbolVertex> oneCompVertices = oneComponent.getVertices();
@@ -28,7 +26,7 @@ public class ASeriesGenerator {
 			for (SymbolVertex vertex : oneCompVertices) {
 				// TODO сделать генерацию условий. Учесть, что надо будет отсеивать дубликаты графов
 			}
-		}
+		} */
 		return result;
 	}
 	
