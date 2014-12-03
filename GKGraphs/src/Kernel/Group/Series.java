@@ -172,7 +172,7 @@ public class Series extends AbstractGroup {
 	}
 
 	/**
-	 * Класс, описывающий компоненту связности графа Грюнберга --- Кегеля группы
+	 * Класс, описывающий множество вершин с одним значением функции {@link ArithmeticUtils#e(int, int)}
 	 */
 	public class Component {
 		
@@ -181,7 +181,7 @@ public class Series extends AbstractGroup {
 		public static final String PI_3 = "pi_3";
 		
 		/**
-		 * Число, равное значению функции {@link ArithmeticUtils#e(int, int)}} для всех вершин компоненты
+		 * Число, равное значению функции {@link ArithmeticUtils#e(int, int)} для всех вершин компоненты
 		 */
 		protected int m;
 		
