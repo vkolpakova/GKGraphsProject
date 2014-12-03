@@ -11,6 +11,8 @@ import Series.ASeries.A1.A1Series;
 import Series.ASeries.A1.A1SeriesGroupParser;
 import Series.ASeries.A2.A2Series;
 import Series.ASeries.A2.A2SeriesGroupParser;
+import Series.ASeries.A3.A3Series;
+import Series.ASeries.A3.A3SeriesGroupParser;
 import Series.ASeries.ASeries;
 import Series.ASeries.ASeriesGroupParser;
 
@@ -23,6 +25,10 @@ import Series.ASeries.ASeriesGroupParser;
  */
 public class SeriesResolver {
 	
+	protected static final String UNDERLINE = "_";
+	protected static final String LEFT_BRACKED = "(";
+	protected static final String RIGTH_BRACKED = ")";
+	
 	public static Series resolve(String inputStr) {
 		SeriesGroupParser seriesParser = new SeriesGroupParser(inputStr);
 		GroupType type = seriesParser.parseName();
@@ -30,6 +36,7 @@ public class SeriesResolver {
 			int n = seriesParser.parseN();
 			String m = seriesParser.parseM();
 			String p = seriesParser.parseP();
+			String groupName = computeSeriesName(type, n, seriesParser.parseQ());
 			if (type == GroupType.A) {
 				ASeriesGroupParser aSeriesGroupParser = new ASeriesGroupParser(inputStr);
 				Map<SymbolVertex, String> firstComponentConditionMap = (aSeriesGroupParser.new ConditionsParser(inputStr)).parseConditions();
@@ -38,15 +45,21 @@ public class SeriesResolver {
 					Map<String, List<SymbolVertex>> components = (a1SeriesGroupParser.new A1ComponentsParser(inputStr)).parseComponents();
 					String epsilon = (a1SeriesGroupParser.new EpsilonParser(inputStr)).parseEpsilon();
 					// TODO сделать нормальное вычисление наименования
-					A1Series a1Series =  new A1Series("*", n, p, m, epsilon);
+					A1Series a1Series =  new A1Series(groupName, n, p, m, epsilon);
 					completeComponentFilling(a1Series, components, firstComponentConditionMap);
 					return a1Series;
 				} else if (n == 2) {
 					A2SeriesGroupParser a2SeriesGroupParser = new A2SeriesGroupParser(inputStr);
 					Map<String, List<SymbolVertex>> components = a2SeriesGroupParser.new A2ComponentsParser(inputStr).parseComponents();
-					A2Series a2Series = new A2Series("*", n, p, m);
+					A2Series a2Series = new A2Series(groupName, n, p, m);
 					completeComponentFilling(a2Series, components, firstComponentConditionMap);
 					return a2Series;
+				} else if (n == 3) {
+					A3SeriesGroupParser a3SeriesGroupParser = new A3SeriesGroupParser(inputStr);
+					Map<String, List<SymbolVertex>> components = a3SeriesGroupParser.new A3ComponentsParser(inputStr).parseComponents();
+					A3Series a3Series = new A3Series(groupName, n, p, m);
+					completeComponentFilling(a3Series, components, firstComponentConditionMap);
+					return a3Series;
 				}
 			}
 		} catch (Exception e) {
@@ -60,6 +73,10 @@ public class SeriesResolver {
 		aSeries.setVerticesForAllComponent(components);
 		// происходит заполнение условий для вершин первой компоненты
 		aSeries.constructVerticesCondMap(firstComponentConditionMap);
+	}
+	
+	protected static String computeSeriesName(GroupType type, int n, String q) {
+		return type.name() + UNDERLINE + LEFT_BRACKED + q + RIGTH_BRACKED;
 	}
 	
 }
