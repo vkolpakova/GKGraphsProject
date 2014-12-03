@@ -13,7 +13,7 @@ import Kernel.Utils.ArithmeticUtils;
 
 /**
  * Родительский класс, описывающий серию групп Лиева типа. </br>
- * Необходимые поля - ранг и коллекция компонент связности.
+ * Необходимые поля - ранг и коллекция компонент.
  * 
  * @author v.kolpakova
  *
@@ -21,7 +21,7 @@ import Kernel.Utils.ArithmeticUtils;
 public class Series extends AbstractGroup {
 	
 	/**
-	 * Коллекция компонент связности графа Грюнберга --- Кегеля группы данной серии
+	 * Коллекция компонент графа Грюнберга --- Кегеля группы данной серии
 	 */
 	protected List<Component> components;
 	
@@ -146,7 +146,7 @@ public class Series extends AbstractGroup {
 	}
 	
 	/**
-	 * Метод возвращает компоненту связанности с заданным m
+	 * Метод возвращает компоненту с заданным m
 	 * @param m
 	 * @return
 	 */
@@ -176,10 +176,6 @@ public class Series extends AbstractGroup {
 	 */
 	public class Component {
 		
-		public static final String PI_1 = "pi_1";
-		public static final String PI_2 = "pi_2";
-		public static final String PI_3 = "pi_3";
-		
 		/**
 		 * Число, равное значению функции {@link ArithmeticUtils#e(int, int)} для всех вершин компоненты
 		 */
@@ -193,7 +189,7 @@ public class Series extends AbstractGroup {
 		/**
 		 * Наименование компоненты, описание
 		 */
-		protected String name, description;
+		protected String name;
 
 		public Component(int m, List<SymbolVertex> vertices) {
 			super();
@@ -201,12 +197,11 @@ public class Series extends AbstractGroup {
 			this.vertices = vertices;
 		}
 		
-		public Component(int m, List<SymbolVertex> vertices, String name, String description) {
+		public Component(int m, List<SymbolVertex> vertices, String name) {
 			super();
 			this.m = m;
 			this.vertices = vertices;
 			this.name = name;
-			this.description = description;
 		}
 
 		public int getM() {
@@ -231,14 +226,6 @@ public class Series extends AbstractGroup {
 
 		public void setName(String name) {
 			this.name = name;
-		}
-
-		public String getDescription() {
-			return description;
-		}
-
-		public void setDescription(String description) {
-			this.description = description;
 		}
 		
 	}

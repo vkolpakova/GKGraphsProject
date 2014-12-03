@@ -7,7 +7,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
-import Kernel.Group.Series.Component;
 import Series.ASeries.ASeriesGroupParser;
 
 public class A1SeriesGroupParser extends ASeriesGroupParser {
@@ -30,18 +29,25 @@ public class A1SeriesGroupParser extends ASeriesGroupParser {
 			A1SeriesGroupParser parentParser = new A1SeriesGroupParser(inputStr);
 			if ((parentParser).parseP().equals(SymbolVertex.TWO)) {
 				List<SymbolVertex> verList1 = Lists.newArrayList(new SymbolVertex(SymbolVertex.TWO));
-				result.put(Component.PI_1, verList1);
-				List<SymbolVertex> verList2 = getVerticesList(Component.PI_2);
-				result.put(Component.PI_2, verList2);
-				List<SymbolVertex> verList3 = getVerticesList(Component.PI_3);
-				result.put(Component.PI_3, verList3);
-			} else {
-				List<SymbolVertex> verList1 = getVerticesList(Component.PI_1);
-				result.put(Component.PI_1, verList1);
+				result.put(A1Series.P_EVEN_COMP_0, verList1);
+				List<SymbolVertex> verList2 = getVerticesList(A1Series.P_EVEN_COMP_1);
+				result.put(A1Series.P_EVEN_COMP_1, verList2);
+				List<SymbolVertex> verList3 = getVerticesList(A1Series.P_EVEN_COMP_2);
+				result.put(A1Series.P_EVEN_COMP_2, verList3);
+			} else if ((new EpsilonParser(inputStr)).parseEpsilon().equals(A1Series.EPSILON_PLUS)) {
+				List<SymbolVertex> verList1 = getVerticesList(A1Series.P_ODD_COMP_1);
+				result.put(A1Series.P_ODD_COMP_1, verList1);
 				List<SymbolVertex> verList2 = Lists.newArrayList(new SymbolVertex(parentParser.parseP()));
-				result.put(Component.PI_2, verList2);
-				List<SymbolVertex> verList3 = getVerticesList(Component.PI_3);
-				result.put(Component.PI_3, verList3);
+				result.put(A1Series.P_ODD_COMP_0, verList2);
+				List<SymbolVertex> verList3 = getVerticesList(A1Series.P_ODD_COMP_2);
+				result.put(A1Series.P_ODD_COMP_2, verList3);
+			} else if ((new EpsilonParser(inputStr)).parseEpsilon().equals(A1Series.EPSILON_PLUS)) {
+				List<SymbolVertex> verList1 = getVerticesList(A1Series.P_ODD_COMP_2);
+				result.put(A1Series.P_ODD_COMP_2, verList1);
+				List<SymbolVertex> verList2 = Lists.newArrayList(new SymbolVertex(parentParser.parseP()));
+				result.put(A1Series.P_ODD_COMP_0, verList2);
+				List<SymbolVertex> verList3 = getVerticesList(A1Series.P_ODD_COMP_1);
+				result.put(A1Series.P_ODD_COMP_1, verList3);
 			}
 			return result;
 		}

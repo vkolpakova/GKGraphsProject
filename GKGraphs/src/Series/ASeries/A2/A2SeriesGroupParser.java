@@ -3,10 +3,10 @@ package Series.ASeries.A2;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
-import Kernel.Group.Series.Component;
 import Series.ASeries.ASeriesGroupParser;
 
 public class A2SeriesGroupParser extends ASeriesGroupParser {
@@ -23,12 +23,16 @@ public class A2SeriesGroupParser extends ASeriesGroupParser {
 		
 		@Override
 		public Map<String, List<SymbolVertex>> parseComponents() throws Exception {
-			// Учесть, что в одну компоненту могут входить верщины с разными значениями e(v, q)!!!
 			Map<String, List<SymbolVertex>> result = Maps.newHashMap();
-			List<SymbolVertex> vList1 = getVerticesList(Component.PI_1);
-			result.put(Component.PI_1, vList1);
-			List<SymbolVertex> vList2 = getVerticesList(Component.PI_2);
-			result.put(Component.PI_2, vList2);
+			A2SeriesGroupParser parentParser = new A2SeriesGroupParser(inputStr);
+			List<SymbolVertex> vList0 = Lists.newArrayList(new SymbolVertex(parentParser.parseP()));
+			result.put(A2Series.COMP_0, vList0);
+			List<SymbolVertex> vList1 = getVerticesList(A2Series.COMP_1);
+			result.put(A2Series.COMP_1, vList1);
+			List<SymbolVertex> vList2 = getVerticesList(A2Series.COMP_2);
+			result.put(A2Series.COMP_2, vList2);
+			List<SymbolVertex> vList3 = getVerticesList(A2Series.COMP_3);
+			result.put(A2Series.COMP_3, vList3);
 			return result;
 		}
 		

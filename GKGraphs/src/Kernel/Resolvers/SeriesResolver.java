@@ -46,6 +46,7 @@ public class SeriesResolver {
 					Map<String, List<SymbolVertex>> components = a2SeriesGroupParser.new A2ComponentsParser(inputStr).parseComponents();
 					A2Series a2Series = new A2Series("*", n, p, m);
 					completeComponentFilling(a2Series, components, firstComponentConditionMap);
+					return a2Series;
 				}
 			}
 		} catch (Exception e) {
