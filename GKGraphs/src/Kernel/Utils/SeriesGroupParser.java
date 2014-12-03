@@ -9,8 +9,8 @@ import Kernel.Graph.SymbolVertex;
 import Kernel.Group.LieTypeGroup.GroupType;
 
 /**
- * Класс - парсер строкового представления серии группы. </br>
- * В классах-потомках определяются все специализированные методы.
+ * Абстрактный класс - парсер строкового представления серии группы. </br>
+ * В клссах-потомках определяются все специализированные методы.
  * 
  * @author v.kolpakova
  *
@@ -112,7 +112,7 @@ public class SeriesGroupParser {
 		 * @param input --- строковое задание серии
 		 * @return Map наименование компоненты - множество её вершин
 		 */
-		public Map<String, Map<Integer, List<SymbolVertex>>> parseComponents() throws Exception {
+		public Map<String, List<SymbolVertex>> parseComponents() throws Exception {
 			return null;
 		}
 		

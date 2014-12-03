@@ -10,7 +10,9 @@ import Kernel.Graph.SymbolVertex;
 import Kernel.Group.Series;
 
 public class ASeries extends Series {
-		
+	
+	// TODO написать конструктор всех групп в зависимости от нач. условий + сделать соотв. абстрактный класс
+	
 	public static final String EMPTY_STRING = "";
 	public static final String ELSE = "else";
 	
@@ -64,17 +66,15 @@ public class ASeries extends Series {
 	 */
 	public void constructVerticesCondMap(Map<SymbolVertex, String> oneComponentMap) {
 		List<SymbolVertex> vertices = Lists.newArrayList();
-		List<SymbolVertex> oneKeyVertices = Lists.newArrayList();
+		Component oneComponent = null;
 		for (Component component : this.components) {
-			vertices.addAll(component.getAllVertices());
-			for (int key : component.getVerticesMap().keySet()) {
-				if (key == 1) {
-					oneKeyVertices = component.getVerticesByKey(1);
-				}
+			vertices.addAll(component.getVertices());
+			if (component.getM() == 1) {
+				oneComponent = component;
 			}
 		}
 		for (SymbolVertex vertex : vertices) {
-			if (!oneKeyVertices.contains(vertex)) {
+			if (!oneComponent.getVertices().contains(vertex)) {
 				verticesCondMap.put(vertex, EMPTY_STRING);
 			}
 		}

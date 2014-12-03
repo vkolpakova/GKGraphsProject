@@ -1,10 +1,6 @@
 package Series.ASeries.A1;
 
-import java.util.List;
-import java.util.Map;
-
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.LieTypeGroup.GroupType;
@@ -61,36 +57,17 @@ public class A1Series extends ASeries {
 	protected void constructComponents() {
 		Component comp1 = null, comp2 = null, comp3 = null;
 		if (this.p.equals(SymbolVertex.TWO)) {
-			// TODO refactoring
-			Map<Integer, List<SymbolVertex>> map = Maps.newHashMap();
-			map.put(0,  Lists.newArrayList());
-			comp1 = new Component(map, Component.PI_1, P_EVEN_COMP_1);
-			map = Maps.newHashMap();
-			map.put(1,  Lists.newArrayList());
-			comp2 = new Component(map, Component.PI_2, P_EVEN_COMP_2);
-			map = Maps.newHashMap();
-			map.put(2,  Lists.newArrayList());
-			comp3 = new Component(map, Component.PI_3, P_EVEN_COMP_3);
+			comp1 = new Component(0, Lists.newArrayList(), Component.PI_1, P_EVEN_COMP_1);
+			comp2 = new Component(1, Lists.newArrayList(), Component.PI_2, P_EVEN_COMP_2);
+			comp3 = new Component(2, Lists.newArrayList(), Component.PI_3, P_EVEN_COMP_3);
 		} else if (this.epsilon.equals(EPSILON_PLUS)) {
-			Map<Integer, List<SymbolVertex>> map = Maps.newHashMap();
-			map.put(1,  Lists.newArrayList());
-			comp1 = new Component(map, Component.PI_1, P_ODD_COMP_1);
-			map = Maps.newHashMap();
-			map.put(0,  Lists.newArrayList());
-			comp2 = new Component(map, Component.PI_2, P_ODD_COMP_2);
-			map = Maps.newHashMap();
-			map.put(2,  Lists.newArrayList());
-			comp3 = new Component(map, Component.PI_3, P_ODD_COMP_3);
+			comp1 = new Component(1, Lists.newArrayList(), Component.PI_1, P_ODD_COMP_1);
+			comp2 = new Component(0, Lists.newArrayList(), Component.PI_2, P_ODD_COMP_2);
+			comp3 = new Component(2, Lists.newArrayList(), Component.PI_3, P_ODD_COMP_3);
 		} else if (this.epsilon.equals(EPSILON_MINUS)) {
-			Map<Integer, List<SymbolVertex>> map = Maps.newHashMap();
-			map.put(2,  Lists.newArrayList());
-			comp1 = new Component(map, Component.PI_1, P_ODD_COMP_1);
-			map = Maps.newHashMap();
-			map.put(0,  Lists.newArrayList());
-			comp2 = new Component(map, Component.PI_2, P_ODD_COMP_2);
-			map = Maps.newHashMap();
-			map.put(1,  Lists.newArrayList());
-			comp3 = new Component(map, Component.PI_3, P_ODD_COMP_3);
+			comp1 = new Component(2, Lists.newArrayList(), Component.PI_1, P_ODD_COMP_1);
+			comp2 = new Component(0, Lists.newArrayList(), Component.PI_2, P_ODD_COMP_2);
+			comp3 = new Component(1, Lists.newArrayList(), Component.PI_3, P_ODD_COMP_3);
 		}
 		this.setComponents(Lists.newArrayList(comp1, comp2, comp3));
 	}

@@ -35,7 +35,7 @@ public class SeriesResolver {
 				Map<SymbolVertex, String> firstComponentConditionMap = (aSeriesGroupParser.new ConditionsParser(inputStr)).parseConditions();
 				if (n == 1) {
 					A1SeriesGroupParser a1SeriesGroupParser = new A1SeriesGroupParser(inputStr);
-					Map<String, Map<Integer, List<SymbolVertex>>> components = (a1SeriesGroupParser.new A1ComponentsParser(inputStr)).parseComponents();
+					Map<String, List<SymbolVertex>> components = (a1SeriesGroupParser.new A1ComponentsParser(inputStr)).parseComponents();
 					String epsilon = (a1SeriesGroupParser.new EpsilonParser(inputStr)).parseEpsilon();
 					// TODO сделать нормальное вычисление наименования
 					A1Series a1Series =  new A1Series("*", n, p, m, epsilon);
@@ -43,10 +43,9 @@ public class SeriesResolver {
 					return a1Series;
 				} else if (n == 2) {
 					A2SeriesGroupParser a2SeriesGroupParser = new A2SeriesGroupParser(inputStr);
-					Map<String, Map<Integer, List<SymbolVertex>>> components = a2SeriesGroupParser.new A2ComponentsParser(inputStr).parseComponents();
+					Map<String, List<SymbolVertex>> components = a2SeriesGroupParser.new A2ComponentsParser(inputStr).parseComponents();
 					A2Series a2Series = new A2Series("*", n, p, m);
 					completeComponentFilling(a2Series, components, firstComponentConditionMap);
-					return a2Series;
 				}
 			}
 		} catch (Exception e) {
@@ -55,7 +54,7 @@ public class SeriesResolver {
 		return null;
 	}
 	
-	protected static void completeComponentFilling(ASeries aSeries, Map<String, Map<Integer, List<SymbolVertex>>> components, Map<SymbolVertex, String> firstComponentConditionMap) {
+	protected static void completeComponentFilling(ASeries aSeries, Map<String, List<SymbolVertex>> components, Map<SymbolVertex, String> firstComponentConditionMap) {
 		// просиходит заполнение уже созданных компонент вершинами, сгруппированными по компонентам
 		aSeries.setVerticesForAllComponent(components);
 		// происходит заполнение условий для вершин первой компоненты

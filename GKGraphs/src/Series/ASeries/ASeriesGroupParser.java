@@ -9,7 +9,7 @@ import Kernel.Utils.LieTypeGroupNameParser;
 import Kernel.Utils.SeriesGroupParser;
 
 /**
- * Класс парсеров для серий типа A
+ * Абстрактный класс парсеров для серий типа A
  * 
  * @author v.kolpakova
  *
