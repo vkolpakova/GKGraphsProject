@@ -46,19 +46,19 @@ public class SeriesResolver {
 					String epsilon = (a1SeriesGroupParser.new EpsilonParser(inputStr)).parseEpsilon();
 					// TODO сделать нормальное вычисление наименования
 					A1Series a1Series =  new A1Series(groupName, n, p, m, epsilon);
-					completeComponentFilling(a1Series, components, firstComponentConditionMap);
+					completeASeriesComponentFilling(a1Series, components, firstComponentConditionMap);
 					return a1Series;
 				} else if (n == 2) {
 					A2SeriesGroupParser a2SeriesGroupParser = new A2SeriesGroupParser(inputStr);
 					Map<String, List<SymbolVertex>> components = a2SeriesGroupParser.new A2ComponentsParser(inputStr).parseComponents();
 					A2Series a2Series = new A2Series(groupName, n, p, m);
-					completeComponentFilling(a2Series, components, firstComponentConditionMap);
+					completeASeriesComponentFilling(a2Series, components, firstComponentConditionMap);
 					return a2Series;
 				} else if (n == 3) {
 					A3SeriesGroupParser a3SeriesGroupParser = new A3SeriesGroupParser(inputStr);
 					Map<String, List<SymbolVertex>> components = a3SeriesGroupParser.new A3ComponentsParser(inputStr).parseComponents();
 					A3Series a3Series = new A3Series(groupName, n, p, m);
-					completeComponentFilling(a3Series, components, firstComponentConditionMap);
+					completeASeriesComponentFilling(a3Series, components, firstComponentConditionMap);
 					return a3Series;
 				}
 			}
@@ -68,11 +68,13 @@ public class SeriesResolver {
 		return null;
 	}
 	
-	protected static void completeComponentFilling(ASeries aSeries, Map<String, List<SymbolVertex>> components, Map<SymbolVertex, String> firstComponentConditionMap) {
+	protected static void completeASeriesComponentFilling(ASeries aSeries, Map<String, List<SymbolVertex>> components, Map<SymbolVertex, String> firstComponentConditionMap) {
 		// просиходит заполнение уже созданных компонент вершинами, сгруппированными по компонентам
 		aSeries.setVerticesForAllComponent(components);
 		// происходит заполнение условий для вершин первой компоненты
 		aSeries.constructVerticesCondMap(firstComponentConditionMap);
+		// происходит заполнение простых делителей простых сомножителей порядка
+		aSeries.fillSeriesOrderBasedComponents();
 	}
 	
 	protected static String computeSeriesName(GroupType type, int n, String q) {

@@ -1,9 +1,14 @@
 package Series.ASeries.A1;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.LieTypeGroup.GroupType;
+import Kernel.Polynom.CompoundPolynom;
+import Kernel.Polynom.IndecomposablePolynom;
+import Kernel.Polynom.PolynomConstants;
 import Series.ASeries.ASeries;
 
 /**
@@ -36,6 +41,7 @@ public class A1Series extends ASeries {
 		this.grType = GroupType.A;
 		this.epsilon = epsilon;
 		constructComponents(); // можно вызывать только после определения epsilon
+		computeSeriesOrder();
 	}
 	
 	public A1Series(String name, int n, String p, String m, String epsilon) {
@@ -43,6 +49,7 @@ public class A1Series extends ASeries {
 		this.grType = GroupType.A;
 		this.epsilon = epsilon;
 		constructComponents(); // можно вызывать только после определения epsilon
+		computeSeriesOrder();
 	}
 	
 	public String getEpsilon() {
@@ -70,6 +77,42 @@ public class A1Series extends ASeries {
 			comp3 = new Component(1, Lists.newArrayList(), P_ODD_COMP_2);
 		}
 		this.setComponents(Lists.newArrayList(comp1, comp2, comp3));
+	}
+	
+	@Override
+	protected void computeSeriesOrder() {
+		IndecomposablePolynom poly1 = null, poly2 = null, poly3 = null;
+		if (this.p.equals(SymbolVertex.TWO)) {
+			poly1 = new IndecomposablePolynom(SymbolVertex.TWO, Lists.newArrayList(SymbolVertex.TWO));
+			poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.newArrayList());
+			poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.newArrayList());
+		} else {
+			poly1 = new IndecomposablePolynom(PolynomConstants.QME1, Lists.newArrayList());
+			poly2 = new IndecomposablePolynom(PolynomConstants.QPE1, Lists.newArrayList());
+			poly3 = new IndecomposablePolynom(SymbolVertex.P, Lists.newArrayList(SymbolVertex.P));
+		} 
+		CompoundPolynom order = new CompoundPolynom(Lists.newArrayList(poly1, poly2, poly3));
+		setSeriesOrder(order);
+	}
+	
+	@Override
+	public void fillSeriesOrderBasedComponents() {
+		if (this.p.equals(SymbolVertex.TWO)) {
+			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QM1, this.getSimpleDivisorsOfConcreteComponent(1));
+			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QP1, this.getSimpleDivisorsOfConcreteComponent(2));
+		} else if (this.epsilon.equals(EPSILON_PLUS)) {
+			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QME1, this.getSimpleDivisorsOfConcreteComponent(1));
+			// необходимо добавить 2ку, которой нет в исходной компоненте
+			List<String> sdList = Lists.newArrayList(SymbolVertex.TWO);
+			sdList.addAll(this.getSimpleDivisorsOfConcreteComponent(2));
+			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QPE1, sdList);
+		} else if (this.epsilon.equals(EPSILON_MINUS)) {
+			// необходимо добавить 2ку, которой нет в исходной компоненте
+			List<String> sdList = Lists.newArrayList(SymbolVertex.TWO);
+			sdList.addAll(this.getSimpleDivisorsOfConcreteComponent(1));
+			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QM1, sdList);
+			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QP1, this.getSimpleDivisorsOfConcreteComponent(2));
+		}
 	}
 	
 }

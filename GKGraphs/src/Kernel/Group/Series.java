@@ -9,6 +9,7 @@ import Kernel.Graph.SymbolVertex;
 import Kernel.Graph.Vertex;
 import Kernel.Group.AbstractGroup;
 import Kernel.Group.LieTypeGroup.GroupType;
+import Kernel.Polynom.CompoundPolynom;
 import Kernel.Utils.ArithmeticUtils;
 
 /**
@@ -45,9 +46,13 @@ public class Series extends AbstractGroup {
 	 */
 	protected GroupType grType;
 	
+	/**
+	 * Порядок группы
+	 */
+	protected CompoundPolynom seriesOrder;
+	
 	public Series(String name, int n) {
 		super(name);
-		//constructComponents();
 		this.n = n;
 		this.p = SymbolVertex.P;
 		this.m = SymbolVertex.M;
@@ -55,7 +60,6 @@ public class Series extends AbstractGroup {
 	
 	public Series(String name, int n, String p, String m) {
 		super(name);
-		//constructComponents();
 		this.n = n;
 		this.p = p;
 		this.m = m;
@@ -101,12 +105,32 @@ public class Series extends AbstractGroup {
 		this.grType = grType;
 	}
 	
+	public CompoundPolynom getSeriesOrder() {
+		return this.seriesOrder;
+	}
+
+	public void setSeriesOrder(CompoundPolynom order) {
+		this.seriesOrder = order;
+	}
+	
 	/**
-	 * В методе реализуется построение коллекции компонент
+	 * В методе задается порядок групп серии. </br>
+	 * <b>Внимание:</b> вызывать после метода {@link #constructComponents()}
+	 */
+	protected void computeSeriesOrder() {};
+
+	/**
+	 * В методе реализуется построение коллекции компонент. </br>
+	 * <b>Внимание:</b> после вызывать {@link #computeSeriesOrder()}
 	 */
 	protected void constructComponents() {
 		this.components = Lists.newArrayList();
 	}
+	
+	/**
+	 * В методе происходит заполнение множества простых делителей в разложении порядка серии на основе заполненных компонент
+	 */
+	public void fillSeriesOrderBasedComponents() {};
 	
 	/**
 	 * Метод записывает в конкретную компоненту коллекцию вершин
@@ -157,6 +181,16 @@ public class Series extends AbstractGroup {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Метод возвращает строковое представление коллекции простых делителей конкретной компоненты
+	 * @param m
+	 * @return
+	 */
+	public List<String> getSimpleDivisorsOfConcreteComponent(int m) {
+		Component concreteComponent = getComponentByM(m);
+		return concreteComponent.getAllVerticesStringForm();
 	}
 	
 	/**
@@ -226,6 +260,14 @@ public class Series extends AbstractGroup {
 
 		public void setName(String name) {
 			this.name = name;
+		}
+		
+		public List<String> getAllVerticesStringForm() {
+			List<String> result = Lists.newArrayList();
+			for (SymbolVertex vertex : vertices) {
+				result.add(vertex.getVertex());
+			}
+			return result;
 		}
 		
 	}
