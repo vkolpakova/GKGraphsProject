@@ -55,7 +55,7 @@ public class A2Series extends ASeries {
 	public void fillSeriesOrderBasedComponents() {
 		this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QM1, this.getSimpleDivisorsOfConcreteComponent(1));
 		this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QP1, this.getSimpleDivisorsOfConcreteComponent(2));
-		if (this.getComponentByM(3).getAllVerticesStringForm().contains(SymbolVertex.THREE)) {
+		if (this.getComponentByM(1).getAllVerticesStringForm().contains(SymbolVertex.THREE)) {
 			// необходимо добавить 3ку, которой нет в исходной компоненте
 			List<String> sdList = Lists.newArrayList(SymbolVertex.THREE);
 			sdList.addAll(this.getSimpleDivisorsOfConcreteComponent(3));

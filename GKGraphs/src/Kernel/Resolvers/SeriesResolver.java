@@ -17,6 +17,8 @@ import Series.ASeries.ASeries;
 import Series.ASeries.ASeriesGroupParser;
 import Series.CSeries.C2.C2Series;
 import Series.CSeries.C2.C2SeriesGroupParser;
+import Series.GSeries.G2.G2Series;
+import Series.GSeries.G2.G2SeriesGroupParser;
 
 /**
  * Резолвер для групп, входящих в бесконечную серию. </br>
@@ -70,6 +72,13 @@ public class SeriesResolver {
 				c2Series.setVerticesForAllComponent(components);
 				c2Series.fillSeriesOrderBasedComponents();
 				return c2Series;
+			} else if (type == GroupType.G) {
+				G2SeriesGroupParser g2SeriesGroupParser = new G2SeriesGroupParser(inputStr);
+				Map<String, List<SymbolVertex>> components = g2SeriesGroupParser.new G2ComponentsParser(inputStr).parseComponents();
+				G2Series g2Series = new G2Series(groupName, n, p, m);
+				g2Series.setVerticesForAllComponent(components);
+				g2Series.fillSeriesOrderBasedComponents();
+				return g2Series;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

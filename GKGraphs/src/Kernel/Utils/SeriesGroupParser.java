@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.LieTypeGroup.GroupType;
@@ -37,6 +38,8 @@ public class SeriesGroupParser {
 			return GroupType.A;
 		} else if (this.input.startsWith("C")) {
 			return GroupType.C;
+		} else if (this.input.startsWith("G")) {
+			return GroupType.G;
 		}
 		return null;
 	}
@@ -133,6 +136,20 @@ public class SeriesGroupParser {
 			for (String vStr : verticesArray) {
 				SymbolVertex vertex = new SymbolVertex(vStr);
 				result.add(vertex);
+			}
+			return result;
+		}
+		
+		/**
+		 * Метод строит map по входной коллеции наименований компонент
+		 * @param compNames
+		 * @return
+		 */
+		protected Map<String, List<SymbolVertex>> getComponentsMap(List<String> compNames) {
+			Map<String, List<SymbolVertex>> result = Maps.newHashMap();
+			for (String compName : compNames) {
+				List<SymbolVertex> vList = getVerticesList(compName);
+				result.put(compName, vList);
 			}
 			return result;
 		}
