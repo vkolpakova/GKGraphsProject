@@ -65,7 +65,7 @@ public class Main {
 	}
 	
 	protected static void processSeries() {
-		String seriesStr = "A_2(p),pi(q - 1) = {2, 3}, pi(q + 1) = {u}, pi((q^2 + q + 1) / (3, q - 1)) = {r, s}";
+		String seriesStr = "C_2(p),pi(q - 1) = {2, 3}, pi(q + 1) = {u}, pi((q^2 + 1) / (3, q - 1)) = {r, s}";
 		// построение графа группы, принадлежащей некоторой серии
 		Series series = SeriesResolver.resolve(seriesStr);
 		SeriesGraphConstructor constr = SeriesGraphConstructorResolver.resolve(series);

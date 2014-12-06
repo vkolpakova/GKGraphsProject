@@ -35,6 +35,8 @@ public class SeriesGroupParser {
 	public GroupType parseName() {
 		if (this.input.startsWith("A")) {
 			return GroupType.A;
+		} else if (this.input.startsWith("C")) {
+			return GroupType.C;
 		}
 		return null;
 	}
@@ -117,7 +119,7 @@ public class SeriesGroupParser {
 		}
 		
 		/**
-		 * Метод строит коллекцию вершин по строке вида p(...) = {v1, v2, v3, ...}
+		 * Метод строит коллекцию вершин по строке вида pi(...) = {v1, v2, v3, ...}
 		 * @param componentName --- обозначение компоненты
 		 * @return
 		 */

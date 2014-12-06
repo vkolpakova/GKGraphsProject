@@ -15,6 +15,8 @@ import Series.ASeries.A3.A3Series;
 import Series.ASeries.A3.A3SeriesGroupParser;
 import Series.ASeries.ASeries;
 import Series.ASeries.ASeriesGroupParser;
+import Series.CSeries.C2.C2Series;
+import Series.CSeries.C2.C2SeriesGroupParser;
 
 /**
  * Резолвер для групп, входящих в бесконечную серию. </br>
@@ -61,6 +63,13 @@ public class SeriesResolver {
 					completeASeriesComponentFilling(a3Series, components, firstComponentConditionMap);
 					return a3Series;
 				}
+			} else if (type == GroupType.C) {
+				C2SeriesGroupParser c2SeriesGroupParser = new C2SeriesGroupParser(inputStr);
+				Map<String, List<SymbolVertex>> components = c2SeriesGroupParser.new C2ComponentsParser(inputStr).parseComponents();
+				C2Series c2Series = new C2Series(groupName, n, p, m);
+				c2Series.setVerticesForAllComponent(components);
+				c2Series.fillSeriesOrderBasedComponents();
+				return c2Series;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
