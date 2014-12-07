@@ -16,4 +16,8 @@ public class PolynomConstants {
 	
 	public static final String Q2P1 = "q^2 + 1";
 	
+	public static final String QMSQRT2QP1 = "q - sqrt(2q) + 1";
+	
+	public static final String QPSQRT2QP1 = "q + sqrt(2q) + 1";
+	
 }

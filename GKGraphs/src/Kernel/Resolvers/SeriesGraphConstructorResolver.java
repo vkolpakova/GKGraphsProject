@@ -8,6 +8,8 @@ import Series.CSeries.C2.C2Series;
 import Series.CSeries.C2.C2SeriesGraphConstructor;
 import Series.GSeries.G2.G2Series;
 import Series.GSeries.G2.G2SeriesGraphConstructor;
+import Series.SzSeries.Sz.SzSeries;
+import Series.SzSeries.Sz.SzSeriesGraphConstructor;
 
 /**
  * Резолвер для конструкторов графов Грюнберга --- Кегеля групп серий
@@ -24,6 +26,8 @@ public class SeriesGraphConstructorResolver {
 			return new C2SeriesGraphConstructor((C2Series)series);
 		} else if (series instanceof G2Series) {
 			return new G2SeriesGraphConstructor((G2Series)series);
+		} else if (series instanceof SzSeries) {
+			return new SzSeriesGraphConstructor((SzSeries)series);
 		}
 		return null;
 	}

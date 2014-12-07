@@ -40,6 +40,8 @@ public class SeriesGroupParser {
 			return GroupType.C;
 		} else if (this.input.startsWith("G")) {
 			return GroupType.G;
+		} else if (this.input.startsWith("Sz")) {
+			return GroupType.Sz;
 		}
 		return null;
 	}
@@ -50,6 +52,9 @@ public class SeriesGroupParser {
 	 * @throws Exception
 	 */
 	public int parseN() throws Exception {
+		if (this.parseName() == GroupType.Sz) {
+			return 2;
+		}
 		// FOXME придумать  более универсальный способ, т.к. для "длинных" n это не подходит!!!
 		int eIndex = this.input.indexOf(LieTypeGroupNameParser.LEFT_BRACKET);
 		if (eIndex >= 0) {

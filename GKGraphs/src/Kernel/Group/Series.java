@@ -156,7 +156,7 @@ public class Series extends AbstractGroup {
 	}
 	
 	/**
-	 * Метод возвращает значение m для заданной вершины
+	 * Метод возвращает значение {@link Component#m} для заданной вершины
 	 * @param v
 	 * @return
 	 */
@@ -170,7 +170,21 @@ public class Series extends AbstractGroup {
 	}
 	
 	/**
-	 * Метод возвращает компоненту с заданным m
+	 * Метод возвращает значение {@link Component#name} для заданной вершины
+	 * @param v
+	 * @return
+	 */
+	public String getVertexComponentName(SymbolVertex v) {
+		for (Component comp : components) {
+			if (comp.getVertices().contains(v)) {
+				return comp.getName();
+			}
+		}
+		return "";
+	}
+	
+	/**
+	 * Метод возвращает компоненту с заданным {@link Component#m}
 	 * @param m
 	 * @return
 	 */
@@ -184,12 +198,38 @@ public class Series extends AbstractGroup {
 	}
 	
 	/**
-	 * Метод возвращает строковое представление коллекции простых делителей конкретной компоненты
+	 * Метод возвращает компоненту с заданным {@link Component#name}
+	 * @param name
+	 * @return
+	 */
+	public Component getComponentByName(String name) {
+		for (Component comp : this.components) {
+			if (comp.getName().equals(name)) {
+				return comp;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Метод возвращает строковое представление коллекции простых делителей конкретной компоненты. </br>
+	 * Компонента определяется параметром {@link Component#m}.
 	 * @param m
 	 * @return
 	 */
 	public List<String> getSimpleDivisorsOfConcreteComponent(int m) {
 		Component concreteComponent = getComponentByM(m);
+		return concreteComponent.getAllVerticesStringForm();
+	}
+	
+	/**
+	 * Метод возвращает строковое представление коллекции простых делителей конкретной компоненты. </br>
+	 * Компонента определяется параметром {@link Component#name}.
+	 * @param name
+	 * @return
+	 */
+	public List<String> getSimpleDivisorsOfConcreteComponent(String name) {
+		Component concreteComponent = getComponentByName(name);
 		return concreteComponent.getAllVerticesStringForm();
 	}
 	

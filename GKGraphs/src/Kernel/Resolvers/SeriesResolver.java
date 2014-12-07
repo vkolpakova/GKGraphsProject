@@ -19,6 +19,8 @@ import Series.CSeries.C2.C2Series;
 import Series.CSeries.C2.C2SeriesGroupParser;
 import Series.GSeries.G2.G2Series;
 import Series.GSeries.G2.G2SeriesGroupParser;
+import Series.SzSeries.Sz.SzSeries;
+import Series.SzSeries.Sz.SzSeriesGroupParser;
 
 /**
  * Резолвер для групп, входящих в бесконечную серию. </br>
@@ -79,6 +81,13 @@ public class SeriesResolver {
 				g2Series.setVerticesForAllComponent(components);
 				g2Series.fillSeriesOrderBasedComponents();
 				return g2Series;
+			} else if (type == GroupType.Sz) {
+				SzSeriesGroupParser szSeriesGroupParser = new SzSeriesGroupParser(inputStr);
+				Map<String, List<SymbolVertex>> components = szSeriesGroupParser.new SzComponentsParser(inputStr).parseComponents();
+				SzSeries szSeries = new SzSeries(groupName, n, p, m);
+				szSeries.setVerticesForAllComponent(components);
+				szSeries.fillSeriesOrderBasedComponents();
+				return szSeries;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
