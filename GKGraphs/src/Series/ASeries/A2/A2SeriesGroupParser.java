@@ -7,9 +7,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
-import Series.ASeries.ASeriesGroupParser;
+import Series.ASeries.AEpsilonSeriesGroupParser;
 
-public class A2SeriesGroupParser extends ASeriesGroupParser {
+public class A2SeriesGroupParser extends AEpsilonSeriesGroupParser {
 
 	public A2SeriesGroupParser(String input) {
 		super(input);

@@ -7,10 +7,10 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
-import Series.ASeries.ASeriesGroupParser;
+import Series.ASeries.AEpsilonSeriesGroupParser;
 
 
-public class A3SeriesGroupParser extends ASeriesGroupParser {
+public class A3SeriesGroupParser extends AEpsilonSeriesGroupParser {
 
 	public A3SeriesGroupParser(String input) {
 		super(input);

@@ -14,7 +14,7 @@ import Series.ASeries.A2.A2SeriesGroupParser;
 import Series.ASeries.A3.A3Series;
 import Series.ASeries.A3.A3SeriesGroupParser;
 import Series.ASeries.ASeries;
-import Series.ASeries.ASeriesGroupParser;
+import Series.ASeries.AEpsilonSeriesGroupParser;
 import Series.CSeries.C2.C2Series;
 import Series.CSeries.C2.C2SeriesGroupParser;
 import Series.GSeries.G2.G2Series;
@@ -44,7 +44,7 @@ public class SeriesResolver {
 			String p = seriesParser.parseP();
 			String groupName = computeSeriesName(type, n, seriesParser.parseQ());
 			if (type == GroupType.A) {
-				ASeriesGroupParser aSeriesGroupParser = new ASeriesGroupParser(inputStr);
+				AEpsilonSeriesGroupParser aSeriesGroupParser = new AEpsilonSeriesGroupParser(inputStr);
 				Map<SymbolVertex, String> firstComponentConditionMap = (aSeriesGroupParser.new ConditionsParser(inputStr)).parseConditions();
 				if (n == 1) {
 					A1SeriesGroupParser a1SeriesGroupParser = new A1SeriesGroupParser(inputStr);

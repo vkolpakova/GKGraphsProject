@@ -9,6 +9,12 @@ import Kernel.Polynom.CompoundPolynom;
 import Kernel.Polynom.IndecomposablePolynom;
 import Kernel.Polynom.PolynomConstants;
 
+/**
+ * Реализация серии групп лиева типа вида Sz(q).
+ * TODO test
+ * @author v.kolpakova
+ *
+ */
 public class SzSeries extends Series {
 	
 	public static final String COMP_0 	= "{2}";

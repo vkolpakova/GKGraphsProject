@@ -9,15 +9,15 @@ import Kernel.Utils.LieTypeGroupNameParser;
 import Kernel.Utils.SeriesGroupParser;
 
 /**
- * Абстрактный класс парсеров для серий типа A
+ * Абстрактный класс парсеров для серий типа An(q) и Un(q)
  * 
  * @author v.kolpakova
  *
  */
-public class ASeriesGroupParser extends SeriesGroupParser {
+public class AEpsilonSeriesGroupParser extends SeriesGroupParser {
 	
 
-	public ASeriesGroupParser(String input) {
+	public AEpsilonSeriesGroupParser(String input) {
 		super(input);
 	}
 
@@ -35,7 +35,7 @@ public class ASeriesGroupParser extends SeriesGroupParser {
 		}
 
 		/**
-		 * Метод парсит условия для вершин первой компоненты. Переопределяется в потомках.
+		 * Метод парсит условия для вершин первой(второй) компоненты. Переопределяется в потомках.
 		 * @param input --- строковое задание серии
 		 * @return Map вершина - условие
 		 */

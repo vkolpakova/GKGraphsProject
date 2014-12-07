@@ -19,7 +19,7 @@ public class ATwoOddNonadjacenceVerticesSeriesСriterion extends TwoOddNonadjace
 			SymbolVertex b = (SymbolVertex) edge.getVertexB();
 			int aM = this.series.getVertexM(a);
 			int bM = this.series.getVertexM(b);
-			if ((aM + bM) > (this.series.getN() + 1)) {
+			if ((condition(aM, bM)) && ((aM + bM) > (this.series.getN() + 1))) {
 				return (aM >= bM) ? ((aM % bM) != 0) : ((bM % aM) != 0);
 			} else {
 				return false;
@@ -27,6 +27,10 @@ public class ATwoOddNonadjacenceVerticesSeriesСriterion extends TwoOddNonadjace
 		} else {
 			return false;
 		}
+	}
+	
+	protected boolean condition(int aM, int bM) {
+		return ((aM > 1) && (bM > 1));
 	}
 	
 }
