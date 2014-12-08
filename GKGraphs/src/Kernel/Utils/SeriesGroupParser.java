@@ -42,6 +42,8 @@ public class SeriesGroupParser {
 			return GroupType.G;
 		} else if (this.input.startsWith("Sz")) {
 			return GroupType.Sz;
+		} else if (this.input.startsWith("_A")) {
+			return GroupType._A;
 		}
 		return null;
 	}

@@ -21,6 +21,11 @@ import Series.GSeries.G2.G2Series;
 import Series.GSeries.G2.G2SeriesGroupParser;
 import Series.SzSeries.Sz.SzSeries;
 import Series.SzSeries.Sz.SzSeriesGroupParser;
+import Series._ASeries._ASeries;
+import Series._ASeries._A2._A2Series;
+import Series._ASeries._A2._A2SeriesGroupParser;
+import Series._ASeries._A3._A3Series;
+import Series._ASeries._A3._A3SeriesGroupParser;
 
 /**
  * Резолвер для групп, входящих в бесконечную серию. </br>
@@ -67,6 +72,22 @@ public class SeriesResolver {
 					completeASeriesComponentFilling(a3Series, components, firstComponentConditionMap);
 					return a3Series;
 				}
+			} else if (type == GroupType._A) {
+				AEpsilonSeriesGroupParser aSeriesGroupParser = new AEpsilonSeriesGroupParser(inputStr);
+				Map<SymbolVertex, String> firstComponentConditionMap = (aSeriesGroupParser.new ConditionsParser(inputStr)).parseConditions();
+				if (n == 2) {
+					_A2SeriesGroupParser _a2SeriesGroupParser = new _A2SeriesGroupParser(inputStr);
+					Map<String, List<SymbolVertex>> components = _a2SeriesGroupParser.new _A2ComponentsParser(inputStr).parseComponents();
+					_A2Series _a2Series = new _A2Series(groupName, n, p, m);
+					complete_ASeriesComponentFilling(_a2Series, components, firstComponentConditionMap);
+					return _a2Series;
+				} else if (n == 3) {
+					_A3SeriesGroupParser _a3SeriesGroupParser = new _A3SeriesGroupParser(inputStr);
+					Map<String, List<SymbolVertex>> components = _a3SeriesGroupParser.new _A3ComponentsParser(inputStr).parseComponents();
+					_A3Series _a3Series = new _A3Series(groupName, n, p, m);
+					complete_ASeriesComponentFilling(_a3Series, components, firstComponentConditionMap);
+					return _a3Series;
+				}
 			} else if (type == GroupType.C) {
 				C2SeriesGroupParser c2SeriesGroupParser = new C2SeriesGroupParser(inputStr);
 				Map<String, List<SymbolVertex>> components = c2SeriesGroupParser.new C2ComponentsParser(inputStr).parseComponents();
@@ -102,6 +123,15 @@ public class SeriesResolver {
 		aSeries.constructVerticesCondMap(firstComponentConditionMap);
 		// происходит заполнение простых делителей простых сомножителей порядка
 		aSeries.fillSeriesOrderBasedComponents();
+	}
+	
+	protected static void complete_ASeriesComponentFilling(_ASeries _aSeries, Map<String, List<SymbolVertex>> components, Map<SymbolVertex, String> firstComponentConditionMap) {
+		// просиходит заполнение уже созданных компонент вершинами, сгруппированными по компонентам
+		_aSeries.setVerticesForAllComponent(components);
+		// происходит заполнение условий для вершин первой компоненты
+		_aSeries.constructVerticesCondMap(firstComponentConditionMap);
+		// происходит заполнение простых делителей простых сомножителей порядка
+		_aSeries.fillSeriesOrderBasedComponents();
 	}
 	
 	protected static String computeSeriesName(GroupType type, int n, String q) {

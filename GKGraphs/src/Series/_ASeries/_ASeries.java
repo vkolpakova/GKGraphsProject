@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.Series;
@@ -43,6 +44,7 @@ public class _ASeries extends Series {
 
 	public _ASeries(String name, int n, String p, String m) {
 		super(name, n, p, m);
+		this.verticesCondMap = Maps.newHashMap();
 	}
 	
 	public Map<SymbolVertex, String> getVerticesCondMap() {
