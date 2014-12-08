@@ -9,7 +9,7 @@ import Kernel.GraphConstructor.AbstractGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 /**
- * Конструктор графа Грюнберга --- Кегеля подгруппы автоморфизмов для конкретной группы лиева типа
+ * Абстрактный класс конструктора графа Грюнберга --- Кегеля подгруппы автоморфизмов для конкретной группы лиева типа
  * 
  * @author v.kolpakova
  *

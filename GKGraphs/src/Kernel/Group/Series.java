@@ -244,6 +244,24 @@ public class Series extends AbstractGroup {
 		}
 		return result;
 	}
+	
+	/**
+	 * Метод возвращает порядок Outdiag(G)
+	 * @return
+	 */
+	public int getOutdiagOrder() { return 1; }
+	
+	/**
+	 * Метод возвращает порядок группы полевых автоморфизмов
+	 * @return
+	 */
+	public String getFieldAutOrder() { return "1"; }
+	
+	/**
+	 * Метод возвращает порядок группы графовых автоморфизмов
+	 * @return
+	 */
+	public int getGraphAutOrder() { return 0; }
 
 	/**
 	 * Класс, описывающий множество вершин с одним значением функции {@link ArithmeticUtils#e(int, int)}

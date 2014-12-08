@@ -32,7 +32,7 @@ public class Main {
 		// построение графа простой группы P Лиева типа
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
-		gr.setGraph(graph);
+		gr.setGraph(graph); // Это важно!!! Используется при построении расширений автоморфизмами
 		MainLogger.info("=====Group=====");
 		graph.printConsole();
 		// построение графа Inndiag(P)
@@ -70,6 +70,7 @@ public class Main {
 		Series series = SeriesResolver.resolve(seriesStr);
 		SeriesGraphConstructor constr = SeriesGraphConstructorResolver.resolve(series);
 		PrimeNumberGraph grGraph = constr.constructGKGraph();
+		series.setGraph(grGraph); // Это важно!!! Используется при построении расширений автоморфизмами
 		grGraph.printConsole();
 	}
 	 
