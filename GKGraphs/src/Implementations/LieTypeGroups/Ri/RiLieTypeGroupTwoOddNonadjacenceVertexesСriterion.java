@@ -1,7 +1,7 @@
 package Implementations.LieTypeGroups.Ri;
 
 import Kernel.Graph.Edge;
-import Kernel.GraphConstructor.Сriterion.TwoOddNonadjacenceVertexesСriterion;
+import Kernel.GraphConstructor.Concrete.Сriterion.TwoOddNonadjacenceVertexesСriterion;
 import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Utils.CriterionUtils;
 

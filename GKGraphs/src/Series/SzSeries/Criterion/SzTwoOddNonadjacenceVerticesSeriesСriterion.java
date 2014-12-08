@@ -2,8 +2,8 @@ package Series.SzSeries.Criterion;
 
 import Kernel.Graph.Edge;
 import Kernel.Graph.SymbolVertex;
-import Kernel.GraphConstructor.SeriesGraphConstructor;
-import Kernel.GraphConstructor.SeriesGraphConstructor.TwoOddNonadjacenceVerticesSeriesСriterion;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor.TwoOddNonadjacenceVerticesSeriesСriterion;
 import Series.SzSeries.Sz.SzSeries;
 
 public class SzTwoOddNonadjacenceVerticesSeriesСriterion extends TwoOddNonadjacenceVerticesSeriesСriterion {

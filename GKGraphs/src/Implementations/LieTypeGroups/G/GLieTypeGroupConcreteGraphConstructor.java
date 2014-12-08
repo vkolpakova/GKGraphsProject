@@ -1,6 +1,6 @@
 package Implementations.LieTypeGroups.G;
 
-import Kernel.GraphConstructor.ConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.ConcreteLieTypeGroupGraphConstructor;
 
 public class GLieTypeGroupConcreteGraphConstructor extends ConcreteLieTypeGroupGraphConstructor<GLieTypeGroup> {
 

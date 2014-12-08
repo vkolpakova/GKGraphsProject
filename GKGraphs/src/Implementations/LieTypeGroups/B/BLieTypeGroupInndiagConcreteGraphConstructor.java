@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import Kernel.GraphConstructor.InndiagConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.InndiagConcreteLieTypeGroupGraphConstructor;
 import Kernel.Utils.ArithmeticUtils;
 
 public class BLieTypeGroupInndiagConcreteGraphConstructor extends InndiagConcreteLieTypeGroupGraphConstructor<BLieTypeGroup> {

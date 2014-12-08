@@ -10,8 +10,8 @@ import Implementations.LieTypeGroups.F.FLieTypeGroup;
 import Implementations.LieTypeGroups.F.FLieTypeGroupGraphAutConcreteGraphConstructor;
 import Implementations.LieTypeGroups.G.GLieTypeGroup;
 import Implementations.LieTypeGroups.G.GLieTypeGroupGraphAutConcreteGraphConstructor;
-import Kernel.GraphConstructor.GraphAutConcreteLieTypeGroupGraphConstructor;
-import Kernel.GraphConstructor.SimpleGraphConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.SimpleGraphConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 /**

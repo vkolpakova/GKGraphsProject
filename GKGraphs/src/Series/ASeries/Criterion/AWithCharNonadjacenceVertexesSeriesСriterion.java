@@ -2,8 +2,8 @@ package Series.ASeries.Criterion;
 
 import Kernel.Graph.Edge;
 import Kernel.Graph.SymbolVertex;
-import Kernel.GraphConstructor.SeriesGraphConstructor;
-import Kernel.GraphConstructor.SeriesGraphConstructor.WithCharNonadjacenceVerticesSeriesСriterion;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor.WithCharNonadjacenceVerticesSeriesСriterion;
 
 import Series.ASeries.ASeries;
 

@@ -2,7 +2,7 @@ package Implementations.LieTypeGroups.B;
 
 import java.util.List;
 
-import Kernel.GraphConstructor.GraphAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 public class BLieTypeGroupGraphAutConcreteGraphConstructor extends GraphAutConcreteLieTypeGroupGraphConstructor<BLieTypeGroup> {

@@ -1,10 +1,10 @@
-package Kernel.GraphConstructor;
+package Kernel.GraphConstructor.Concrete;
 
 import java.util.List;
 import java.util.Map;
 
 import Kernel.Graph.PrimeNumberGraph;
-import Kernel.GraphConstructor.Helper.PhiAndGammaAutSubgroupHelper;
+import Kernel.GraphConstructor.Concrete.Helper.PhiAndGammaAutSubgroupHelper;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
 

@@ -1,7 +1,7 @@
 package Implementations.LieTypeGroups._D;
 
 import Kernel.Graph.Edge;
-import Kernel.GraphConstructor.Сriterion.WithCharNonadjacenceVertexesСriterion;
+import Kernel.GraphConstructor.Concrete.Сriterion.WithCharNonadjacenceVertexesСriterion;
 import Kernel.Utils.CriterionUtils;
 
 public class _DLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCharNonadjacenceVertexesСriterion {

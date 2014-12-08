@@ -20,7 +20,7 @@ import Implementations.LieTypeGroups._D._DLieTypeGroup;
 import Implementations.LieTypeGroups._D._DLieTypeGroupFieldAutConcreteGraphConstructor;
 import Implementations.LieTypeGroups.__D.__DLieTypeGroup;
 import Implementations.LieTypeGroups.__D.__DLieTypeGroupFieldAutConcreteGraphConstructor;
-import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 /**

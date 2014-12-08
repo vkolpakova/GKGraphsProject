@@ -1,10 +1,11 @@
-package Kernel.GraphConstructor;
+package Kernel.GraphConstructor.Concrete;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import Kernel.Graph.PrimeNumberGraph;
+import Kernel.GraphConstructor.AbstractGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 /**

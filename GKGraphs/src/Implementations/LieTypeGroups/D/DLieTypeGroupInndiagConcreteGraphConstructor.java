@@ -2,7 +2,7 @@ package Implementations.LieTypeGroups.D;
 
 import java.util.List;
 
-import Kernel.GraphConstructor.InndiagConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.InndiagConcreteLieTypeGroupGraphConstructor;
 import Kernel.Utils.InndiagUtils;
 
 public class DLieTypeGroupInndiagConcreteGraphConstructor extends InndiagConcreteLieTypeGroupGraphConstructor<DLieTypeGroup> {

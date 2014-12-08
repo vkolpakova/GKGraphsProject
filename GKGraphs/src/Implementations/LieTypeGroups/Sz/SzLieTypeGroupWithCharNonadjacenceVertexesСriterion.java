@@ -1,7 +1,7 @@
 package Implementations.LieTypeGroups.Sz;
 
 import Kernel.Graph.Edge;
-import Kernel.GraphConstructor.Сriterion.WithCharNonadjacenceVertexesСriterion;
+import Kernel.GraphConstructor.Concrete.Сriterion.WithCharNonadjacenceVertexesСriterion;
 
 public class SzLieTypeGroupWithCharNonadjacenceVertexesСriterion extends WithCharNonadjacenceVertexesСriterion {
 

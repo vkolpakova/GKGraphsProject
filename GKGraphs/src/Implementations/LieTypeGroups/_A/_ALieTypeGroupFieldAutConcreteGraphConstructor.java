@@ -6,7 +6,7 @@ import java.util.List;
 import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Implementations.LieTypeGroups.D.DLieTypeGroup;
 import Implementations.LieTypeGroups._D._DLieTypeGroup;
-import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
 

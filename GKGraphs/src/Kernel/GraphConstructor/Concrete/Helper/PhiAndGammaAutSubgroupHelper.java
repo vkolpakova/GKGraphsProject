@@ -1,4 +1,4 @@
-package Kernel.GraphConstructor.Helper;
+package Kernel.GraphConstructor.Concrete.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
 import Kernel.Graph.Vertex;
-import Kernel.GraphConstructor.AutSubgroupConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.AutSubgroupConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
 import Kernel.Utils.MainLogger;

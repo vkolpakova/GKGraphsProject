@@ -1,4 +1,4 @@
-package Kernel.GraphConstructor.Сriterion;
+package Kernel.GraphConstructor.Concrete.Сriterion;
 
 import java.util.List;
 

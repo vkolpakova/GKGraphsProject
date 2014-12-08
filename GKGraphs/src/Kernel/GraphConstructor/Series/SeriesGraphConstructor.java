@@ -1,4 +1,4 @@
-package Kernel.GraphConstructor;
+package Kernel.GraphConstructor.Series;
 
 import java.util.List;
 
@@ -8,7 +8,8 @@ import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SymbolVertex;
 import Kernel.Graph.Vertex;
-import Kernel.GraphConstructor.Сriterion.AbstractSeriesCriterion;
+import Kernel.GraphConstructor.AbstractGraphConstructor;
+import Kernel.GraphConstructor.Concrete.Сriterion.AbstractSeriesCriterion;
 import Kernel.Group.Series;
 
 /**

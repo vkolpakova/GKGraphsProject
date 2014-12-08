@@ -2,11 +2,11 @@ import java.util.List;
 import java.util.Map;
 
 import Kernel.Graph.PrimeNumberGraph;
-import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
-import Kernel.GraphConstructor.GraphAutConcreteLieTypeGroupGraphConstructor;
-import Kernel.GraphConstructor.InndiagConcreteLieTypeGroupGraphConstructor;
-import Kernel.GraphConstructor.LieTypeGroupGraphConstructor;
-import Kernel.GraphConstructor.SeriesGraphConstructor;
+import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.InndiagConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.LieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Group.Series;
 import Kernel.Resolvers.FieldAutLieTypeGroupGraphConstructorResolver;

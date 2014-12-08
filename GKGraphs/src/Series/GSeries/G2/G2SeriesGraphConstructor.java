@@ -1,6 +1,6 @@
 package Series.GSeries.G2;
 
-import Kernel.GraphConstructor.SeriesGraphConstructor;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Series.GSeries.Criterion.GTwoOddNonadjacenceVerticesSeriesСriterion;
 import Series.GSeries.Criterion.GWithCharNonadjacenceVertexesSeriesСriterion;
 import Series.GSeries.Criterion.GWithTwoNonadjanceVerticesSeriesСriterion;

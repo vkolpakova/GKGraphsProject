@@ -1,11 +1,12 @@
-package Kernel.GraphConstructor;
+package Kernel.GraphConstructor.Concrete;
 
 import java.util.List;
 
 import Kernel.Graph.Edge;
-import Kernel.GraphConstructor.Сriterion.TwoOddNonadjacenceVertexesСriterion;
-import Kernel.GraphConstructor.Сriterion.WithCharNonadjacenceVertexesСriterion;
-import Kernel.GraphConstructor.Сriterion.WithTwoNonadjanceVertexesСriterion;
+import Kernel.GraphConstructor.AbstractGraphConstructor;
+import Kernel.GraphConstructor.Concrete.Сriterion.TwoOddNonadjacenceVertexesСriterion;
+import Kernel.GraphConstructor.Concrete.Сriterion.WithCharNonadjacenceVertexesСriterion;
+import Kernel.GraphConstructor.Concrete.Сriterion.WithTwoNonadjanceVertexesСriterion;
 import Kernel.Group.LieTypeGroup;
 
 /**

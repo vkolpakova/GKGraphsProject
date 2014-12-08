@@ -1,6 +1,6 @@
 package Kernel.Resolvers;
 
-import Kernel.GraphConstructor.SeriesGraphConstructor;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.Group.Series;
 import Series.ASeries.ASeries;
 import Series.ASeries.ASeriesGraphConstructor;

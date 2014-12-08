@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
 import Kernel.Graph.Vertex;
-import Kernel.GraphConstructor.LieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.LieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Resolvers.LieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.LieTypeGroupTypeResolver;

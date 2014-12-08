@@ -5,7 +5,7 @@ import java.util.List;
 
 import Implementations.LieTypeGroups.B.BLieTypeGroup;
 import Implementations.LieTypeGroups.G.GLieTypeGroup;
-import Kernel.GraphConstructor.GraphAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 
 public class DLieTypeGroupGraphAutConcreteGraphConstructor extends GraphAutConcreteLieTypeGroupGraphConstructor<DLieTypeGroup> {

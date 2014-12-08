@@ -1,6 +1,6 @@
 package Implementations.LieTypeGroups.Sz;
 
-import Kernel.GraphConstructor.ConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.ConcreteLieTypeGroupGraphConstructor;
 
 public class SzLieTypeGroupConcreteGraphConstructor extends ConcreteLieTypeGroupGraphConstructor<SzLieTypeGroup> {
 

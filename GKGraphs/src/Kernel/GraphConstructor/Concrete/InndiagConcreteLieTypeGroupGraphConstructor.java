@@ -1,4 +1,4 @@
-package Kernel.GraphConstructor;
+package Kernel.GraphConstructor.Concrete;
 
 import java.util.ArrayList;
 import java.util.List;

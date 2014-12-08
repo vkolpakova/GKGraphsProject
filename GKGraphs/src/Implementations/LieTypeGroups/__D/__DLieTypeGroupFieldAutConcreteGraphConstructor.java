@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Implementations.LieTypeGroups.G.GLieTypeGroup;
-import Kernel.GraphConstructor.FieldAutConcreteLieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Utils.ArithmeticUtils;
 

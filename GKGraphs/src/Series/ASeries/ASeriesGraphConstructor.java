@@ -1,6 +1,6 @@
 package Series.ASeries;
 
-import Kernel.GraphConstructor.SeriesGraphConstructor;
+import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Series.ASeries.Criterion.ATwoOddNonadjacenceVerticesSeriesСriterion;
 import Series.ASeries.Criterion.AWithCharNonadjacenceVertexesSeriesСriterion;
 import Series.ASeries.Criterion.AWithTwoNonadjanceVerticesSeriesСriterion;
