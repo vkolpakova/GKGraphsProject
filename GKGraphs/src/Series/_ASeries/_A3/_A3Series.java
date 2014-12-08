@@ -9,6 +9,11 @@ import Kernel.Polynom.IndecomposablePolynom;
 import Kernel.Polynom.PolynomConstants;
 import Series._ASeries._ASeries;
 
+/**
+ * Реализация серии групп лиева типа вида _A_3(q).
+ * TODO test
+ * @author v.kolpakova
+ */
 public class _A3Series extends _ASeries {
 	
 	public static final String COMP_0 = "{p}";
