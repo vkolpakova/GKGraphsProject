@@ -20,6 +20,7 @@ public class SeriesGroupParser {
 	
 	public static final String SEPARATOR = ", "; // TODO убрать зашивку на пробел (заменить на любое кол-во пробелов справа и слева)
 	public static final String INVOLUTION = "^";
+	public static final String MULTIPLICATION = "*"; // используется при вводе m для умножения 
 	
 	private String input;
 	

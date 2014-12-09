@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
+
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.GraphConstructor.AbstractGraphConstructor;
 import Kernel.Group.LieTypeGroup;
@@ -46,6 +48,13 @@ public abstract class AutSubgroupConcreteLieTypeGroupGraphConstructor<G extends 
 	public PrimeNumberGraph getGroupGraph() {
 		return groupGraph;
 	}
+	
+	/**
+	 * Метод возвращает некоторое множество графов Грюнберга --- Кегеля, если это требуется
+	 * (т.е. использовать метод constructGKGraph для потсроения единичного графа, а в этом методе возвращать все множество,
+	 * пройдя по некоторому циклу)
+	 */
+	public List<PrimeNumberGraph> constructGKGraphs() { return Lists.newArrayList(); }
 
 	public void setGroupGraph(PrimeNumberGraph groupGraph) {
 		this.groupGraph = groupGraph;

@@ -26,6 +26,12 @@ public class IndecomposablePolynom {
 		this.description = description;
 		this.simpleDevisors = simpleDevisors;
 	}
+	
+	public IndecomposablePolynom(IndecomposablePolynom poly) {
+		super();
+		this.description = poly.description;
+		this.simpleDevisors = poly.simpleDevisors;
+	}
 
 	public String getDescription() {
 		return description;

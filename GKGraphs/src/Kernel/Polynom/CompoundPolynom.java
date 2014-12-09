@@ -30,6 +30,20 @@ public class CompoundPolynom {
 	}
 	
 	/**
+	 * Метод возвращает простой делитель полинома по его {@link IndecomposablePolynom#description}
+	 * @param description
+	 * @return
+	 */
+	public IndecomposablePolynom getMultiplierByDescr(String description) {
+		for (IndecomposablePolynom poly : this.multipliers) {
+			if (poly.getDescription().equals(description)) {
+				return poly;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Метод устанавливает множество делителей для конкретного простого делителя полинома
 	 * @param description
 	 * @param devisors
