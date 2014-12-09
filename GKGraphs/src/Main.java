@@ -6,6 +6,7 @@ import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstru
 import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.Concrete.InndiagConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.Concrete.LieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Series.InndiagSeriesGraphConstructor;
 import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Group.Series;
@@ -14,6 +15,7 @@ import Kernel.Resolvers.Concrete.GraphAutLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.InndiagLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.LieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.LieTypeGroupTypeResolver;
+import Kernel.Resolvers.Series.InndiagSeriesGraphConstructorResolver;
 import Kernel.Resolvers.Series.SeriesGraphConstructorResolver;
 import Kernel.Resolvers.Series.SeriesResolver;
 import Kernel.Utils.MainLogger;
@@ -65,13 +67,21 @@ public class Main {
 	}
 	
 	protected static void processSeries() {
-		String seriesStr = "_A_3(2^m),pi(q - 1) = {3}, pi(q + 1) = {u}, pi(q^2 - q + 1) = {r, s}, pi(q^2 + 1) = {t}";
+		String seriesStr = "A_3(2^m),pi(q - 1) = {3}, pi(q + 1) = {u}, pi(q^2 - q + 1) = {r, s}, pi(q^2 + 1) = {t}";
 		// построение графа группы, принадлежащей некоторой серии
 		Series series = SeriesResolver.resolve(seriesStr);
 		SeriesGraphConstructor constr = SeriesGraphConstructorResolver.resolve(series);
 		PrimeNumberGraph grGraph = constr.constructGKGraph();
 		series.setGraph(grGraph); // Это важно!!! Используется при построении расширений автоморфизмами
+		MainLogger.info("=====Group=====");
 		grGraph.printConsole();
+		// построение графа Inndiag(P)
+		InndiagSeriesGraphConstructor inndiagConstr = InndiagSeriesGraphConstructorResolver.resolve(series);
+		List<PrimeNumberGraph> inndiagGraphs = inndiagConstr.constructGKGraphs();
+		for (PrimeNumberGraph inndiagGraph : inndiagGraphs) {
+			MainLogger.info("=====Inndiag=====");
+			inndiagGraph.printConsole();
+		}
 	}
 	 
 }
