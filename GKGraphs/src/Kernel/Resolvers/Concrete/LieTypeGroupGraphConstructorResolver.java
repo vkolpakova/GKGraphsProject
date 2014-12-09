@@ -1,4 +1,4 @@
-package Kernel.Resolvers;
+package Kernel.Resolvers.Concrete;
 
 import Implementations.LieTypeGroups.A.ALieTypeGroup;
 import Implementations.LieTypeGroups.A.ALieTypeGroupConcreteGraphConstructor;

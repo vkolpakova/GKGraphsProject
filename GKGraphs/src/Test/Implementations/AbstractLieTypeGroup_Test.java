@@ -9,8 +9,8 @@ import Kernel.Graph.SimpleVertex;
 import Kernel.Graph.Vertex;
 import Kernel.GraphConstructor.Concrete.LieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
-import Kernel.Resolvers.LieTypeGroupGraphConstructorResolver;
-import Kernel.Resolvers.LieTypeGroupTypeResolver;
+import Kernel.Resolvers.Concrete.LieTypeGroupGraphConstructorResolver;
+import Kernel.Resolvers.Concrete.LieTypeGroupTypeResolver;
 import Kernel.Utils.ArithmeticUtils;
 
 public class AbstractLieTypeGroup_Test {

@@ -9,13 +9,13 @@ import Kernel.GraphConstructor.Concrete.LieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.Group.LieTypeGroup;
 import Kernel.Group.Series;
-import Kernel.Resolvers.FieldAutLieTypeGroupGraphConstructorResolver;
-import Kernel.Resolvers.GraphAutLieTypeGroupGraphConstructorResolver;
-import Kernel.Resolvers.InndiagLieTypeGroupGraphConstructorResolver;
-import Kernel.Resolvers.LieTypeGroupGraphConstructorResolver;
-import Kernel.Resolvers.LieTypeGroupTypeResolver;
-import Kernel.Resolvers.SeriesGraphConstructorResolver;
-import Kernel.Resolvers.SeriesResolver;
+import Kernel.Resolvers.Concrete.FieldAutLieTypeGroupGraphConstructorResolver;
+import Kernel.Resolvers.Concrete.GraphAutLieTypeGroupGraphConstructorResolver;
+import Kernel.Resolvers.Concrete.InndiagLieTypeGroupGraphConstructorResolver;
+import Kernel.Resolvers.Concrete.LieTypeGroupGraphConstructorResolver;
+import Kernel.Resolvers.Concrete.LieTypeGroupTypeResolver;
+import Kernel.Resolvers.Series.SeriesGraphConstructorResolver;
+import Kernel.Resolvers.Series.SeriesResolver;
 import Kernel.Utils.MainLogger;
 
 public class Main {

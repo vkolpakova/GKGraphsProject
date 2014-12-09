@@ -1,4 +1,4 @@
-package Kernel.Resolvers;
+package Kernel.Resolvers.Series;
 
 import java.util.List;
 import java.util.Map;

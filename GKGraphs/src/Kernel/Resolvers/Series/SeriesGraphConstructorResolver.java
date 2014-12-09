@@ -1,4 +1,4 @@
-package Kernel.Resolvers;
+package Kernel.Resolvers.Series;
 
 import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.Group.Series;
