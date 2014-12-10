@@ -3,6 +3,7 @@ package Kernel.Resolvers.Series;
 import Kernel.GraphConstructor.Series.InndiagSeriesGraphConstructor;
 import Kernel.Group.Series;
 import Series.ASeries.ASeries;
+import Series.ASeries.InndiagASeriesGraphConstructor;
 
 /**
  * Класс вычисляет, конкструктор Inndiag графа Грюнберга --- Кегеля серии какого класса вызвать на основе типа серии. </br>
@@ -16,7 +17,7 @@ public class InndiagSeriesGraphConstructorResolver {
 	public static InndiagSeriesGraphConstructor resolve(Series series) {
 		InndiagSeriesGraphConstructor constr = null;
 		if (series instanceof ASeries) {
-			constr = new InndiagSeriesGraphConstructor(series);
+			constr = new InndiagASeriesGraphConstructor(series);
 		}
 		return constr;
 	}

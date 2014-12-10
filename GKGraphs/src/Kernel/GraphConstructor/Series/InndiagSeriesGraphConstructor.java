@@ -16,6 +16,7 @@ import Kernel.Group.Series;
 import Kernel.Polynom.IndecomposablePolynom;
 import Kernel.Polynom.PolynomConstants;
 import Kernel.Polynom.SimplePolynom;
+import Kernel.Utils.MainLogger;
 
 /**
  * Конструктор графа Грюнберга --- Кегеля группы Inndiag для группы из серии
@@ -175,10 +176,10 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 	 */
 	protected PrimeNumberGraph constructFullGraph(Set<SymbolVertex> vertices) {
 		List<Edge> allEdges = Lists.newArrayList();
-		SymbolVertex[] verIter = (SymbolVertex[]) vertices.toArray();
+		List<SymbolVertex> verIter = Lists.newArrayList(vertices);
 		for (int i = 0; i < vertices.size(); i ++) {
 			for (int j = i + 1; j < vertices.size(); j ++) {
-				Edge edge = new Edge(verIter[i], verIter[j]);
+				Edge edge = new Edge(verIter.get(i), verIter.get(j));
 				allEdges.add(edge);
 			}
 		}
@@ -197,6 +198,8 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 		List<Edge> additionalEdgeList = newGraph.getEdgesList();
 		for (Edge newEdge : additionalEdgeList) {
 			if (!origGraph.getEdgesList().contains(newEdge)) {
+				MainLogger.info("*InndiagSeriesGraphConstructor* Add edge : {" + 
+			newEdge.getVertexA().getVertex().toString() + ", " + newEdge.getVertexB().getVertex().toString() + "}");
 				edgeList.add(newEdge);
 			}
 		}
