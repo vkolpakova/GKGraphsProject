@@ -330,6 +330,10 @@ public class Series extends AbstractGroup {
 			return result;
 		}
 		
+		public boolean checkContainsVertex(String value) {
+			return this.getAllVerticesStringForm().contains(value);
+		}
+		
 	}
 	
 }

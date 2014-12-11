@@ -10,6 +10,7 @@ import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Polynom.CompoundPolynom;
 import Kernel.Polynom.IndecomposablePolynom;
 import Kernel.Polynom.PolynomConstants;
+import Kernel.Utils.SeriesGroupParser;
 
 /**
  * Реализация серии групп лиева типа вида G_2(q).
@@ -79,6 +80,36 @@ public class G2Series extends Series {
 		} else {
 			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.Q2MQP1, this.getSimpleDivisorsOfConcreteComponent(6));
 		}
+	}
+	
+	@Override
+	public int getOutdiagOrder() {
+		return 1;
+	}
+	
+	@Override
+	public int getFieldAutOrder() {
+		int multIndex = m.indexOf(SeriesGroupParser.MULTIPLICATION);
+		int res = 1;
+		if (multIndex > 0) {
+			List<Integer> multsNum = Lists.newArrayList();
+			String[] mults  = m.split(SeriesGroupParser.MULTIPLICATION);
+			for (String mult : mults) {
+				try {
+					int num = Integer.parseInt(mult);
+					multsNum.add(num);
+				} catch (NumberFormatException e) {}
+			}
+			for (int n : multsNum) {
+				res *= n;
+			}
+		}
+		return res;
+	}
+	
+	@Override
+	public int getGraphAutOrder() {
+		return (this.getP().equals(SymbolVertex.THREE) ? 2 : 1);
 	}
 	
 }

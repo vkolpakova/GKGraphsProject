@@ -90,7 +90,7 @@ public class ASeries extends Series {
 	@Override
 	public int getOutdiagOrder() {
 		Component qm1Comp = this.getComponentByM(1);
-		List<Integer> nSimpleDivisors = ArithmeticUtils.getAllPrimeDevisors(this.n);
+		List<Integer> nSimpleDivisors = ArithmeticUtils.getAllPrimeDevisors(this.n + 1);
 		for (int div : nSimpleDivisors) {
 			if (!qm1Comp.getVertices().contains(new SymbolVertex(Integer.toString(div)))) {
 				// TODO понять, как обрабатывать случай когда n = 4 и q - 1 и подобные

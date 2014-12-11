@@ -1,5 +1,7 @@
 package Series.SzSeries.Sz;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
 
 import Kernel.Graph.SymbolVertex;
@@ -8,6 +10,7 @@ import Kernel.Group.Series;
 import Kernel.Polynom.CompoundPolynom;
 import Kernel.Polynom.IndecomposablePolynom;
 import Kernel.Polynom.PolynomConstants;
+import Kernel.Utils.SeriesGroupParser;
 
 /**
  * Реализация серии групп лиева типа вида Sz(q).
@@ -55,6 +58,36 @@ public class SzSeries extends Series {
 		this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QM1, this.getSimpleDivisorsOfConcreteComponent(1));
 		this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QMSQRT2QP1, this.getSimpleDivisorsOfConcreteComponent(SzSeries.COMP_4_1));
 		this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QPSQRT2QP1, this.getSimpleDivisorsOfConcreteComponent(SzSeries.COMP_4_2));
+	}
+	
+	@Override
+	public int getOutdiagOrder() {
+		return 1;
+	}
+	
+	@Override
+	public int getFieldAutOrder() {
+		int multIndex = m.indexOf(SeriesGroupParser.MULTIPLICATION);
+		int res = 1;
+		if (multIndex > 0) {
+			List<Integer> multsNum = Lists.newArrayList();
+			String[] mults  = m.split(SeriesGroupParser.MULTIPLICATION);
+			for (String mult : mults) {
+				try {
+					int num = Integer.parseInt(mult);
+					multsNum.add(num);
+				} catch (NumberFormatException e) {}
+			}
+			for (int n : multsNum) {
+				res *= n;
+			}
+		}
+		return res;
+	}
+	
+	@Override
+	public int getGraphAutOrder() {
+		return 1;
 	}
 	
 }

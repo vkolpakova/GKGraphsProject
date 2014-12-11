@@ -8,6 +8,8 @@ import com.google.common.collect.Maps;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Group.Series;
+import Kernel.Utils.ArithmeticUtils;
+import Kernel.Utils.SeriesGroupParser;
 
 /**
  * Реализация серии групп лиева типа вида PSU_n(q). </br>
@@ -78,6 +80,44 @@ public class _ASeries extends Series {
 			}
 		}
 		verticesCondMap.putAll(oneComponentMap);
+	}
+	
+	@Override
+	public int getOutdiagOrder() {
+		Component qp1Comp = this.getComponentByM(2);
+		List<Integer> nSimpleDivisors = ArithmeticUtils.getAllPrimeDevisors(this.n + 1);
+		for (int div : nSimpleDivisors) {
+			if (!qp1Comp.getVertices().contains(new SymbolVertex(Integer.toString(div)))) {
+				// TODO понять, как обрабатывать случай когда n = 4 и q - 1 и подобные
+				return 1;
+			}
+		}
+		return this.n;
+	}
+	
+	@Override
+	public int getFieldAutOrder() {
+		int multIndex = m.indexOf(SeriesGroupParser.MULTIPLICATION);
+		int res = 1;
+		if (multIndex > 0) {
+			List<Integer> multsNum = Lists.newArrayList();
+			String[] mults  = m.split(SeriesGroupParser.MULTIPLICATION);
+			for (String mult : mults) {
+				try {
+					int num = Integer.parseInt(mult);
+					multsNum.add(num);
+				} catch (NumberFormatException e) {}
+			}
+			for (int n : multsNum) {
+				res *= n;
+			}
+		}
+		return (2 * res);
+	}
+	
+	@Override
+	public int getGraphAutOrder() {
+		return 1;
 	}
 	
 }
