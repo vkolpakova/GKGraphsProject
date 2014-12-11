@@ -4,6 +4,8 @@ import Kernel.GraphConstructor.Series.InndiagSeriesGraphConstructor;
 import Kernel.Group.Series;
 import Series.ASeries.ASeries;
 import Series.ASeries.InndiagASeriesGraphConstructor;
+import Series.CSeries.C2.C2Series;
+import Series.CSeries.Constructor.InndiagCSeriesGraphConstructor;
 import Series._ASeries.Inndiag_ASeriesGraphConstructor;
 import Series._ASeries._ASeries;
 
@@ -22,6 +24,8 @@ public class InndiagSeriesGraphConstructorResolver {
 			constr = new InndiagASeriesGraphConstructor(series);
 		} else if (series instanceof _ASeries) {
 			constr = new Inndiag_ASeriesGraphConstructor(series);
+		} else if (series instanceof C2Series) {
+			constr = new InndiagCSeriesGraphConstructor(series);
 		}
 		return constr;
 	}
