@@ -96,7 +96,7 @@ public class _ASeries extends Series {
 	}
 	
 	@Override
-	public int getFieldAutOrder() {
+	public int getIntegerPartFieldAutOrder() {
 		int multIndex = m.indexOf(SeriesGroupParser.MULTIPLICATION);
 		int res = 1;
 		if (multIndex > 0) {

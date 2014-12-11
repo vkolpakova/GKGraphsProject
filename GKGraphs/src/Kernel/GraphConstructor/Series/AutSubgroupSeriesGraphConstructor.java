@@ -3,7 +3,6 @@ package Kernel.GraphConstructor.Series;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import Kernel.Graph.PrimeNumberGraph;
@@ -76,7 +75,7 @@ public abstract class AutSubgroupSeriesGraphConstructor extends AbstractGraphCon
 	 * (т.е. использовать метод constructGKGraph для потсроения единичного графа, а в этом методе возвращать все множество,
 	 * пройдя по некоторому циклу)
 	 */
-	public List<PrimeNumberGraph> constructGKGraphs() { return Lists.newArrayList(); }
+	public abstract List<PrimeNumberGraph> constructGKGraphs();
 	
 	/**
 	 * В методе происходит заполнение поля {@link #centralizationsMap}

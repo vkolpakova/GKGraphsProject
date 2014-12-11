@@ -1,5 +1,7 @@
 package Kernel.GraphConstructor.Series;
 
+import java.util.List;
+
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Group.Series;
 
@@ -7,24 +9,23 @@ public class FieldAutSeriesGraphConstructor extends AutSubgroupSeriesGraphConstr
 
 	public FieldAutSeriesGraphConstructor(Series group) {
 		super(group);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void computeCentralizationsMap() {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void computeCentralizationsMap() { } // реализуется в потомках
 
 	@Override
 	public int getOrder() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.group.getIntegerPartFieldAutOrder();
 	}
 
 	@Override
 	public PrimeNumberGraph constructGKGraph() {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PrimeNumberGraph> constructGKGraphs() {
 		return null;
 	}
 	

@@ -257,7 +257,7 @@ public class Series extends AbstractGroup {
 	 * поскольку только для неё можно построить граф простых чисел. Остальное отбрасывается.
 	 * @return
 	 */
-	public int getFieldAutOrder() { return 1; }
+	public int getIntegerPartFieldAutOrder() { return 1; }
 	
 	/**
 	 * Метод возвращает порядок группы графовых автоморфизмов
