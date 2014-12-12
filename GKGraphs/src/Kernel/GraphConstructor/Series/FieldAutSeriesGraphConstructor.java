@@ -20,9 +20,7 @@ public class FieldAutSeriesGraphConstructor extends AutSubgroupSeriesGraphConstr
 	}
 
 	@Override
-	public PrimeNumberGraph constructGKGraph() {
-		return null;
-	}
+	public void constructGKGraph(int autOrder) {}
 
 	@Override
 	public List<PrimeNumberGraph> constructGKGraphs() {

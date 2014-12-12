@@ -1,6 +1,10 @@
 package Kernel.Polynom;
 
 import java.util.List;
+import java.util.Set;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Класс, реализующий полином над R. </br>
@@ -54,6 +58,18 @@ public class CompoundPolynom {
 				poly.setSimpleDevisors(devisors);
 			}
 		}
+	}
+	
+	/**
+	 * Метод возвращает все простые делители полинома (без повторов)
+	 * @return
+	 */
+	public List<String> getAllPrimeDevisors() {
+		Set<String> resultSet = Sets.newHashSet();
+		for (IndecomposablePolynom mult : this.multipliers) {
+			resultSet.addAll(mult.getSimpleDevisors());
+		}
+		return Lists.newArrayList(resultSet);
 	}
 	
 }

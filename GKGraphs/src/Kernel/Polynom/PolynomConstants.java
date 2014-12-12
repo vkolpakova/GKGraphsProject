@@ -2,6 +2,8 @@ package Kernel.Polynom;
 
 public class PolynomConstants {
 	
+	public static final String Q = "q"; // обозначает множитель вида q^n
+	
 	public static final String QM1 = "q - 1";
 	
 	public static final String QP1 = "q + 1";

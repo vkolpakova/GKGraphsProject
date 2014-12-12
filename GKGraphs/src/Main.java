@@ -6,6 +6,7 @@ import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstru
 import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.Concrete.InndiagConcreteLieTypeGroupGraphConstructor;
 import Kernel.GraphConstructor.Concrete.LieTypeGroupGraphConstructor;
+import Kernel.GraphConstructor.Series.GraphAutSeriesGraphConstructor;
 import Kernel.GraphConstructor.Series.InndiagSeriesGraphConstructor;
 import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.Group.LieTypeGroup;
@@ -15,6 +16,7 @@ import Kernel.Resolvers.Concrete.GraphAutLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.InndiagLieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.LieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.LieTypeGroupTypeResolver;
+import Kernel.Resolvers.Series.GraphSeriesGraphConstructorResolver;
 import Kernel.Resolvers.Series.InndiagSeriesGraphConstructorResolver;
 import Kernel.Resolvers.Series.SeriesGraphConstructorResolver;
 import Kernel.Resolvers.Series.SeriesResolver;
@@ -67,7 +69,7 @@ public class Main {
 	}
 	
 	protected static void processSeries() {
-		String seriesStr = "C_2(2^m),pi(q - 1) = {3}, pi(q + 1) = {u}, pi(q^2 + 1) = {r, s}";
+		String seriesStr = "A_2(2^m),pi(q - 1) = {3}, pi(q + 1) = {u}, pi((q^2 + q + 1) / (3, q - 1)) = {r, s}";
 		// построение графа группы, принадлежащей некоторой серии
 		Series series = SeriesResolver.resolve(seriesStr);
 		SeriesGraphConstructor constr = SeriesGraphConstructorResolver.resolve(series);
@@ -81,6 +83,13 @@ public class Main {
 		for (PrimeNumberGraph inndiagGraph : inndiagGraphs) {
 			MainLogger.info("=====Inndiag=====");
 			inndiagGraph.printConsole();
+		}
+		// построение графов вида Inndiag(P)<g>, g --- графовый автоморфизм P
+		GraphAutSeriesGraphConstructor graphConstr = GraphSeriesGraphConstructorResolver.resolve(series);
+		List<PrimeNumberGraph> graphGraphs = graphConstr.constructGKGraphs();
+		for (PrimeNumberGraph graphGraph : graphGraphs) {
+			MainLogger.info("======GraphAut=====");
+			graphGraph.printConsole();
 		}
 	}
 	 

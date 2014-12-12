@@ -36,6 +36,12 @@ public class PrimeNumberGraph {
 		this.verticesList = verticesList;
 		this.edgesList = edgesList;
 	}
+	
+	public PrimeNumberGraph(PrimeNumberGraph graph) {
+		super();
+		this.verticesList = graph.verticesList;
+		this.edgesList = graph.edgesList;
+	}
 
 	public List<Vertex<?>> getVerticesList() {
 		return verticesList;

@@ -74,8 +74,15 @@ public abstract class AutSubgroupSeriesGraphConstructor extends AbstractGraphCon
 	 * Метод возвращает некоторое множество графов Грюнберга --- Кегеля, если это требуется
 	 * (т.е. использовать метод constructGKGraph для потсроения единичного графа, а в этом методе возвращать все множество,
 	 * пройдя по некоторому циклу)
+	 * TODO переделать - возвращать Map для того, чтобы можно было также выводить порядки соотв. автоморфизмов
 	 */
 	public abstract List<PrimeNumberGraph> constructGKGraphs();
+	
+	/**
+	 * Метод сторит граф Грюнберга --- Кегеля расширения группы некоторым автоморфизмом заданного порядка.
+	 * @param autOrder - порядок автоморфизма
+	 */
+	public abstract void constructGKGraph(int autOrder);
 	
 	/**
 	 * В методе происходит заполнение поля {@link #centralizationsMap}
@@ -92,6 +99,12 @@ public abstract class AutSubgroupSeriesGraphConstructor extends AbstractGraphCon
 	 */
 	public boolean checkNotTrivial() {
 		return (getOrder() != 1);
+	}
+	
+	@Override
+	public PrimeNumberGraph constructGKGraph() {
+		// заглушка
+		return null;
 	}
 	
 }

@@ -108,8 +108,7 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 	}
 	
 	@Override
-	public PrimeNumberGraph constructGKGraph() { // Заглушка
-		return null;
+	public void constructGKGraph(int autOrder) { // Заглушка
 	}
 	
 	@Override
