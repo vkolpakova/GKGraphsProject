@@ -1,6 +1,7 @@
 package Kernel.Resolvers.Series;
 
 import Kernel.GraphConstructor.Series.InndiagSeriesGraphConstructor;
+import Kernel.GraphConstructor.Series.SimpleInndiagSeriesGraphConstructor;
 import Kernel.Group.Series;
 import Series.ASeries.ASeries;
 import Series.ASeries.InndiagASeriesGraphConstructor;
@@ -26,6 +27,8 @@ public class InndiagSeriesGraphConstructorResolver {
 			constr = new Inndiag_ASeriesGraphConstructor(series);
 		} else if (series instanceof C2Series) {
 			constr = new InndiagCSeriesGraphConstructor(series);
+		} else {
+			constr = new SimpleInndiagSeriesGraphConstructor(series);
 		}
 		return constr;
 	}
