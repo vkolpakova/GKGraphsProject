@@ -2,6 +2,7 @@ package Series.ASeries;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -54,6 +55,20 @@ public class ASeries extends Series {
 		this.verticesCondMap = Maps.newHashMap();
 	}
 	
+	public ASeries(ASeries series) {
+		super(series.name, series.n);
+		this.components = series.components;
+		this.graph = series.graph;
+		this.grType = series.grType;
+		this.m = series.m;
+		this.order = series.order;
+		this.p = series.p;
+		this.seriesOrder = series.seriesOrder;
+		this.symbolPrimeDivisorsList = series.symbolPrimeDivisorsList;
+		this.symbolPrimeDivisorsList = series.symbolPrimeDivisorsList;
+		this.verticesCondMap = series.verticesCondMap;
+	}
+	
 	public Map<SymbolVertex, String> getVerticesCondMap() {
 		return verticesCondMap;
 	}
@@ -62,8 +77,29 @@ public class ASeries extends Series {
 		this.verticesCondMap = verticesCondMap;
 	}
 	
+	/**
+	 * Метод возвращет условие на конкретную вершину
+	 * @param v
+	 * @return
+	 */
 	public String getVertexCondition(SymbolVertex v) {
-		return this.verticesCondMap.get(v);
+		//return this.verticesCondMap.get(v);
+		Set<SymbolVertex> verticesSet = this.verticesCondMap.keySet();
+		for (SymbolVertex vertex : verticesSet) {
+			if (vertex.getVertex().equals(vertex.getVertex()))  {
+				return this.verticesCondMap.get(vertex);
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Метод задает конкретной вершине конкретное условие
+	 * @param condition
+	 * @param vertex
+	 */
+	public void setVertexCondition(String condition, SymbolVertex vertex) {
+		this.verticesCondMap.replace(vertex, condition);
 	}
 
 	/**

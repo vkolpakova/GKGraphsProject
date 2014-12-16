@@ -29,4 +29,10 @@ public class SymbolVertex extends Vertex<String> {
 		return true;
 	}
 	
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO проверить
+		return this.getVertex().equals(((SymbolVertex)arg0).getVertex());
+	}
+	
 }

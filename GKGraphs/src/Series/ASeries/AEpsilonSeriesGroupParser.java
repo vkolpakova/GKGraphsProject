@@ -26,6 +26,7 @@ public class AEpsilonSeriesGroupParser extends SeriesGroupParser {
 		public static final String CONDITIONS = "conditions";
 		public static final String V_AND_C_SEPARATOR = ":"; // символ-разделитель между вершиной и её ограничением
 		public static final String V_SEPARATOR = ";"; // символ-разделитель между различными вершинами
+		public static final String ALL_CONDITIONS = "*"; // символ того, что для вершины выполняются все уловия. Используется для перебора
 		
 		protected String inputStr;
 		

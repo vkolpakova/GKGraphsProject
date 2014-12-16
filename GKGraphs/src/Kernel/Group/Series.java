@@ -2,8 +2,10 @@ package Kernel.Group;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Graph.Vertex;
@@ -235,13 +237,16 @@ public class Series extends AbstractGroup {
 	
 	/**
 	 * Метод возвращает коллекицю всех вершин
+	 * TODO избавиться от дублирования
 	 * @return
 	 */
 	public List<Vertex<?>> getAllVerticesList() {
-		List<Vertex<?>> result = Lists.newArrayList();
+		// set необходимо, чтобы избежать повторений вершин (т.к. в различных компонентах м.б. одинаковые вершины)
+		Set<Vertex<?>> resultSet = Sets.newHashSet();
 		for (Component component : components) {
-			result.addAll(component.getVertices());
+			resultSet.addAll(component.getVertices());
 		}
+		List<Vertex<?>> result = Lists.newArrayList(resultSet);
 		return result;
 	}
 	

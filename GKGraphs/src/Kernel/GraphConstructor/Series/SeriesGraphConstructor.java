@@ -1,8 +1,10 @@
 package Kernel.GraphConstructor.Series;
 
 import java.util.List;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
@@ -90,12 +92,16 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 	
 	private final List<Edge> getFullEdgesList() {
 		List<Edge> resultList = Lists.newArrayList();
+		Set<Edge> resultSet = Sets.newHashSet();
 		List<Vertex<?>> allVertices = this.series.getAllVerticesList();
 		for (int i=0; i < allVertices.size(); i++) {
 			for (int j=i+1; j < allVertices.size(); j++) {
 				Edge newEdge = new Edge(new SymbolVertex((String) allVertices.get(i).getVertex()), 
 						new SymbolVertex((String) allVertices.get(j).getVertex()));
-				resultList.add(newEdge);
+				if (!resultList.contains(newEdge)) {
+					// проверку приходится делать, поскольку в соотв. set-е все равно появляются дубли
+					resultList.add(newEdge);
+				}
 			}
 		}
 		return resultList;

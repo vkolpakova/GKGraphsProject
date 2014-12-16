@@ -12,7 +12,7 @@ public abstract class Vertex<E> {
 	/**
 	 * Значение
 	 */
-	private E v;
+	protected E v;
 	
 	public Vertex(E v) {
 		this.v = v;

@@ -8,6 +8,7 @@ import Kernel.Graph.Edge;
 import Kernel.Graph.SymbolVertex;
 import Kernel.GraphConstructor.Series.SeriesGraphConstructor;
 import Kernel.GraphConstructor.Series.SeriesGraphConstructor.WithTwoNonadjanceVerticesSeriesСriterion;
+import Kernel.Utils.MainLogger;
 import Series.ASeries.ASeries;
 
 public class AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjanceVerticesSeriesСriterion {
@@ -48,8 +49,9 @@ public class AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjanc
 			
 		};
 		if (!((notTwoOrPPredicate.apply(a)) || (notTwoOrPPredicate.apply(b)))) {
-			return false;
+			return false;	
 		}
+		MainLogger.info("*AWithTwoCriterion* checkEdge is TRUE edge {"+a.getVertex()+","+b.getVertex()+"}");
 		return true;
 	}
 	

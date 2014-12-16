@@ -24,12 +24,43 @@ public class ASeriesGenerator {
 		//Map<SymbolVertex, String> vertexCondMap = Maps.newHashMap();
 		Component oneComponent = series.getComponentByM(1);
 		List<SymbolVertex> oneCompVertices = oneComponent.getVertices();
-		if (!oneComponent.getVertices().contains(new SymbolVertex(SymbolVertex.THREE))) {
-			for (SymbolVertex vertex : oneCompVertices) {
-				// TODO сделать генерацию условий. Учесть, что надо будет отсеивать дубликаты графов
+		for (SymbolVertex vertex : oneCompVertices) {
+			String vertexCondition = series.getVertexCondition(vertex);
+			if (vertexCondition.equals(AEpsilonSeriesGroupParser.ConditionsParser.ALL_CONDITIONS)) {
+				if (!vertex.getVertex().equals(SymbolVertex.THREE)) {
+					result.addAll(generateAllASeriesForNotThreeVertex(vertex, series));
+				} else {
+					result.addAll(generateAllASeriesForThreeVertex(vertex, series));
+				}
 			}
 		}
 		return result;
+	}
+	
+	protected static List<ASeries> generateASeriesByConditions(SymbolVertex vertex, ASeries series, List<String> allConditionsList) {
+		List<ASeries> result = Lists.newArrayListWithCapacity(allConditionsList.size());
+		for (String condition : allConditionsList) {
+			ASeries generatedSeries = new ASeries(series);
+			generatedSeries.setVertexCondition(condition, vertex);
+		}
+		return result;
+	}
+	
+	/**
+	 * Метод строит коллекицю групп, удовлетворяющих одному из всех возможных условий на вершину, не равную 3
+	 * @param vert
+	 * @return
+	 */
+	protected static List<ASeries> generateAllASeriesForNotThreeVertex(SymbolVertex vert, ASeries origSeries) {
+		return generateASeriesByConditions(vert, origSeries, ASeries.ALL_R_CONDITIONS);
+	}
+	
+	/**
+	 * Метод строит коллекцию групп, удовлетворяющих одному из возможных услоий на вершину 3
+	 * @return
+	 */
+	protected static List<ASeries> generateAllASeriesForThreeVertex(SymbolVertex vert, ASeries origSeries) {
+		return generateASeriesByConditions(vert, origSeries, ASeries.ALL_3_CONDITIONS);
 	}
 	
 	public static ASeries generate(ASeries series, Map<SymbolVertex, String> map) {

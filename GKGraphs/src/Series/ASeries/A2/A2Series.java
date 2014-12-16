@@ -1,6 +1,7 @@
 package Series.ASeries.A2;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -9,6 +10,7 @@ import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Polynom.CompoundPolynom;
 import Kernel.Polynom.IndecomposablePolynom;
 import Kernel.Polynom.PolynomConstants;
+import Kernel.Utils.MainLogger;
 import Series.ASeries.ASeries;
 
 /**
@@ -62,6 +64,23 @@ public class A2Series extends ASeries {
 			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.Q2PQP1, sdList);
 		} else {
 			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.Q2PQP1, this.getSimpleDivisorsOfConcreteComponent(3));
+		}
+	}
+	
+	@Override
+	public void constructVerticesCondMap(Map<SymbolVertex, String> oneComponentMap) {
+		//  часть условий, которые и так очевидны, имеет смысла заполнять по умолчанию
+		if (oneComponentMap.isEmpty()) {
+			MainLogger.info("Add defolt conditions");
+			Component oneComp = this.getComponentByM(1);
+			for (SymbolVertex ver : oneComp.getVertices()) {
+				if (!ver.getVertex().equals(SymbolVertex.THREE)) {
+					// выполнение условия очевидно
+					this.verticesCondMap.put(ver, ASeries.CONDITIONR_1);
+				}
+			}
+		} else {
+			super.constructVerticesCondMap(oneComponentMap);
 		}
 	}
 	
