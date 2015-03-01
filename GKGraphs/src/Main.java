@@ -26,13 +26,16 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		//processConcreteLieTypeGroup();
-		processSeries();
+		processConcreteLieTypeGroup();
+		//processSeries();
 		System.out.println("End");
 	}
 	
+	/**
+	 * Метод производит построение графов для конкретной группы Лиева типа
+	 */
 	protected static void processConcreteLieTypeGroup() {
-		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("D_4(5)");
+		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve("A_5(3)");
 		// построение графа простой группы P Лиева типа
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(gr);
 		PrimeNumberGraph graph = constr.constructGKGraph();
@@ -68,6 +71,9 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Метод производит построение графов для некоторой серии групп Лиева типа
+	 */
 	protected static void processSeries() {
 		String seriesStr = "A_2(p),pi(q - 1) = {2, r, s}, pi(q + 1) = {2, 3}, pi((q^2 + q + 1) / (3, q - 1)) = {u}";
 		// построение графа группы, принадлежащей некоторой серии
