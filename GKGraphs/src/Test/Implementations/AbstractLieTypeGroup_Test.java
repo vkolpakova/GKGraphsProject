@@ -42,6 +42,19 @@ public class AbstractLieTypeGroup_Test {
 	}
 	
 	/**
+	 * Метод осуществляет проверку, использующуюся в тесте: эквивалентен ли полученный граф тому, что проверяется
+	 * @param groupName
+	 * @param verticesStr
+	 * @param edgesStr
+	 * @return
+	 */
+	protected boolean checkEquality(String groupName, String verticesStr, String edgesStr) {
+		determineGroup(groupName);
+		PrimeNumberGraph gr = getParsedPrimeNumberGraph(verticesStr, edgesStr);
+		return gr.equals(graph);
+	}
+	
+	/**
 	 * Метод возвращает граф простых чисел по заданному строковому представлению множества вершин и множества ребер
 	 * @param verticesStr 	строка вида "a_1,a_2,...,a_n"
 	 * @param edgesStr 		строка вида "{a_1,b_1},{a_2,b_2},...,{a_n,b_n}"
