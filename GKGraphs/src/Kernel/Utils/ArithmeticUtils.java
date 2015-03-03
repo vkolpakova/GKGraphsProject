@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.math.LongMath;
+
 /**
  * Класс утилитарных арифметических методов.
  * 
@@ -116,7 +118,7 @@ public class ArithmeticUtils {
 	 */
 	public static int e(int p, int q) {
 		for (int i=1; i < MAX_E_CICLE_ITERRATOR; i++) {
-			if ((Math.pow(q, i) - 1) % p == 0) {
+			if ((LongMath.pow(q, i) - 1) % p == 0) {
 				return i;
 			}
 		}
