@@ -1,4 +1,4 @@
-package Test.Implementations;
+package Test.Implementations.GroupGraphConstructor;
 
 import java.util.Arrays;
 import java.util.List;
