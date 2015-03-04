@@ -20,7 +20,7 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG1() {
-		super.determineGroup(NAME_1);
+		super.determineGroupWithGraph(NAME_1);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(2), new SimpleVertex(3)));
@@ -30,7 +30,7 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG2() {
-		super.determineGroup(NAME_2);
+		super.determineGroupWithGraph(NAME_2);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(2), new SimpleVertex(3)));
@@ -41,7 +41,7 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG3() {
-		super.determineGroup(NAME_3);
+		super.determineGroupWithGraph(NAME_3);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(3), new SimpleVertex(11)));
@@ -58,7 +58,7 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testA_4_7() {
-		super.determineGroup(A_4_7);
+		super.determineGroupWithGraph(A_4_7);
 		PrimeNumberGraph gr = super.getParsedPrimeNumberGraph(V_A_4_7, E_A_4_7);
 		Assert.assertTrue(gr.equals(graph));
 	}

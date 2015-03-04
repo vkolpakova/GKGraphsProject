@@ -18,7 +18,7 @@ public class RiLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG1() {
-		determineGroup(NAME_1);
+		determineGroupWithGraph(NAME_1);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(2), new SimpleVertex(3)));

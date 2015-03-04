@@ -25,7 +25,7 @@ public class AbstractLieTypeGroup_Test {
 	protected LieTypeGroup group;
 	protected PrimeNumberGraph graph;
 	
-	protected void determineGroup(String name) {
+	protected void determineGroupWithGraph(String name) {
 		this.group = LieTypeGroupTypeResolver.resolve(name);
 		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(group);
 		this.graph = constr.constructGKGraph();
@@ -49,7 +49,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @return
 	 */
 	protected boolean checkEquality(String groupName, String verticesStr, String edgesStr) {
-		determineGroup(groupName);
+		determineGroupWithGraph(groupName);
 		PrimeNumberGraph gr = getParsedPrimeNumberGraph(verticesStr, edgesStr);
 		return gr.equals(graph);
 	}

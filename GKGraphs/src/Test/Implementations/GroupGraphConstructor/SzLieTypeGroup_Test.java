@@ -18,7 +18,7 @@ public class SzLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG1() {
-		determineGroup(NAME_1);
+		determineGroupWithGraph(NAME_1);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		PrimeNumberGraph gr = new PrimeNumberGraph(vList, eList);
@@ -27,7 +27,7 @@ public class SzLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG2() {
-		determineGroup(NAME_2);
+		determineGroupWithGraph(NAME_2);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		PrimeNumberGraph gr = new PrimeNumberGraph(vList, eList);

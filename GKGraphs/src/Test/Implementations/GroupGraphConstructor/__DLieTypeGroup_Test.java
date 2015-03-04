@@ -20,7 +20,7 @@ public class __DLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG1() {
-		super.determineGroup(NAME_1);
+		super.determineGroupWithGraph(NAME_1);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(2), new SimpleVertex(3)));
@@ -32,7 +32,7 @@ public class __DLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG2() {
-		super.determineGroup(NAME_2);
+		super.determineGroupWithGraph(NAME_2);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(2), new SimpleVertex(3)));
@@ -50,7 +50,7 @@ public class __DLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testG3() {
-		super.determineGroup(NAME_3);
+		super.determineGroupWithGraph(NAME_3);
 		List<Edge> eList = Lists.newArrayList();
 		List<Vertex<?>> vList = computeVList();
 		eList.add(new Edge(new SimpleVertex(2), new SimpleVertex(3)));
