@@ -51,7 +51,11 @@ public class AbstractLieTypeGroup_Test {
 	protected boolean checkEquality(String groupName, String verticesStr, String edgesStr) {
 		determineGroupWithGraph(groupName);
 		PrimeNumberGraph gr = getParsedPrimeNumberGraph(verticesStr, edgesStr);
-		return gr.equals(graph);
+		boolean result = gr.equals(graph);
+		if (!result) {
+			printDiff(gr, graph);
+		}
+		return result;
 	}
 	
 	/**
@@ -111,6 +115,32 @@ public class AbstractLieTypeGroup_Test {
 			result.remove(EMPTY_STRING);
 		}
 		return result;
+	}
+	
+	/**
+	 * Метод выводит результаты сравнения двух графов в случае, если они отличаются
+	 * @param origGraph --- проверяемый граф
+	 * @param compGraph --- dsxbcktyysq uhfa
+	 */
+	private void printDiff(PrimeNumberGraph origGraph, PrimeNumberGraph compGraph) {
+		List<Vertex<?>> oVertices = origGraph.getVerticesList();
+		List<Vertex<?>> cVertices = compGraph.getVerticesList();
+		if (!oVertices.equals(cVertices)) {
+			MainLogger.info("ERROR : vertices sets are not equal!");
+			return;
+		}
+		List<Edge> oEdges = origGraph.getEdgesList();
+		List<Edge> cEdges = compGraph.getEdgesList();
+		for (Edge e : oEdges) {
+			if (!cEdges.contains(e)) {
+				MainLogger.info("В оригинальном графе лишнее ребро "  + "{" + e.getVertexA().getVertex() + "," + e.getVertexB().getVertex() + "}");
+			}
+		}
+		for (Edge e : cEdges) {
+			if (!oEdges.contains(e)) {
+				MainLogger.info("В оригинальном графе отсутствует ребро "  + "{" + e.getVertexA().getVertex() + "," + e.getVertexB().getVertex() + "}");
+			}
+		}
 	}
 	
 	private static final String TEST_VERTICES_STRING = "2,107,479,619";

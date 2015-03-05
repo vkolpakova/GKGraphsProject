@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.GraphConstructor.AbstractGraphConstructor;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Resolvers.Concrete.LieTypeGroupGraphConstructorResolver;
 
 /**
  * Абстрактный класс конструктора графа Грюнберга --- Кегеля подгруппы автоморфизмов для конкретной группы лиева типа
@@ -39,6 +40,10 @@ public abstract class AutSubgroupConcreteLieTypeGroupGraphConstructor<G extends 
 	
 	public AutSubgroupConcreteLieTypeGroupGraphConstructor(G group) {
 		super(group);
+		if (group.getGraph() == null) {
+			PrimeNumberGraph gr = LieTypeGroupGraphConstructorResolver.resolve(group).constructGKGraph();
+			group.setGraph(gr);
+		}
 		this.groupGraph = group.getGraph();
 		this.centralizationsMap = new HashMap<Integer, List<LieTypeGroup>>();
 		this.graphsMap= new HashMap<Integer, List<PrimeNumberGraph>>();
