@@ -7,6 +7,8 @@ import Test.Implementations.ATypableConcrete;
 
 public class InndiagALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test implements ATypableConcrete {
 	
+	// =================================6-PRIMES=GROUPS=================================
+	
 	@Test
 	public void testA_4_7() {
 		Assert.assertTrue(super.checkEquality(A_4_7, V_A_4_7, I_E_A_4_7));
@@ -14,7 +16,6 @@ public class InndiagALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void testA_5_3() {
-		// FIXME неудача: В оригинальном графе отсутствует ребро {3,5}
 		Assert.assertTrue(super.checkEquality(A_5_3, V_A_5_3, I_E_A_5_3));
 	}
 	
@@ -61,7 +62,6 @@ public class InndiagALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void testA_2_16() {
-		// FIXME неуспех - В оригинальном графе лишнее ребро {2,3}, {2,17}
 		Assert.assertTrue(super.checkEquality(A_2_16, V_A_2_16, I_E_A_2_16));
 	}
 	
@@ -77,13 +77,11 @@ public class InndiagALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void testA_2_25() {
-		// FIXME неудача (лишние ребра {3,5},{5,13})
 		Assert.assertTrue(super.checkEquality(A_2_25, V_A_2_25, I_E_A_2_25));
 	}
 	
 	@Test
 	public void testA_2_49() {
-		// FIXME неудача (лишние ребра {3,7},{5,7})
 		Assert.assertTrue(super.checkEquality(A_2_49, V_A_2_49, I_E_A_2_49));
 	}
 	
@@ -94,7 +92,6 @@ public class InndiagALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void testA_3_9() {
-		// FIXME неуспех - В оригинальном графе лишнее ребро {3,41}
 		Assert.assertTrue(super.checkEquality(A_3_9, V_A_3_9, I_E_A_3_9));
 	}
 	

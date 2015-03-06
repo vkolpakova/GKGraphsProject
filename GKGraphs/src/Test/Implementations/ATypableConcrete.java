@@ -9,8 +9,8 @@ public interface ATypableConcrete {
 	
 	public static final String A_5_3 			= "A_5(3)";
 	public static final String V_A_5_3 			= "2,3,5,7,11,13";
-	public static final String E_A_5_3 			= "{2,3},{2,5},{2,13},{3,13},{7,13}";
-	public static final String I_E_A_5_3 		= "{2,3},{2,5},{2,7},{2,11},{2,13},{3,13},{7,13}";
+	public static final String E_A_5_3 			= "{2,3},{2,5},{2,7},{2,13},{3,5},{3,13},{7,13}";
+	public static final String I_E_A_5_3 		= "{2,3},{2,5},{2,7},{2,11},{2,13},{3,5},{3,13},{7,13}";
 	
 	public static final String A_6_2 			= "A_6(2)";
 	public static final String V_A_6_2 			= "2,3,5,7,31,127";
@@ -54,8 +54,8 @@ public interface ATypableConcrete {
 	
 	public static final String A_2_16 			= "A_2(16)";
 	public static final String V_A_2_16 		= "2,3,5,7,13,17";
-	public static final String E_A_2_16 		= "{2,3},{2,5},{3,5},{5,17},{7,13}";
-	public static final String I_E_A_2_16 		= "{2,3},{2,5},{2,17},{3,5},{3,7},{3,13},{3,17},{5,17},{7,13}";
+	public static final String E_A_2_16 		= "{2,5},{3,5},{5,17},{7,13}";
+	public static final String I_E_A_2_16 		= "{2,5},{3,5},{3,7},{3,13},{3,17},{5,17},{7,13}";
 	
 	public static final String A_2_128 			= "A_2(128)";
 	public static final String V_A_2_128 		= "2,3,7,43,127,337";
@@ -69,13 +69,13 @@ public interface ATypableConcrete {
 	
 	public static final String A_2_25 			= "A_2(25)";
 	public static final String V_A_2_25 		= "2,3,5,7,13,31";
-	public static final String E_A_2_25 		= "{2,3},{2,5},{2,13},{3,5},{5,13},{7,31}";
-	public static final String I_E_A_2_25 		= "{2,3},{2,5},{2,13},{3,5},{3,7},{3,13},{3,31},{5,13},{7,31}";
+	public static final String E_A_2_25 		= "{2,3},{2,5},{2,13},{7,31}";
+	public static final String I_E_A_2_25 		= "{2,3},{2,5},{2,13},{3,7},{3,13},{3,31},{7,31}";
 	
 	public static final String A_2_49 			= "A_2(49)";
 	public static final String V_A_2_49 		= "2,3,5,7,19,43";
-	public static final String E_A_2_49 		= "{2,3},{2,5},{2,7},{3,7},{5,7},{19,43}";
-	public static final String I_E_A_2_49 		= "{2,3},{2,5},{2,7},{3,5},{3,7},{3,19},{3,43},{5,7},{19,43}";
+	public static final String E_A_2_49 		= "{2,3},{2,5},{2,7},{19,43}";
+	public static final String I_E_A_2_49 		= "{2,3},{2,5},{2,7},{3,5},{3,19},{3,43},{19,43}";
 	
 	public static final String A_3_8 			= "A_3(8)";
 	public static final String V_A_3_8 			= "2,3,5,7,13,73";
@@ -85,7 +85,7 @@ public interface ATypableConcrete {
 	public static final String A_3_9 			= "A_3(9)";
 	public static final String V_A_3_9 			= "2,3,5,7,13,41";
 	public static final String E_A_3_9 			= "{2,3},{2,5},{2,7},{2,13},{3,5},{7,13},{5,41}";
-	public static final String I_E_A_3_9 		= "{2,3},{2,5},{2,7},{2,13},{2,41},{3,5},{3,41},{7,13},{5,41}";
+	public static final String I_E_A_3_9 		= "{2,3},{2,5},{2,7},{2,13},{2,41},{3,5},{7,13},{5,41}";
 	
 	public static final String A_3_17 			= "A_3(17)";
 	public static final String V_A_3_17 		= "2,3,5,17,29,307";

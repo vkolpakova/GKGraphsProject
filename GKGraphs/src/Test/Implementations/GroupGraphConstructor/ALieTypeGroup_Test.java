@@ -60,9 +60,10 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test implements ATy
 		Assert.assertTrue(gr.equals(graph));
 	}
 	
+	// =================================6-PRIMES=GROUPS=================================
+	
 	@Test
 	public void testA_5_3() {
-		// FIXME в ориг. графе отсутствует ребра {2,7}, {3,5}
 		Assert.assertTrue(super.checkEquality(A_5_3, V_A_5_3, E_A_5_3));
 	}
 	
@@ -109,7 +110,6 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test implements ATy
 	
 	@Test
 	public void testA_2_16() {
-		// FIXME 1 лишнее ребро {2,3}
 		Assert.assertTrue(super.checkEquality(A_2_16, V_A_2_16, E_A_2_16));
 	}
 	
@@ -125,13 +125,11 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test implements ATy
 	
 	@Test
 	public void testA_2_25() {
-		// FIXME лишние ребра {3,5},{5,13}
 		Assert.assertTrue(super.checkEquality(A_2_25, V_A_2_25, E_A_2_25));
 	}
 	
 	@Test
 	public void testA_2_49() {
-		// FIXME лишние ребра {3,7},{5,7}
 		Assert.assertTrue(super.checkEquality(A_2_49, V_A_2_49, E_A_2_49));
 	}
 	
