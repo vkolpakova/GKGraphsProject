@@ -39,7 +39,8 @@ public class InndiagUtils {
 					mult *= Math.pow(group.getQ(), num) - Math.pow(-1, num);
 				}
 			}
-			mult /= (epsilon.equals(PLUS)) ? (group.getQ() - 1) : (group.getQ() + 1);
+			int q = group.getQ();
+			mult /= (epsilon.equals(PLUS)) ? (q - 1) : (q + 1);
 			primeDivSet.addAll(ArithmeticUtils.getAllPrimeDevisors(mult));
 			List<Integer> primeDivList = new ArrayList<Integer>(primeDivSet);
 			result.add(primeDivList);

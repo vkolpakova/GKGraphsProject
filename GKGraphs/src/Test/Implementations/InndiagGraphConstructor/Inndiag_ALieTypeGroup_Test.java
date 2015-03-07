@@ -19,13 +19,11 @@ public class Inndiag_ALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test
 	
 	@Test
 	public void test__A_4_9() {
-		// FIXME Error В оригинальном графе отсутствует ребро {5,1181}
 		Assert.assertTrue(super.checkEquality(_A_4_9, V__A_4_9, I_E__A_4_9));
 	}
 	
 	@Test
 	public void test__A_5_3() {
-		// FIXME Error В оригинальном графе лишнее ребро {3,13}
 		Assert.assertTrue(super.checkEquality(_A_5_3, V__A_5_3, I_E__A_5_3));
 	}
 	
@@ -61,7 +59,6 @@ public class Inndiag_ALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test
 	
 	@Test
 	public void test__A_2_343() {
-		// FIXME Error В оригинальном графе лишнее ребро {3,7}
 		Assert.assertTrue(super.checkEquality(_A_2_343, V__A_2_343, I_E__A_2_343));
 	}
 	

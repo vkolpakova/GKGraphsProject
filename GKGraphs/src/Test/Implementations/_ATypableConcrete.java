@@ -18,13 +18,13 @@ public interface _ATypableConcrete {
 	public static final String _A_4_9 		= "_A_4(9)";
 	public static final String V__A_4_9 	= "2,3,5,41,73,1181";
 	public static final String E__A_4_9 	= "{2,3},{2,5},{2,41},{2,73},{3,5},{3,73},{5,73}";
-	public static final String I_E__A_4_9 	= "{2,3},{2,5},{2,41},{2,73},{3,5},{3,73},{5,41},{5,73}";
+	public static final String I_E__A_4_9 	= "{2,3},{2,5},{2,41},{2,73},{3,5},{3,73},{5,41},{5,73},{5,1181}";
 	
 	// U_6(3)
 	public static final String _A_5_3 		= "_A_5(3)";
 	public static final String V__A_5_3 	= "2,3,5,7,13,61";
 	public static final String E__A_5_3 	= "{2,3},{2,5},{2,7},{2,61},{3,5},{3,7},{7,13}";
-	public static final String I_E__A_5_3 	= "{2,3},{2,5},{2,7},{2,13},{2,61},{3,5},{3,7},{3,13},{7,13}";
+	public static final String I_E__A_5_3 	= "{2,3},{2,5},{2,7},{2,13},{2,61},{3,5},{3,7},{7,13}";
 	
 	// U_7(2)
 	public static final String _A_6_2 		= "_A_6(2)";
@@ -66,7 +66,7 @@ public interface _ATypableConcrete {
 	public static final String _A_2_343 	= "_A_2(343)";
 	public static final String V__A_2_343 	= "2,3,7,19,43,117307";
 	public static final String E__A_2_343 	= "{2,3},{2,7},{2,19},{2,43},{3,19},{3,43},{7,43},{19,43}";
-	public static final String I_E__A_2_343 = "{2,3},{2,7},{2,19},{2,43},{3,7},{3,19},{3,43},{7,43},{19,43}";
+	public static final String I_E__A_2_343 = "{2,3},{2,7},{2,19},{2,43},{3,19},{3,43},{7,43},{19,43}";
 	
 	// U_3(289)
 	public static final String _A_2_289 	= "_A_2(289)";
