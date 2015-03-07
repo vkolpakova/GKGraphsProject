@@ -11,8 +11,9 @@ import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.Graph.SimpleVertex;
 import Kernel.Graph.Vertex;
+import Test.Implementations.__DTypableConcrete;
 
-public class __DLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
+public class __DLieTypeGroup_Test extends AbstractLieTypeGroup_Test implements __DTypableConcrete {
 	
 	private static final String NAME_1 = "__D_4(2)";
 	private static final String NAME_2 = "__D_4(4)";
@@ -64,6 +65,16 @@ public class __DLieTypeGroup_Test extends AbstractLieTypeGroup_Test {
 		eList.add(new Edge(new SimpleVertex(5), new SimpleVertex(31)));
 		PrimeNumberGraph gr = new PrimeNumberGraph(vList, eList);
 		Assert.assertTrue(gr.equals(graph));
+	}
+	
+	@Test
+	public void test__D_4_4() {
+		Assert.assertTrue(super.checkEquality(__D_4_4, V___D_4_4, E___D_4_4));
+	}
+	
+	@Test
+	public void test__D_4_5() {
+		Assert.assertTrue(super.checkEquality(__D_4_5, V___D_4_5, E___D_4_5));
 	}
 	
 }
