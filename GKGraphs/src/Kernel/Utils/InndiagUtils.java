@@ -59,7 +59,9 @@ public class InndiagUtils {
 		Set<Map<Integer, List<Integer>>> allPartitionsComp = ArithmeticUtils.getAllPartitionsForAllCombinations(n);
 		for (Map<Integer, List<Integer>> map: allPartitionsComp) {
 			int m = map.get(0).size();
-			if ((((m % 2) == 0) && (epsilon.equals(PLUS))) || (((m % 2) != 0) && (epsilon.equals(MINUS)))) {
+			int l = map.get(1).size();
+			if ((((m % 2) == 0) && (l != 0) && (n != 0) && (epsilon.equals(PLUS))) ||
+					(((m % 2) != 0) && (m != 0) && (l != 0) && (epsilon.equals(MINUS)))) {
 				List<Integer> c = computeCurrentTorOrderPartitionEpsilonD(group, map);
 				result.add(c);
 			} 

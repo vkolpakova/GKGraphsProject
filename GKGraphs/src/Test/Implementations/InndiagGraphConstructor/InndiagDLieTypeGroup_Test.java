@@ -14,13 +14,11 @@ public class InndiagDLieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void testD_4_5() {
-		// FIXME Error В оригинальном графе отсутствует ребро {2,7}
 		Assert.assertTrue(super.checkEquality(D_4_5, V_D_4_5, I_E_D_4_5));
 	}
 	
 	@Test
 	public void testD_4_7() {
-		// FIXME Error В оригинальном графе отсутствует ребро {2,43}
 		Assert.assertTrue(super.checkEquality(D_4_7, V_D_4_7, I_E_D_4_7));
 	}
 	
