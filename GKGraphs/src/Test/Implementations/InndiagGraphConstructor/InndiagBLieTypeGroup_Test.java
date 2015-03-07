@@ -14,13 +14,11 @@ public class InndiagBLieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void test_C_3_5() {
-		// FIXME Error В оригинальном графе лишнее ребро {3,31}
 		Assert.assertTrue(super.checkEquality(C_3_5, V_C_3_5, I_E_C_3_5));
 	}
 	
 	@Test
 	public void test_C_3_7() {
-		// FIXME Error В оригинальном графе лишнее ребро {3,43}
 		Assert.assertTrue(super.checkEquality(C_3_7, V_C_3_7, I_E_C_3_7));
 	}
 	
@@ -31,7 +29,6 @@ public class InndiagBLieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	
 	@Test
 	public void test_C_2_32() {
-		// FIXME Error В оригинальном графе лишнее ребро {2,5}, {3,5}
 		Assert.assertTrue(super.checkEquality(C_2_32, V_C_2_32, I_E_C_2_32));
 	}
 	
