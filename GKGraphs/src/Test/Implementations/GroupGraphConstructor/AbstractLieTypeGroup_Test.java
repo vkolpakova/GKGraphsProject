@@ -76,7 +76,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @param verticesStr
 	 * @return
 	 */
-	private List<Vertex<?>> getParsedVerticesList(String verticesStr) {
+	protected List<Vertex<?>> getParsedVerticesList(String verticesStr) {
 		List<Vertex<?>> result = Lists.newArrayList();
 		String[] verticesStrArray = verticesStr.split(",");
 		for (String vertexStr : verticesStrArray) {
@@ -91,7 +91,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @param edgesStr
 	 * @return
 	 */
-	private List<Edge> getParsedEdjesList(String edgesStr) {
+	protected List<Edge> getParsedEdjesList(String edgesStr) {
 		List<Edge> result = Lists.newArrayList();
 		List<String> edgesListStr = parseEdgesList(edgesStr);
 		for (String edgeStr : edgesListStr) {
@@ -107,7 +107,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @param edgesString
 	 * @return коллекция строк вида "вершина_1,вершина_2"
 	 */
-	private List<String> parseEdgesList(String edgesString) {
+	protected List<String> parseEdgesList(String edgesString) {
 		List<String> result = Lists.newArrayList();
 		String pattern = "\\{|\\},\\{|\\}";
 		result.addAll(Arrays.asList(edgesString.split(pattern)));
@@ -120,7 +120,7 @@ public class AbstractLieTypeGroup_Test {
 	/**
 	 * Метод выводит результаты сравнения двух графов в случае, если они отличаются
 	 * @param origGraph --- проверяемый граф
-	 * @param compGraph --- dsxbcktyysq uhfa
+	 * @param compGraph --- вычисленный граф
 	 */
 	private void printDiff(PrimeNumberGraph origGraph, PrimeNumberGraph compGraph) {
 		List<Vertex<?>> oVertices = origGraph.getVerticesList();
