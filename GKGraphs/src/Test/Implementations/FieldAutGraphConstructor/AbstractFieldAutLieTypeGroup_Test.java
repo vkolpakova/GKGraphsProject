@@ -29,14 +29,13 @@ public class AbstractFieldAutLieTypeGroup_Test extends AbstractLieTypeGroup_Test
 	protected void determineGroupWithGraph(String name) {
 		this.group = LieTypeGroupTypeResolver.resolve(name);
 		FieldAutConcreteLieTypeGroupGraphConstructor<?> constructor = FieldAutLieTypeGroupGraphConstructorResolver.resolve(group);
-		constructor.constructGKGraphs();
-		this.graphsMap = constructor.getGraphsMap();
+		this.graphsMap = constructor.constructGraphs();
 		for (List<PrimeNumberGraph> grList : this.graphsMap.values()) {
 			for (PrimeNumberGraph gr : grList) {
 				gr.printConsole();
 			}
 		}
-		if (graphsMap.isEmpty()) {
+		if (graphsMap.size() == 1 && graphsMap.containsKey(1) && graphsMap.get(1).get(0).equals(group.getGraph())) {
 			MainLogger.info("Полевые автоморфизмы отсутствуют.");
 		}
 	}
@@ -51,7 +50,11 @@ public class AbstractFieldAutLieTypeGroup_Test extends AbstractLieTypeGroup_Test
 	protected boolean checkEqualities(String groupName, String verticesStr, String ... edgesStrs) {
 		determineGroupWithGraph(groupName);
 		Map<Integer, List<PrimeNumberGraph>> parsedGraphsMap = getParsedPrimeNumberGraphs(verticesStr, edgesStrs);
-		return checkEqualsOfGraphsMap(this.graphsMap, parsedGraphsMap);
+		if (parsedGraphsMap.keySet().size() == 1 && parsedGraphsMap.keySet().contains(1)) {
+			return parsedGraphsMap.get(1).get(0).equals(group.getGraph());
+		} else {
+			return checkEqualsOfGraphsMap(this.graphsMap, parsedGraphsMap);
+		}
 	}
 	
 	/**
@@ -152,12 +155,14 @@ public class AbstractFieldAutLieTypeGroup_Test extends AbstractLieTypeGroup_Test
 	 * @return
 	 */
 	private int getParsedFieldAutOrder(String input) {
-		return Integer.parseInt(input.substring(0, input.indexOf(FIELD_AUT_EDJES_DELIM)));
+		int index = input.indexOf(FIELD_AUT_EDJES_DELIM);
+		return index > 0 ? Integer.parseInt(input.substring(0, index)) : 1;
 	}
 	
 	@Override
 	protected List<String> parseEdgesList(String input) {
-		String edgesString = input.substring(input.indexOf(FIELD_AUT_EDJES_DELIM) + 1);
+		int index = input.indexOf(FIELD_AUT_EDJES_DELIM);
+		String edgesString = index > 0 ? input.substring(index + 1) : input;
 		return super.parseEdgesList(edgesString);
 	}
 	
