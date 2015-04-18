@@ -5,6 +5,7 @@ import java.util.List;
 
 import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Utils.ArithmeticUtils;
 
 public class RiLieTypeGroupFieldAutConcreteGraphConstructor extends FieldAutConcreteLieTypeGroupGraphConstructor<RiLieTypeGroup> {
@@ -18,7 +19,7 @@ public class RiLieTypeGroupFieldAutConcreteGraphConstructor extends FieldAutConc
 		List<LieTypeGroup> result = new ArrayList<LieTypeGroup>();
 		int m = ArithmeticUtils.getPow(this.group.getQ(), this.group.getP());
 		if ((m % x) == 0) {
-			result.add(new RiLieTypeGroup("*", 2, 3, (int) Math.pow(2, (m / x))));
+			result.add(new RiLieTypeGroup(GroupType.Ri.name(), 2, 3, (int) Math.pow(3, (m / x))));
 		}
 		return result;
 	}
