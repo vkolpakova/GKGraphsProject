@@ -43,6 +43,11 @@ public class InndiagBLieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	}
 	
 	@Test
+	public void test_C_2_121() {
+		Assert.assertTrue(super.checkEquality(C_2_121, V_C_2_121, I_E_C_2_121));
+	}
+	
+	@Test
 	public void test_C_2_243() {
 		Assert.assertTrue(super.checkEquality(C_2_243, V_C_2_243, I_E_C_2_243));
 	}

@@ -95,6 +95,11 @@ public class BLieTypeGroup_Test extends AbstractLieTypeGroup_Test implements BTy
 	}
 	
 	@Test
+	public void testC_2_121() {
+		Assert.assertTrue(super.checkEquality(C_2_121, V_C_2_121, E_C_2_121));
+	}
+	
+	@Test
 	public void test_C_2_243() {
 		Assert.assertTrue(super.checkEquality(C_2_243, V_C_2_243, E_C_2_243));
 	}
