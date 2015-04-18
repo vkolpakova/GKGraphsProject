@@ -31,6 +31,7 @@ public abstract class AbstractGroup {
 	
 	/**
 	 * Множество простых делителей порядка группы (если они заданы символами)
+	 * TODO убрать это из общей логики
 	 */
 	protected List<String> symbolPrimeDivisorsList;
 	

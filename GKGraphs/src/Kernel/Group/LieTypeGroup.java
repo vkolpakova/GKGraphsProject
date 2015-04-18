@@ -79,6 +79,12 @@ public class LieTypeGroup extends AbstractGroup {
 		this.p = p;
 		this.q = q;
 	}
+	
+	public String getFullName() {
+		StringBuilder strBuilder = new StringBuilder();
+		strBuilder.append(this.getName()).append("_").append(this.getN()).append("(").append(this.getQ()).append(")");
+		return strBuilder.toString();
+	}
 
 	public int getN() {
 		return n;

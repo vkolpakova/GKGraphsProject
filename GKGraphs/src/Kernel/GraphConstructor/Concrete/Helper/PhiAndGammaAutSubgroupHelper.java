@@ -46,9 +46,11 @@ public class PhiAndGammaAutSubgroupHelper {
 				for (Edge edge : fullCentrEdgesList) {
 					if (!constructor.getGroupGraph().getEdgesList().contains(edge)) {
 						// добавляются полученные в InndiagPhi ребра
-						resultEdgesList.add(edge);
-						MainLogger.info("*" + constructor.getClass().getSimpleName() + "* add {" + edge.getVertexA().getVertex().toString() + ", " 
-								+ edge.getVertexB().getVertex().toString() + "}");
+						if (!resultEdgesList.contains(edge)) {
+							resultEdgesList.add(edge);
+							MainLogger.info("*" + constructor.getClass().getSimpleName() + "* add {" + edge.getVertexA().getVertex().toString() + ", " 
+									+ edge.getVertexB().getVertex().toString() + "}; centralizer is " + centralizator.getFullName());
+						}
 					}
 				}
 				result.add(new PrimeNumberGraph(verticesList, resultEdgesList));

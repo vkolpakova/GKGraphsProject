@@ -74,7 +74,7 @@ public class AbstractFieldAutLieTypeGroup_Test extends AbstractLieTypeGroup_Test
 				List<PrimeNumberGraph> graphsList = origMap.get(key);
 				List<PrimeNumberGraph> parsedGraphList = compMap.get(key);
 				if (!((graphsList.size() == parsedGraphList.size()) && (graphsList.containsAll(parsedGraphList)))) {
-					printDiffOfFieldAutGraphs(graphsList, parsedGraphList, key);
+					printDiffOfFieldAutGraphs(parsedGraphList, graphsList, key);
 					return false;
 				}
 			}
