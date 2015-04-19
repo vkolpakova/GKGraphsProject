@@ -5,6 +5,7 @@ import java.util.List;
 
 import Kernel.GraphConstructor.Concrete.FieldAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Utils.ArithmeticUtils;
 
 public class GLieTypeGroupFieldAutConcreteGraphConstructor extends FieldAutConcreteLieTypeGroupGraphConstructor<GLieTypeGroup> {
@@ -18,7 +19,7 @@ public class GLieTypeGroupFieldAutConcreteGraphConstructor extends FieldAutConcr
 		List<LieTypeGroup> result = new ArrayList<LieTypeGroup>();
 		int m = ArithmeticUtils.getPow(this.group.getQ(), this.group.getP());
 		if ((m % x) == 0) {
-			result.add(new GLieTypeGroup("*", 2, this.group.getP(), (int) Math.pow(this.group.getP(), (m / x))));
+			result.add(new GLieTypeGroup(GroupType.G.name(), 2, this.group.getP(), (int) Math.pow(this.group.getP(), (m / x))));
 		}
 		return result;
 	}

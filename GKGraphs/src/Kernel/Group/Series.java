@@ -9,7 +9,6 @@ import com.google.common.collect.Sets;
 
 import Kernel.Graph.SymbolVertex;
 import Kernel.Graph.Vertex;
-import Kernel.Group.AbstractGroup;
 import Kernel.Group.LieTypeGroup.GroupType;
 import Kernel.Polynom.CompoundPolynom;
 import Kernel.Utils.ArithmeticUtils;

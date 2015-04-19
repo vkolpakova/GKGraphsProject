@@ -8,6 +8,7 @@ import Implementations.LieTypeGroups.D.DLieTypeGroup;
 import Implementations.LieTypeGroups._D._DLieTypeGroup;
 import Kernel.GraphConstructor.Concrete.GraphAutConcreteLieTypeGroupGraphConstructor;
 import Kernel.Group.LieTypeGroup;
+import Kernel.Group.LieTypeGroup.GroupType;
 
 public class ALieTypeGroupGraphAutConcreteGraphConstructor extends GraphAutConcreteLieTypeGroupGraphConstructor<ALieTypeGroup> {
 
@@ -20,14 +21,14 @@ public class ALieTypeGroupGraphAutConcreteGraphConstructor extends GraphAutConcr
 		List<LieTypeGroup> result = new ArrayList<LieTypeGroup>();
 		int n = this.group.getN();
 		if ((n % 2)== 0) {
-			result.add(new BLieTypeGroup("*", n / 2, this.group.getP(), this.group.getQ()));
+			result.add(new BLieTypeGroup(GroupType.B.name(), n / 2, this.group.getP(), this.group.getQ()));
 		} else {
 			if (this.group.getP() == 2) {
-				result.add(new BLieTypeGroup("*", (n + 1) / 2, this.group.getP(), this.group.getQ()));
+				result.add(new BLieTypeGroup(GroupType.B.name(), (n + 1) / 2, this.group.getP(), this.group.getQ()));
 			} else {
-				result.add(new BLieTypeGroup("*", (n + 1) / 2, this.group.getP(), this.group.getQ()));
-				result.add(new DLieTypeGroup("*", (n + 1) / 2, this.group.getP(), this.group.getQ()));
-				result.add(new _DLieTypeGroup("*", (n + 1) / 2, this.group.getP(), this.group.getQ()));
+				result.add(new BLieTypeGroup(GroupType.B.name(), (n + 1) / 2, this.group.getP(), this.group.getQ()));
+				result.add(new DLieTypeGroup(GroupType.D.name(), (n + 1) / 2, this.group.getP(), this.group.getQ()));
+				result.add(new _DLieTypeGroup(GroupType._D.name(), (n + 1) / 2, this.group.getP(), this.group.getQ()));
 			}
 		}
 		return result;
