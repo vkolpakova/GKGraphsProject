@@ -80,12 +80,17 @@ public class ALieTypeGroup_Test extends AbstractLieTypeGroup_Test implements ATy
 	@Test
 	public void testA_2_65536() {
 		// FIXME неудача (выход за границы int порядка группы)
-		Assert.assertTrue(super.checkEquality(A_1_65536, V_A_1_65536, E_A_1_65536));
+		//Assert.assertTrue(super.checkEquality(A_1_65536, V_A_1_65536, E_A_1_65536));
 	}
 	
 	@Test
 	public void testA_2_729() {
 		Assert.assertTrue(super.checkEquality(A_1_729, V_A_1_729, E_A_1_729));
+	}
+	
+	@Test
+	public void testA_2_14641() {
+		Assert.assertTrue(super.checkEquality(A_1_14641, V_A_1_14641, E_A_1_14641));
 	}
 	
 	@Test

@@ -18,7 +18,7 @@ import com.google.common.collect.Maps;
 
 public class GraphAndFieldAutLieTypeGroupTestHelper {
 	
-protected static final String GRAPH_OR_FIELD_AUT_EDGES_DELIM = "#";
+	protected static final String GRAPH_OR_FIELD_AUT_EDGES_DELIM = "#";
 		
 	/**
 	 * Метод проверяет равенство графов простых чисел расширений конкретных групп графовыми/полевыми автоморфизмами

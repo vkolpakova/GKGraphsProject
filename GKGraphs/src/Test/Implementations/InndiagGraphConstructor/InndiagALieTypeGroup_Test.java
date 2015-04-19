@@ -41,6 +41,11 @@ public class InndiagALieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test 
 	}
 	
 	@Test
+	public void testA_2_14641() {
+		Assert.assertTrue(super.checkEquality(A_1_14641, V_A_1_14641, I_E_A_1_14641));
+	}
+	
+	@Test
 	public void testA_2_6561() {
 		Assert.assertTrue(super.checkEquality(A_1_6561, V_A_1_6561, I_E_A_1_6561));
 	}
