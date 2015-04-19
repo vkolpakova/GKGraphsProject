@@ -39,6 +39,7 @@ public class ConcreteFullInfoCollector {
 	 * Метод производит построение графов для конкретной группы Лиева типа
 	 */
 	protected void processConcreteLieTypeGroup(String groupName) {
+		MainLogger.loggerOff();
 		LieTypeGroup gr = LieTypeGroupTypeResolver.resolve(groupName);
 		Set<Edge> addedEdges = Sets.newHashSet();
 		GraphsStringRepresentation representation = new GraphsStringRepresentation();
@@ -88,6 +89,7 @@ public class ConcreteFullInfoCollector {
 		representation.setAutGraphRepr(autGraph.getCompactGraphRepresentation());
 		
 		// печать результата
+		MainLogger.loggerOn();
 		representation.printFillInfo();
 	}
 	
