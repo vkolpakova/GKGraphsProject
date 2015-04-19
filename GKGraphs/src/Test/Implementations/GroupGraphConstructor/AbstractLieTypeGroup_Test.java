@@ -1,6 +1,5 @@
 package Test.Implementations.GroupGraphConstructor;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -17,6 +16,7 @@ import Kernel.Resolvers.Concrete.LieTypeGroupGraphConstructorResolver;
 import Kernel.Resolvers.Concrete.LieTypeGroupTypeResolver;
 import Kernel.Utils.ArithmeticUtils;
 import Kernel.Utils.MainLogger;
+import Test.Implementations.Helper.AutLieTypeGroupTestHelper;
 
 public class AbstractLieTypeGroup_Test {
 	
@@ -77,13 +77,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @return
 	 */
 	protected List<Vertex<?>> getParsedVerticesList(String verticesStr) {
-		List<Vertex<?>> result = Lists.newArrayList();
-		String[] verticesStrArray = verticesStr.split(",");
-		for (String vertexStr : verticesStrArray) {
-			SimpleVertex sv = new SimpleVertex(Integer.parseInt(vertexStr));
-			result.add(sv);
-		}
-		return result;
+		return AutLieTypeGroupTestHelper.getParsedVerticesList(verticesStr);
 	}
 	
 	/**
@@ -92,13 +86,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @return
 	 */
 	protected List<Edge> getParsedEdjesList(String edgesStr) {
-		List<Edge> result = Lists.newArrayList();
-		List<String> edgesListStr = parseEdgesList(edgesStr);
-		for (String edgeStr : edgesListStr) {
-			String [] vertices = edgeStr.split(",");
-			result.add(new Edge(new SimpleVertex(Integer.parseInt(vertices[0])), new SimpleVertex(Integer.parseInt(vertices[1]))));
-		}
-		return result;
+		return AutLieTypeGroupTestHelper.getParsedEdjesList(edgesStr);
 	}
 	
 	/**
@@ -108,13 +96,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @return коллекция строк вида "вершина_1,вершина_2"
 	 */
 	protected List<String> parseEdgesList(String edgesString) {
-		List<String> result = Lists.newArrayList();
-		String pattern = "\\{|\\},\\{|\\}";
-		result.addAll(Arrays.asList(edgesString.split(pattern)));
-		if (result.contains(EMPTY_STRING)) {
-			result.remove(EMPTY_STRING);
-		}
-		return result;
+		return AutLieTypeGroupTestHelper.parseEdgesList(edgesString);
 	}
 	
 	/**
