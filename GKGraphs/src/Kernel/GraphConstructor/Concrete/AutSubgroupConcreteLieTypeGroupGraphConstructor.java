@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.google.common.collect.Lists;
 
+import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.GraphConstructor.AbstractGraphConstructor;
 import Kernel.Group.LieTypeGroup;
@@ -38,6 +39,11 @@ public abstract class AutSubgroupConcreteLieTypeGroupGraphConstructor<G extends 
 	 */
 	protected Map<Integer, List<PrimeNumberGraph>> graphsMap;
 	
+	/**
+	 * Добавленные ребра к базовому графу простых чисел группы
+	 */
+	protected List<Edge> addedEdgesList = Lists.newArrayList();
+	 
 	public AutSubgroupConcreteLieTypeGroupGraphConstructor(G group) {
 		super(group);
 		if (group.getGraph() == null) {
@@ -97,5 +103,10 @@ public abstract class AutSubgroupConcreteLieTypeGroupGraphConstructor<G extends 
 	public boolean checkNotTrivial() {
 		return (getOrder() != 1);
 	}
+	
+	/**
+	 * Метод возвращает {@link #addedEdgesList}
+	 */
+	public abstract List<Edge> getAddedEdgesList();
 	
 }

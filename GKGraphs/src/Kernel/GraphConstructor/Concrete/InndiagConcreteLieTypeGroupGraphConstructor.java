@@ -25,6 +25,11 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 	 * Коллекция коллекций простых делителей всех возможных порядков максимальных торов группы лиева типа
 	 */
 	protected List<List<Integer>> torOrdersPartitions;
+	
+	/**
+	 * Добавленные ребра к базовому графу простых чисел группы
+	 */
+	protected List<Edge> addedEdgesList = Lists.newArrayList();
 
 	public InndiagConcreteLieTypeGroupGraphConstructor(G group) {
 		super(group);
@@ -43,6 +48,7 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 					if (!edgesList.contains(edge)) {
 						// добавляются полученные в Inndiag ребра
 						edgesList.add(edge);
+						addedEdgesList.add(edge);
 						MainLogger.info("*InndiagConcreteLieTypeGroupGraphConstructor* add {" + edge.getVertexA().getVertex().toString() + ", " 
 						+ edge.getVertexB().getVertex().toString() + "}");
 					}
@@ -96,6 +102,11 @@ public abstract class InndiagConcreteLieTypeGroupGraphConstructor<G extends LieT
 	@Override
 	public int getOrder() {
 		return this.group.getInInndiagIndex();
+	}
+	
+	@Override
+	public List<Edge> getAddedEdgesList() {
+		return this.addedEdgesList;
 	}
 	
 }

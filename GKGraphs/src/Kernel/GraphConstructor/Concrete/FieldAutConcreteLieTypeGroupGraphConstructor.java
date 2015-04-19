@@ -3,6 +3,7 @@ package Kernel.GraphConstructor.Concrete;
 import java.util.List;
 import java.util.Map;
 
+import Kernel.Graph.Edge;
 import Kernel.Graph.PrimeNumberGraph;
 import Kernel.GraphConstructor.Concrete.Helper.PhiAndGammaAutSubgroupHelper;
 import Kernel.Group.LieTypeGroup;
@@ -56,6 +57,11 @@ public abstract class FieldAutConcreteLieTypeGroupGraphConstructor<G extends Lie
 	@Override
 	public PrimeNumberGraph constructGKGraph() {
 		return null; // заглушка абстрактного метода суперкласса
+	}
+	
+	@Override
+	public List<Edge> getAddedEdgesList() {
+		return helper.getAddedEdgesList();
 	}
 	
 }

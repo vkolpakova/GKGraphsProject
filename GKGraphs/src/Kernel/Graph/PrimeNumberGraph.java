@@ -59,6 +59,9 @@ public class PrimeNumberGraph {
 		this.edgesList = edgesList;
 	}
 	
+	/**
+	 * Печать полной информации о графе в консоль
+	 */
 	public void printConsole() {
 		String vertices = "{";
 		List<String> verticesStrList = Lists.newArrayListWithCapacity(verticesList.size());
@@ -73,6 +76,30 @@ public class PrimeNumberGraph {
 			String vertexB = edge.getVertexB().getVertex().toString();
 			MainLogger.info("*PrimeNumberGraph* " + "Vertex A = " + vertexA + "; Vertex B = " + vertexB);
 		}
+	}
+	
+	/**
+	 * Печать информации о графе в консоль в компактной форме (наименование группы + массив ребер)
+	 */
+	public void compactFormPrintConsole(String groupName) {
+		MainLogger.info("Group name: " + groupName);
+		MainLogger.info("Edges: " + getCompactGraphRepresentation());
+	}
+	
+	/**
+	 * Метод возвращает строку, содержащую информацию о ребраз графа в формате: 
+	 * {a_1, b_1}, ..., {a_n, b_n}.
+	 * @param groupName описание группы (м.б. в произвольной форме)
+	 */
+	public String getCompactGraphRepresentation() {
+		StringBuilder strBuilder = new StringBuilder();
+		for (Edge edge : edgesList) {
+			String vertexA = edge.getVertexA().getVertex().toString();
+			String vertexB = edge.getVertexB().getVertex().toString();
+			strBuilder.append("{").append(vertexA).append(",").append(vertexB).append("},");
+		}
+		strBuilder.deleteCharAt(strBuilder.length() - 1);
+		return strBuilder.toString();
 	}
 	
 	@Override

@@ -24,10 +24,22 @@ import Kernel.Utils.MainLogger;
 public class PhiAndGammaAutSubgroupHelper {
 	
 	protected AutSubgroupConcreteLieTypeGroupGraphConstructor<?> constructor;
+	
+	/**
+	 * Список добавленных к базовому графу группы ребер
+	 */
+	protected List<Edge> addedEdgesList = Lists.newArrayList();
 
 	public PhiAndGammaAutSubgroupHelper(AutSubgroupConcreteLieTypeGroupGraphConstructor<?> constructor) {
 		super();
 		this.constructor = constructor;
+	}
+	
+	/**
+	 * Метод возвращает добавленные к базовому графу группы ребра
+	 */
+	public List<Edge> getAddedEdgesList() {
+		return this.addedEdgesList;
 	}
 	
 	/**
@@ -48,6 +60,7 @@ public class PhiAndGammaAutSubgroupHelper {
 						// добавляются полученные в InndiagPhi ребра
 						if (!resultEdgesList.contains(edge)) {
 							resultEdgesList.add(edge);
+							addedEdgesList.add(edge);
 							MainLogger.info("*" + constructor.getClass().getSimpleName() + "* add {" + edge.getVertexA().getVertex().toString() + ", " 
 									+ edge.getVertexB().getVertex().toString() + "}; centralizer is " + centralizator.getFullName());
 						}
