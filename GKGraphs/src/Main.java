@@ -26,8 +26,8 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Start");
-		processConcreteLieTypeGroup();
-		//processSeries();
+		//processConcreteLieTypeGroup();
+		processSeries();
 		System.out.println("End");
 	}
 	

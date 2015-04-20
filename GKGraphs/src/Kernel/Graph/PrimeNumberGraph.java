@@ -80,6 +80,7 @@ public class PrimeNumberGraph {
 	
 	/**
 	 * Печать информации о графе в консоль в компактной форме (наименование группы + массив ребер)
+	 * @param groupName описание группы (м.б. в произвольной форме)
 	 */
 	public void compactFormPrintConsole(String groupName) {
 		MainLogger.info("Group name: " + groupName);
@@ -87,9 +88,8 @@ public class PrimeNumberGraph {
 	}
 	
 	/**
-	 * Метод возвращает строку, содержащую информацию о ребраз графа в формате: 
-	 * {a_1, b_1}, ..., {a_n, b_n}.
-	 * @param groupName описание группы (м.б. в произвольной форме)
+	 * Метод возвращает строку, содержащую информацию о ребраз графа в формате:
+	 * {a_1, b_1}, ..., {a_n, b_n}
 	 */
 	public String getCompactGraphRepresentation() {
 		StringBuilder strBuilder = new StringBuilder();

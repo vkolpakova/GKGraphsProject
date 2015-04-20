@@ -1,5 +1,6 @@
 package Series.ASeries.A1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -64,17 +65,17 @@ public class A1Series extends ASeries {
 	protected void constructComponents() {
 		Component comp1 = null, comp2 = null, comp3 = null;
 		if (this.p.equals(SymbolVertex.TWO)) {
-			comp1 = new Component(0, Lists.newArrayList(), P_EVEN_COMP_0);
-			comp2 = new Component(1, Lists.newArrayList(), P_EVEN_COMP_1);
-			comp3 = new Component(2, Lists.newArrayList(), P_EVEN_COMP_2);
+			comp1 = new Component(0, new ArrayList<SymbolVertex>(), P_EVEN_COMP_0);
+			comp2 = new Component(1, new ArrayList<SymbolVertex>(), P_EVEN_COMP_1);
+			comp3 = new Component(2, new ArrayList<SymbolVertex>(), P_EVEN_COMP_2);
 		} else if (this.epsilon.equals(EPSILON_PLUS)) {
-			comp1 = new Component(1, Lists.newArrayList(), P_ODD_COMP_1);
-			comp2 = new Component(0, Lists.newArrayList(), P_ODD_COMP_0);
-			comp3 = new Component(2, Lists.newArrayList(), P_ODD_COMP_2);
+			comp1 = new Component(1, new ArrayList<SymbolVertex>(), P_ODD_COMP_1);
+			comp2 = new Component(0, new ArrayList<SymbolVertex>(), P_ODD_COMP_0);
+			comp3 = new Component(2, new ArrayList<SymbolVertex>(), P_ODD_COMP_2);
 		} else if (this.epsilon.equals(EPSILON_MINUS)) {
-			comp1 = new Component(2, Lists.newArrayList(), P_ODD_COMP_1);
-			comp2 = new Component(0, Lists.newArrayList(), P_ODD_COMP_0);
-			comp3 = new Component(1, Lists.newArrayList(), P_ODD_COMP_2);
+			comp1 = new Component(2, new ArrayList<SymbolVertex>(), P_ODD_COMP_1);
+			comp2 = new Component(0, new ArrayList<SymbolVertex>(), P_ODD_COMP_0);
+			comp3 = new Component(1, new ArrayList<SymbolVertex>(), P_ODD_COMP_2);
 		}
 		this.setComponents(Lists.newArrayList(comp1, comp2, comp3));
 	}
@@ -84,11 +85,11 @@ public class A1Series extends ASeries {
 		IndecomposablePolynom poly1 = null, poly2 = null, poly3 = null;
 		if (this.p.equals(SymbolVertex.TWO)) {
 			poly1 = new IndecomposablePolynom(SymbolVertex.TWO, Lists.newArrayList(SymbolVertex.TWO));
-			poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.newArrayList());
-			poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.newArrayList());
+			poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.<String>newArrayList());
+			poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.<String>newArrayList());
 		} else {
-			poly1 = new IndecomposablePolynom(PolynomConstants.QME1, Lists.newArrayList());
-			poly2 = new IndecomposablePolynom(PolynomConstants.QPE1, Lists.newArrayList());
+			poly1 = new IndecomposablePolynom(PolynomConstants.QME1, Lists.<String>newArrayList());
+			poly2 = new IndecomposablePolynom(PolynomConstants.QPE1, Lists.<String>newArrayList());
 			poly3 = new IndecomposablePolynom(SymbolVertex.P, Lists.newArrayList(SymbolVertex.P));
 		} 
 		CompoundPolynom order = new CompoundPolynom(Lists.newArrayList(poly1, poly2, poly3));

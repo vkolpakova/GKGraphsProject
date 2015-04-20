@@ -1,5 +1,6 @@
 package Kernel.Group;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -138,7 +139,7 @@ public class Series extends AbstractGroup {
 	 * @param name
 	 * @param verticesList
 	 */
-	public void setVeticesForConcreteComponent(String name, List<SymbolVertex> verticesList) {
+	public void setVeticesForConcreteComponent(String name, ArrayList<SymbolVertex> verticesList) {
 		for (Component component : components) {
 			if (component.getName().equals(name)) {
 				component.setVertices(verticesList);
@@ -152,7 +153,7 @@ public class Series extends AbstractGroup {
 	 */
 	public void setVerticesForAllComponent(Map<String, List<SymbolVertex>> inputMap) {
 		for (String name : inputMap.keySet()) {
-			setVeticesForConcreteComponent(name, inputMap.get(name));
+			setVeticesForConcreteComponent(name, new ArrayList(inputMap.get(name)));
 		}
 	}
 	
@@ -282,20 +283,20 @@ public class Series extends AbstractGroup {
 		/**
 		 * Коллекция вершин, входящих в компоненту
 		 */
-		protected List<SymbolVertex> vertices;
+		protected ArrayList<SymbolVertex> vertices;
 		
 		/**
 		 * Наименование компоненты, описание
 		 */
 		protected String name;
 
-		public Component(int m, List<SymbolVertex> vertices) {
+		public Component(int m, ArrayList<SymbolVertex> vertices) {
 			super();
 			this.m = m;
 			this.vertices = vertices;
 		}
 		
-		public Component(int m, List<SymbolVertex> vertices, String name) {
+		public Component(int m, ArrayList<SymbolVertex> vertices, String name) {
 			super();
 			this.m = m;
 			this.vertices = vertices;
@@ -314,7 +315,7 @@ public class Series extends AbstractGroup {
 			return vertices;
 		}
 
-		public void setVertices(List<SymbolVertex> vertices) {
+		public void setVertices(ArrayList<SymbolVertex> vertices) {
 			this.vertices = vertices;
 		}
 

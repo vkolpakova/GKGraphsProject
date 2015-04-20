@@ -1,7 +1,9 @@
 package Series.CSeries.C2;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import Kernel.Graph.SimpleVertex;
 import com.google.common.collect.Lists;
 
 import Kernel.Graph.SymbolVertex;
@@ -36,9 +38,9 @@ public class C2Series extends Series {
 	protected void constructComponents() {
 		Component comp0 = null, comp1 = null, comp2 = null, comp3 = null; 
 		comp0 = new Component(0, Lists.newArrayList(new SymbolVertex(SymbolVertex.P)), COMP_0);
-		comp1 = new Component(1, Lists.newArrayList(), COMP_1);
-		comp2 = new Component(2, Lists.newArrayList(), COMP_2);
-		comp3 = new Component(4, Lists.newArrayList(), COMP_4);
+		comp1 = new Component(1, new ArrayList<SymbolVertex>(), COMP_1);
+		comp2 = new Component(2, new ArrayList<SymbolVertex>(), COMP_2);
+		comp3 = new Component(4, new ArrayList<SymbolVertex>(), COMP_4);
 		this.setComponents(Lists.newArrayList(comp0, comp1, comp2, comp3));
 	}
 	
@@ -50,9 +52,9 @@ public class C2Series extends Series {
 		} else {
 			poly1 = new IndecomposablePolynom(SymbolVertex.P, Lists.newArrayList(SymbolVertex.P));
 		}
-		poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.newArrayList());
-		poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.newArrayList());
-		poly4 = new IndecomposablePolynom(PolynomConstants.Q2P1, Lists.newArrayList());
+		poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.<String>newArrayList());
+		poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.<String>newArrayList());
+		poly4 = new IndecomposablePolynom(PolynomConstants.Q2P1, Lists.<String>newArrayList());
 		CompoundPolynom order = new CompoundPolynom(Lists.newArrayList(poly1, poly2, poly3, poly4));
 		setSeriesOrder(order);
 	}

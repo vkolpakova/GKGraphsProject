@@ -37,10 +37,10 @@ public class G2Series extends Series {
 	protected void constructComponents() {
 		Component comp0 = null, comp1 = null, comp2 = null, comp3 = null, comp4 = null; 
 		comp0 = new Component(0, Lists.newArrayList(new SymbolVertex(SymbolVertex.P)), COMP_0);
-		comp1 = new Component(1, Lists.newArrayList(), COMP_1);
-		comp2 = new Component(2, Lists.newArrayList(), COMP_2);
-		comp3 = new Component(3, Lists.newArrayList(), COMP_3);
-		comp4 = new Component(6, Lists.newArrayList(), COMP_6);
+		comp1 = new Component(1, Lists.<SymbolVertex>newArrayList(), COMP_1);
+		comp2 = new Component(2, Lists.<SymbolVertex>newArrayList(), COMP_2);
+		comp3 = new Component(3, Lists.<SymbolVertex>newArrayList(), COMP_3);
+		comp4 = new Component(6, Lists.<SymbolVertex>newArrayList(), COMP_6);
 		this.setComponents(Lists.newArrayList(comp0, comp1, comp2, comp3, comp4));
 	}
 	
@@ -52,10 +52,10 @@ public class G2Series extends Series {
 		} else {
 			poly1 = new IndecomposablePolynom(SymbolVertex.P, Lists.newArrayList(SymbolVertex.P));
 		}
-		poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.newArrayList());
-		poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.newArrayList());
-		poly4 = new IndecomposablePolynom(PolynomConstants.Q2MQP1, Lists.newArrayList());
-		poly5 = new IndecomposablePolynom(PolynomConstants.Q2PQP1, Lists.newArrayList());
+		poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.<String>newArrayList());
+		poly3 = new IndecomposablePolynom(PolynomConstants.QP1, Lists.<String>newArrayList());
+		poly4 = new IndecomposablePolynom(PolynomConstants.Q2MQP1, Lists.<String>newArrayList());
+		poly5 = new IndecomposablePolynom(PolynomConstants.Q2PQP1, Lists.<String>newArrayList());
 		CompoundPolynom order = new CompoundPolynom(Lists.newArrayList(poly1, poly2, poly3, poly4, poly5));
 		setSeriesOrder(order);
 	}

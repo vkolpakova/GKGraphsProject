@@ -39,7 +39,7 @@ public class AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjanc
 		if (!((oneCompVertecies.contains(a)) || (oneCompVertecies.contains(b)))) {
 			return false;
 		}
-		String p = this.series.getP();
+		final String p = this.series.getP();
 		Predicate<SymbolVertex> notTwoOrPPredicate = new Predicate<SymbolVertex>() {
 
 			@Override

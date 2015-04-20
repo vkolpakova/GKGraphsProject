@@ -182,7 +182,7 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 				allEdges.add(edge);
 			}
 		}
-		return new PrimeNumberGraph(Lists.newArrayList(vertices), allEdges);
+		return new PrimeNumberGraph(Lists.<Vertex<?>>newArrayList(vertices), allEdges);
 	}
 	
 	/**

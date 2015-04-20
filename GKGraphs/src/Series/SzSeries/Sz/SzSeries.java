@@ -36,9 +36,9 @@ public class SzSeries extends Series {
 	protected void constructComponents() {
 		Component comp0 = null, comp1 = null,comp4_1 = null, comp4_2 = null;
 		comp0 = new Component(0, Lists.newArrayList(new SymbolVertex(SymbolVertex.TWO)), COMP_0);
-		comp1 = new Component(1, Lists.newArrayList(), COMP_1);
-		comp4_1 = new Component(4, Lists.newArrayList(), COMP_4_1);
-		comp4_2 = new Component(4, Lists.newArrayList(), COMP_4_2);
+		comp1 = new Component(1, Lists.<SymbolVertex>newArrayList(), COMP_1);
+		comp4_1 = new Component(4, Lists.<SymbolVertex>newArrayList(), COMP_4_1);
+		comp4_2 = new Component(4, Lists.<SymbolVertex>newArrayList(), COMP_4_2);
 		this.setComponents(Lists.newArrayList(comp0, comp1, comp4_1, comp4_2));
 	}
 	
@@ -46,9 +46,9 @@ public class SzSeries extends Series {
 	protected void computeSeriesOrder() {
 		IndecomposablePolynom poly1 = null, poly2 = null, poly3 = null, poly4 = null;
 		poly1 = new IndecomposablePolynom(SymbolVertex.P, Lists.newArrayList(SymbolVertex.P));
-		poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.newArrayList());
-		poly3 = new IndecomposablePolynom(PolynomConstants.QMSQRT2QP1, Lists.newArrayList());
-		poly4 = new IndecomposablePolynom(PolynomConstants.QPSQRT2QP1, Lists.newArrayList());
+		poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.<String>newArrayList());
+		poly3 = new IndecomposablePolynom(PolynomConstants.QMSQRT2QP1, Lists.<String>newArrayList());
+		poly4 = new IndecomposablePolynom(PolynomConstants.QPSQRT2QP1, Lists.<String>newArrayList());
 		CompoundPolynom order = new CompoundPolynom(Lists.newArrayList(poly1, poly2, poly3, poly4));
 		setSeriesOrder(order);
 	}

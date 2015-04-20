@@ -12,8 +12,8 @@ public class __DLieTypeGroupWithTwoNonadjanceVertexesСriterion extends WithTwoN
 	
 	@Override
 	protected boolean check(Edge edge) {
-		int a = (int) edge.getVertexA().getVertex();
-		int b = (int) edge.getVertexB().getVertex();
+		Integer a = (Integer) edge.getVertexA().getVertex();
+		Integer b = (Integer) edge.getVertexB().getVertex();
 		int r = super.returnR(a, b);
 		return (r != 0) ? (ArithmeticUtils.e(r, this.ltGroup.getQ()) == 12) : false;
 	}
