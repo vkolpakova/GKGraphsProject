@@ -1,12 +1,12 @@
 package Test.Implementations.Helper;
 
-import java.util.Arrays;
 import java.util.List;
 
 import Kernel.Graph.Edge;
 import Kernel.Graph.SimpleVertex;
 import Kernel.Graph.Vertex;
 
+import Test.Helper.CommonTestHelper;
 import com.google.common.collect.Lists;
 
 public class AutLieTypeGroupTestHelper {
@@ -30,16 +30,6 @@ public class AutLieTypeGroupTestHelper {
 	}
 	
 	/**
-	 * Метод возвращает коллекцию пропарсенных ребер
-	 * @param edgesStr
-	 * @return
-	 */
-	public static List<Edge> getParsedEdjesList(String edgesStr) {
-		List<String> edgesListStr = parseEdgesList(edgesStr);
-		return constructEdgesList(edgesListStr);
-	}
-	
-	/**
 	 * Метод строит список вершин из их строкового представления
 	 * @param edgesListStr
 	 * @return
@@ -52,21 +42,15 @@ public class AutLieTypeGroupTestHelper {
 		}
 		return result;
 	}
-	
+
 	/**
-	 * Метод возвращает коллекцию ребер в строковом формате. </br>
-	 * Формат строки: "{a_1,b_1},{a_2,b_2},...,{a_n,b_n}"
-	 * @param edgesString
-	 * @return коллекция строк вида "вершина_1,вершина_2"
+	 * Метод возвращает коллекцию пропарсенных ребер
+	 * @param edgesStr
+	 * @return
 	 */
-	public static List<String> parseEdgesList(String edgesString) {
-		List<String> result = Lists.newArrayList();
-		String pattern = "\\{|\\},\\{|\\}";
-		result.addAll(Arrays.asList(edgesString.split(pattern)));
-		if (result.contains(EMPTY_STRING)) {
-			result.remove(EMPTY_STRING);
-		}
-		return result;
+	public static List<Edge> getParsedEdgesList(String edgesStr) {
+		List<String> edgesListStr = CommonTestHelper.parseEdgesList(edgesStr);
+		return constructEdgesList(edgesListStr);
 	}
-	
+
 }

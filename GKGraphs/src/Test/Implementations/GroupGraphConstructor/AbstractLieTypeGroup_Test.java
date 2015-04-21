@@ -2,6 +2,7 @@ package Test.Implementations.GroupGraphConstructor;
 
 import java.util.List;
 
+import Test.Helper.CommonTestHelper;
 import org.junit.Test;
 
 import com.google.common.collect.Lists;
@@ -19,16 +20,14 @@ import Kernel.Utils.MainLogger;
 import Test.Implementations.Helper.AutLieTypeGroupTestHelper;
 
 public class AbstractLieTypeGroup_Test {
-	
-	public static final String EMPTY_STRING = "";
-	
+
 	protected LieTypeGroup group;
 	protected PrimeNumberGraph graph;
 	
 	protected void determineGroupWithGraph(String name) {
 		this.group = LieTypeGroupTypeResolver.resolve(name);
-		LieTypeGroupGraphConstructor constr = LieTypeGroupGraphConstructorResolver.resolve(group);
-		this.graph = constr.constructGKGraph();
+		LieTypeGroupGraphConstructor constructor = LieTypeGroupGraphConstructorResolver.resolve(group);
+		this.graph = constructor.constructGKGraph();
 		this.graph.printConsole();
 	}
 	
@@ -53,7 +52,7 @@ public class AbstractLieTypeGroup_Test {
 		PrimeNumberGraph gr = getParsedPrimeNumberGraph(verticesStr, edgesStr);
 		boolean result = gr.equals(graph);
 		if (!result) {
-			printDiff(gr, graph);
+			CommonTestHelper.printDiff(gr, graph);
 		}
 		return result;
 	}
@@ -66,7 +65,7 @@ public class AbstractLieTypeGroup_Test {
 	 */
 	protected PrimeNumberGraph getParsedPrimeNumberGraph(String verticesStr, String edgesStr) {
 		List<Vertex<?>> vertices = getParsedVerticesList(verticesStr);
-		List<Edge> edges = getParsedEdjesList(edgesStr);
+		List<Edge> edges = getParsedEdgesList(edgesStr);
 		return new PrimeNumberGraph(vertices, edges);
 	}
 	
@@ -85,8 +84,8 @@ public class AbstractLieTypeGroup_Test {
 	 * @param edgesStr
 	 * @return
 	 */
-	protected List<Edge> getParsedEdjesList(String edgesStr) {
-		return AutLieTypeGroupTestHelper.getParsedEdjesList(edgesStr);
+	protected List<Edge> getParsedEdgesList(String edgesStr) {
+		return AutLieTypeGroupTestHelper.getParsedEdgesList(edgesStr);
 	}
 	
 	/**
@@ -96,35 +95,9 @@ public class AbstractLieTypeGroup_Test {
 	 * @return коллекция строк вида "вершина_1,вершина_2"
 	 */
 	protected List<String> parseEdgesList(String edgesString) {
-		return AutLieTypeGroupTestHelper.parseEdgesList(edgesString);
+		return CommonTestHelper.parseEdgesList(edgesString);
 	}
-	
-	/**
-	 * Метод выводит результаты сравнения двух графов в случае, если они отличаются
-	 * @param origGraph --- проверяемый граф
-	 * @param compGraph --- вычисленный граф
-	 */
-	private void printDiff(PrimeNumberGraph origGraph, PrimeNumberGraph compGraph) {
-		List<Vertex<?>> oVertices = origGraph.getVerticesList();
-		List<Vertex<?>> cVertices = compGraph.getVerticesList();
-		if (!oVertices.equals(cVertices)) {
-			MainLogger.info("ERROR : vertices sets are not equal!");
-			return;
-		}
-		List<Edge> oEdges = origGraph.getEdgesList();
-		List<Edge> cEdges = compGraph.getEdgesList();
-		for (Edge e : oEdges) {
-			if (!cEdges.contains(e)) {
-				MainLogger.info("В оригинальном графе лишнее ребро "  + "{" + e.getVertexA().getVertex() + "," + e.getVertexB().getVertex() + "}");
-			}
-		}
-		for (Edge e : cEdges) {
-			if (!oEdges.contains(e)) {
-				MainLogger.info("В оригинальном графе отсутствует ребро "  + "{" + e.getVertexA().getVertex() + "," + e.getVertexB().getVertex() + "}");
-			}
-		}
-	}
-	
+
 	private static final String TEST_VERTICES_STRING = "2,107,479,619";
 	private static final String TEST_EDGES_STRING = "{2,107},{479,619},{2,619}";
 	
@@ -144,7 +117,7 @@ public class AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testEdgeListCreator() {
-		List<Edge> result = getParsedEdjesList(TEST_EDGES_STRING);
+		List<Edge> result = getParsedEdgesList(TEST_EDGES_STRING);
 		for (Edge edge : result) {
 			MainLogger.info(edge.getVertexA().getVertex().toString() + "," + edge.getVertexB().getVertex().toString());
 		}

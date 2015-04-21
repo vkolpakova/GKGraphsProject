@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import Test.Helper.CommonTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -141,7 +142,7 @@ public class GraphAndFieldAutLieTypeGroupTestHelper {
 	public static List<String> parseEdgesList(String input) {
 		int index = input.indexOf(GRAPH_OR_FIELD_AUT_EDGES_DELIM);
 		String edgesString = index > 0 ? input.substring(index + 1) : input;
-		return AutLieTypeGroupTestHelper.parseEdgesList(edgesString);
+		return CommonTestHelper.parseEdgesList(edgesString);
 	}
 	
 	/**

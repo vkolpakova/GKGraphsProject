@@ -42,7 +42,7 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 		series = group;
 	}
 	
-	public SeriesGraphConstructor(Series group, TwoOddNonadjacenceVerticesSeriesСriterion cr1, 
+	public SeriesGraphConstructor(Series group, TwoOddNonadjacenceVerticesSeriesСriterion cr1,
 			WithCharNonadjacenceVerticesSeriesСriterion cr2, WithTwoNonadjanceVerticesSeriesСriterion cr3) {
 		super(group);
 		series = group;
@@ -53,12 +53,12 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 	
 	@Override
 	public PrimeNumberGraph constructGKGraph() {
-		List<Vertex<?>> vertecesList = this.series.getAllVerticesList();
+		List<Vertex<?>> verticesList = this.series.getAllVerticesList();
 		List<Edge> fullEdgeList = getFullEdgesList();
 		List<Edge> step1List = twoOddNonadjacenceVertexes(fullEdgeList);
 		List<Edge> step2List = withCharNonadjacenceVertexes(step1List);
 		List<Edge> step3List = withTwoNonadjanceVertexes(step2List);
-		return new PrimeNumberGraph(vertecesList, step3List);
+		return new PrimeNumberGraph(verticesList, step3List);
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 		return cr3.checkAll();
 	}
 	
-	private final List<Edge> getFullEdgesList() {
+	private List<Edge> getFullEdgesList() {
 		List<Edge> resultList = Lists.newArrayList();
 		List<Vertex<?>> allVertices = this.series.getAllVerticesList();
 		for (int i=0; i < allVertices.size(); i++) {
@@ -116,8 +116,7 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 
 		@Override
 		protected boolean check(Edge edge) {
-			boolean result1 = true;
-			boolean result2 = true;
+			boolean result1, result2;
 			SymbolVertex a = (SymbolVertex) edge.getVertexA();
 			SymbolVertex b = (SymbolVertex) edge.getVertexB();
 			result1 = checkSimpleVertex(a);

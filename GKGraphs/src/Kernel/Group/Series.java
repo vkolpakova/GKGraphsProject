@@ -139,7 +139,7 @@ public class Series extends AbstractGroup {
 	 * @param name
 	 * @param verticesList
 	 */
-	public void setVeticesForConcreteComponent(String name, ArrayList<SymbolVertex> verticesList) {
+	public void setVerticesForConcreteComponent(String name, ArrayList<SymbolVertex> verticesList) {
 		for (Component component : components) {
 			if (component.getName().equals(name)) {
 				component.setVertices(verticesList);
@@ -153,7 +153,7 @@ public class Series extends AbstractGroup {
 	 */
 	public void setVerticesForAllComponent(Map<String, List<SymbolVertex>> inputMap) {
 		for (String name : inputMap.keySet()) {
-			setVeticesForConcreteComponent(name, new ArrayList(inputMap.get(name)));
+			setVerticesForConcreteComponent(name, new ArrayList(inputMap.get(name)));
 		}
 	}
 	
