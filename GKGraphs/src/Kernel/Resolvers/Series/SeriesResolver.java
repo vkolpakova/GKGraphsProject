@@ -37,8 +37,8 @@ import Series._ASeries._A3._A3SeriesGroupParser;
 public class SeriesResolver {
 	
 	protected static final String UNDERLINE = "_";
-	protected static final String LEFT_BRACKED = "(";
-	protected static final String RIGTH_BRACKED = ")";
+	protected static final String LEFT_BACKED = "(";
+	protected static final String RICH_BACKED = ")";
 	
 	public static Series resolve(String inputStr) {
 		SeriesGroupParser seriesParser = new SeriesGroupParser(inputStr);
@@ -119,6 +119,9 @@ public class SeriesResolver {
 	protected static void completeASeriesComponentFilling(ASeries aSeries, Map<String, List<SymbolVertex>> components, Map<SymbolVertex, String> firstComponentConditionMap) {
 		// просиходит заполнение уже созданных компонент вершинами, сгруппированными по компонентам
 		aSeries.setVerticesForAllComponent(components);
+		if (firstComponentConditionMap.isEmpty()) {
+			fillEmptyFirstComponentConditionsMapASeries(firstComponentConditionMap, aSeries);
+		}
 		// происходит заполнение условий для вершин первой компоненты
 		aSeries.constructVerticesCondMap(firstComponentConditionMap);
 		// происходит заполнение простых делителей простых сомножителей порядка
@@ -133,9 +136,16 @@ public class SeriesResolver {
 		// происходит заполнение простых делителей простых сомножителей порядка
 		_aSeries.fillSeriesOrderBasedComponents();
 	}
+
+	private static Map<SymbolVertex, String> fillEmptyFirstComponentConditionsMapASeries(Map<SymbolVertex, String> emptyConditionsMap, ASeries aSeries) {
+		for (SymbolVertex vertex : aSeries.getComponentByM(1).getVertices()) {
+			emptyConditionsMap.put(vertex, ASeries.EMPTY_STRING);
+		}
+		return emptyConditionsMap;
+	}
 	
 	protected static String computeSeriesName(GroupType type, int n, String q) {
-		return type.name() + UNDERLINE + LEFT_BRACKED + q + RIGTH_BRACKED;
+		return type.name() + UNDERLINE + LEFT_BACKED + q + RICH_BACKED;
 	}
 	
 }

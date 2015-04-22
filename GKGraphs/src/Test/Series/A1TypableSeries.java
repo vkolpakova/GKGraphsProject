@@ -9,4 +9,8 @@ public interface A1TypableSeries {
     public static final String A1_1_V   = "2,r,r_1,r_2,r_3,r_4";
     public static final String A1_1_E   = "{r_1,r_2},{r_1,r_3},{r_1,r_4},{r_2,r_3},{r_2,r_4},{r_3,r_4}";
 
+    public static final String A1_2     = "";
+    public static final String A1_2_V   = "";
+    public static final String A1_2_E   = "";
+
 }

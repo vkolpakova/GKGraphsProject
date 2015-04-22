@@ -2,6 +2,7 @@ package Series.ASeries.A1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -82,7 +83,7 @@ public class A1Series extends ASeries {
 	
 	@Override
 	protected void computeSeriesOrder() {
-		IndecomposablePolynom poly1 = null, poly2 = null, poly3 = null;
+		IndecomposablePolynom poly1, poly2, poly3;
 		if (this.p.equals(SymbolVertex.TWO)) {
 			poly1 = new IndecomposablePolynom(SymbolVertex.TWO, Lists.newArrayList(SymbolVertex.TWO));
 			poly2 = new IndecomposablePolynom(PolynomConstants.QM1, Lists.<String>newArrayList());
@@ -115,5 +116,16 @@ public class A1Series extends ASeries {
 			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.QP1, this.getSimpleDivisorsOfConcreteComponent(2));
 		}
 	}
-	
+
+	@Override
+	protected Map<SymbolVertex, String> computeObviousRConditions(Map<SymbolVertex, String> oneComponentConditionsMap) {
+		for (SymbolVertex vertex : oneComponentConditionsMap.keySet()) {
+			if (!vertex.getVertex().equals(SymbolVertex.TWO) && oneComponentConditionsMap.get(vertex).isEmpty()) {
+				// очевидно, для любой вершины справедливо условие "1 = 2_r = n_r < (q - 1)_r > 2"
+				oneComponentConditionsMap.put(vertex, CONDITIONR_1);
+			}
+		}
+		return oneComponentConditionsMap;
+	}
+
 }

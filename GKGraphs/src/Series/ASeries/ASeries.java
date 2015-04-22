@@ -86,7 +86,7 @@ public class ASeries extends Series {
 		//return this.verticesCondMap.get(v);
 		Set<SymbolVertex> verticesSet = this.verticesCondMap.keySet();
 		for (SymbolVertex vertex : verticesSet) {
-			if (vertex.getVertex().equals(vertex.getVertex()))  {
+			if (vertex.getVertex().equals(v.getVertex()))  {
 				return this.verticesCondMap.get(vertex);
 			}
 		}
@@ -120,7 +120,17 @@ public class ASeries extends Series {
 				verticesCondMap.put(vertex, EMPTY_STRING);
 			}
 		}
-		verticesCondMap.putAll(oneComponentMap);
+		verticesCondMap.putAll(computeObviousRConditions(oneComponentMap));
+	}
+
+	/**
+	 * Дополнительная логика для заполнения очевидных условий для первой компоненты. <br/>
+	 * Переопределяется в потомках, т.к. в значительной степени зависит от {@link #n}
+	 * @param oneComponentConditionsMap --- условия для первой компоненты, полученные на входе
+	 * @return условия для первой компоненты, дополненные очевидными, не вошедшими в строку, которую парсили
+	 */
+	protected Map<SymbolVertex, String> computeObviousRConditions(Map<SymbolVertex, String> oneComponentConditionsMap) {
+		return oneComponentConditionsMap;
 	}
 	
 	@Override

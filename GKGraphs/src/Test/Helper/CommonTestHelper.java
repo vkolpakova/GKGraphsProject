@@ -38,6 +38,7 @@ public class CommonTestHelper {
      * Метод выводит результаты сравнения двух графов в случае, если они отличаются
      * @param origGraph --- проверяемый граф
      * @param compGraph --- вычисленный граф
+     * TODO исправить, работает не всегда верно
      */
     public static void printDiff(PrimeNumberGraph origGraph, PrimeNumberGraph compGraph) {
         List<Vertex<?>> oVertices = origGraph.getVerticesList();
