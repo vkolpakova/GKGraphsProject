@@ -1,8 +1,8 @@
 package Client;
 
+import com.google.common.collect.Maps;
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.graph.Graph;
-import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import edu.uci.ics.jung.visualization.*;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
@@ -13,11 +13,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.Map;
 import java.util.Properties;
 
+/**
+ * Основное приложение (GUI) для построения графов простых чисел конкретных простых групп.
+ *
+ * @author v.kolpakova
+ */
 public class MainApplication extends JFrame {
 
-    protected Graph<?, ?> g;
+    protected Map<Integer, Graph<?, ?>> g = Maps.newHashMap();
     protected BasicVisualizationServer<Object, Object> vv;
 
     protected static Properties properties;
@@ -123,12 +129,13 @@ public class MainApplication extends JFrame {
     }
 
     private void clearVv() {
+        // TODO исправить - перестало работать
         scrollPane.getViewport().remove(vv);
         SwingUtilities.updateComponentTreeUI(scrollPane);
     }
 
     private void initScrollPanel(Container container) {
-        scrollPane = new JScrollPane();
+        scrollPane = new JScrollPane(new JPanel());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setSize(new Dimension(350, 350));
@@ -144,29 +151,40 @@ public class MainApplication extends JFrame {
             // по-нормальному не получается обновлять значение пересчитанного графа, поэтому удаляем и создаем новые компоненты.
             scrollPane.getViewport().remove(vv);
         }
-        initVisualizationServer();
+        initVisualizationServer(); // TODO придумать механизм для отображения порядка автоморфизма
         SwingUtilities.updateComponentTreeUI(upperPanel);
     }
 
     protected void initVisualizationServer() {
-        CircleLayout<Object, Object> layout = (CircleLayout<Object, Object>) new CircleLayout<>(this.g);
-        layout.setSize(new Dimension(300, 300));
-        vv = new BasicVisualizationServer<>(layout);
-        vv.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
-        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<>());
-        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<>());
-        vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<>());
-        vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
-        scrollPane.getViewport().add(vv);
+        for (Integer key : this.g.keySet()) {
+            CircleLayout<Object, Object> layout = (CircleLayout<Object, Object>) new CircleLayout<>(this.g.get(key));
+            layout.setSize(new Dimension(300, 300));
+            BasicVisualizationServer<Object, Object> vv = new BasicVisualizationServer<>(layout);
+            vv.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
+            vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<>());
+            vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<>());
+            vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<>());
+            vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
+            JPanel view = ((JPanel)scrollPane.getViewport().getView());
+            if (view != null) { // на этапе инициализации тут null
+                view.add(vv);
+            } else {
+                scrollPane.getViewport().add(vv);
+            }
+        }
     }
 
-    protected static Graph<?, ?> computeG(String groupName) {
-        Graph<?, ?> g = new UndirectedSparseGraph<>();
+    protected static Map<Integer, Graph<?, ?>> computeG(String groupName) {
+        Map<Integer, Graph<?, ?>> g = Maps.newHashMap();
         String rc = radioGroup.getSelection().getActionCommand();
         switch (rc) {
             case GROUP_RADIO_AC : g = JungGraphConverterHelper.convertConcreteLieTypeGroupGraph(groupName);
                 break;
             case INND_RADIO_AC : g = JungGraphConverterHelper.convertConcreteInndiagLieTypeGroupGraph(groupName);
+                break;
+            case FIELD_RADIO_AC : g = JungGraphConverterHelper.convertConcreteFieldAutLieTypeGroupGraph(groupName);
+                break;
+            case GRAPH_RADIO_AC : g = JungGraphConverterHelper.convertConcreteGammaAutLieTypeGroupGraph(groupName);
                 break;
         }
         return g;
@@ -204,9 +222,7 @@ public class MainApplication extends JFrame {
         // TODO убрать абсолютный путь
         String fileName = "C:\\Users\\home\\GKGraphsProject\\GKGraphsProject\\GKGraphs\\src\\Client\\application.properties";
         try {
-            properties.load(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            properties.load(new InputStreamReader(new FileInputStream(fileName), "windows-1251"));
         } catch (IOException e) {
             e.printStackTrace();
         }
