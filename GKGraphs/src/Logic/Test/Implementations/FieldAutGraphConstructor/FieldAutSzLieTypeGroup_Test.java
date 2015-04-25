@@ -1,4 +1,4 @@
-package Test.Implementations.FieldAutGraphConstructor;
+package Logic.Test.Implementations.FieldAutGraphConstructor;
 
 import org.junit.Assert;
 import org.junit.Test;

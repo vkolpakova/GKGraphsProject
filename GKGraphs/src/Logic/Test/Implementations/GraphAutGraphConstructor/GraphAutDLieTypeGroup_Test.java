@@ -1,4 +1,4 @@
-package Test.Implementations.GraphAutGraphConstructor;
+package Logic.Test.Implementations.GraphAutGraphConstructor;
 
 import org.junit.Assert;
 import org.junit.Test;

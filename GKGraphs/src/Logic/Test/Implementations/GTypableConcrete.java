@@ -1,4 +1,4 @@
-package Test.Implementations;
+package Logic.Test.Implementations;
 
 public interface GTypableConcrete {
 	

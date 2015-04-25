@@ -1,4 +1,4 @@
-package Test.Implementations.InndiagGraphConstructor;
+package Logic.Test.Implementations.InndiagGraphConstructor;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -65,7 +65,7 @@ public class AbstractLieTypeGroup_Test {
 	 */
 	protected PrimeNumberGraph getParsedPrimeNumberGraph(String verticesStr, String edgesStr) {
 		List<Vertex<?>> vertices = getParsedVerticesList(verticesStr);
-		List<Edge> edges = getParsedEdgesList(edgesStr);
+		List<Edge> edges = getParsedEdjesList(edgesStr);
 		return new PrimeNumberGraph(vertices, edges);
 	}
 	
@@ -85,7 +85,7 @@ public class AbstractLieTypeGroup_Test {
 	 * @return
 	 */
 	protected List<Edge> getParsedEdjesList(String edgesStr) {
-		return AutLieTypeGroupTestHelper.getParsedEdjesList(edgesStr);
+		return AutLieTypeGroupTestHelper.getParsedEdgesList(edgesStr);
 	}
 	
 	/**
@@ -117,7 +117,7 @@ public class AbstractLieTypeGroup_Test {
 	
 	@Test
 	public void testEdgeListCreator() {
-		List<Edge> result = getParsedEdgesList(TEST_EDGES_STRING);
+		List<Edge> result = getParsedEdjesList(TEST_EDGES_STRING);
 		for (Edge edge : result) {
 			MainLogger.info(edge.getVertexA().getVertex().toString() + "," + edge.getVertexB().getVertex().toString());
 		}

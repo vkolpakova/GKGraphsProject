@@ -1,9 +1,9 @@
-package Test.Implementations.InndiagGraphConstructor;
+package Logic.Test.Implementations.InndiagGraphConstructor;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import Test.Implementations.DTypableConcrete;
+import Logic.Test.Implementations.DTypableConcrete;
 
 public class InndiagDLieTypeGroup_Test extends AbstractInndiagLieTypeGroup_Test implements DTypableConcrete {
 	
