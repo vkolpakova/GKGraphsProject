@@ -28,20 +28,34 @@ public class MainApplication extends JFrame {
     protected Map<Integer, Graph<?, ?>> g = Maps.newHashMap();
     protected ArrayList<BasicVisualizationServer<Object, Object>> vv;
 
+    /** Файл с текстовыми элементами интерфейса */
     protected static Properties properties;
 
+    /** Основная панель, в которой происходит отрисовка графов */
     protected JScrollPane scrollPane;
+    /** Панель с окном ввода наименования группы и кнопками управления */
     protected JPanel upperPanel;
+    /** Бокс для расположения радио-кнопок вертикально */
     protected Box verticalBox;
+    /** Поле для ввода наименования группы */
     protected JTextField groupNameField;
+    /** Элемент для обозначения поля {@link #groupNameField} в интерфейсе */
     protected JLabel groupNameLabel;
+    /** Группа для радио-кнопок с выбором вида графа */
     protected static ButtonGroup radioGroup;
+    /** Кнопка для построения графа */
     protected JButton okButton;
+    /** Кнопка для сброса наименования группы и очистки формы с графами */
     protected JButton resetButton;
+    /** Формирует ответное действие при нажатии на "ОК" */
     protected TextHandler handler = null;
+    /** Радио-кнопка для построения ГПЧ группы */
     protected JRadioButton groupGraphRadio;
+    /** Радио-кнопка для построения графа Inndiag группы */
     protected JRadioButton inndiagGraphRadio;
+    /** Радио-кнопка для построения графа расширения полевым автоморфизмом группы */
     protected JRadioButton fieldAutGraphRadio;
+    /** Радио-кнопка для построения графа расширения графовым автоморфизмом группы */
     protected JRadioButton graphAutGraphRadio;
 
     protected static final String EMPTY_STRING = "";
@@ -53,6 +67,7 @@ public class MainApplication extends JFrame {
 
     public MainApplication() {
         super("Графы простых чисел");
+        loadProperties();
         Container container = getContentPane();
         container.setLayout(new BorderLayout());
         initUpperPanel(container);
@@ -182,6 +197,7 @@ public class MainApplication extends JFrame {
                     case FIELD_RADIO_AC : beginLabel = loadPropertiesText("FIELD_AUT_ORDER_LABEL");
                         break;
                     case GRAPH_RADIO_AC : beginLabel = loadPropertiesText("GRAPH_AUT_ORDER_LABEL");
+                        break;
                 }
                 newV.add(new JLabel(beginLabel + key.toString()));
             }
@@ -240,15 +256,17 @@ public class MainApplication extends JFrame {
         return properties.get(code).toString();
     }
 
-    public static void main(String args[]) {
+    private void loadProperties() {
         properties = new Properties();
-        // TODO убрать абсолютный путь
-        String fileName = "C:\\Users\\home\\GKGraphsProject\\GKGraphsProject\\GKGraphs\\src\\Client\\application.properties";
+        String fileName = "application.properties";
         try {
-            properties.load(new InputStreamReader(new FileInputStream(fileName), "windows-1251"));
+            properties.load(new InputStreamReader(getClass().getResourceAsStream(fileName), "windows-1251"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String args[]) {
         MainApplication test = new MainApplication();
         test.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
