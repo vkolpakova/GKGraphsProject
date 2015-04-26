@@ -1,5 +1,6 @@
 package Client;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.graph.Graph;
@@ -13,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 
@@ -24,7 +26,7 @@ import java.util.Properties;
 public class MainApplication extends JFrame {
 
     protected Map<Integer, Graph<?, ?>> g = Maps.newHashMap();
-    protected BasicVisualizationServer<Object, Object> vv;
+    protected ArrayList<BasicVisualizationServer<Object, Object>> vv;
 
     protected static Properties properties;
 
@@ -129,8 +131,13 @@ public class MainApplication extends JFrame {
     }
 
     private void clearVv() {
-        // TODO исправить - перестало работать
-        scrollPane.getViewport().remove(vv);
+        JPanel view = (JPanel)scrollPane.getViewport().getView();
+        if (view != null) {
+            view.removeAll();
+        } else {
+            scrollPane.getViewport().removeAll();
+        }
+        vv = Lists.newArrayList();
         SwingUtilities.updateComponentTreeUI(scrollPane);
     }
 
@@ -140,7 +147,10 @@ public class MainApplication extends JFrame {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setSize(new Dimension(350, 350));
         container.add(scrollPane, BorderLayout.CENTER);
-        scrollPane.getViewport().add(vv);
+        vv = Lists.newArrayList();
+        for (BasicVisualizationServer<?, ?> v : vv) {
+            scrollPane.getViewport().add(v);
+        }
     }
 
     private void initGraphPanel(String groupName) {
@@ -149,9 +159,9 @@ public class MainApplication extends JFrame {
         if (vv != null) {
             // нужно, чтобы поле с графом очистилось перед построением нового.
             // по-нормальному не получается обновлять значение пересчитанного графа, поэтому удаляем и создаем новые компоненты.
-            scrollPane.getViewport().remove(vv);
+            clearVv();
         }
-        initVisualizationServer(); // TODO придумать механизм для отображения порядка автоморфизма
+        initVisualizationServer();
         SwingUtilities.updateComponentTreeUI(upperPanel);
     }
 
@@ -159,17 +169,30 @@ public class MainApplication extends JFrame {
         for (Integer key : this.g.keySet()) {
             CircleLayout<Object, Object> layout = (CircleLayout<Object, Object>) new CircleLayout<>(this.g.get(key));
             layout.setSize(new Dimension(300, 300));
-            BasicVisualizationServer<Object, Object> vv = new BasicVisualizationServer<>(layout);
-            vv.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
-            vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<>());
-            vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<>());
-            vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<>());
-            vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
+            BasicVisualizationServer<Object, Object> newV = new BasicVisualizationServer<>(layout);
+            newV.setPreferredSize(new Dimension(350, 350)); //Sets the viewing area size
+            newV.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<>());
+            newV.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<>());
+            newV.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<>());
+            newV.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
+            if (!key.equals(1)) {
+                String rc = radioGroup.getSelection().getActionCommand();
+                String beginLabel = EMPTY_STRING;
+                switch (rc) {
+                    case FIELD_RADIO_AC : beginLabel = loadPropertiesText("FIELD_AUT_ORDER_LABEL");
+                        break;
+                    case GRAPH_RADIO_AC : beginLabel = loadPropertiesText("GRAPH_AUT_ORDER_LABEL");
+                }
+                newV.add(new JLabel(beginLabel + key.toString()));
+            }
+            vv.add(newV);
+        }
+        for (BasicVisualizationServer<?, ?> v : vv) {
             JPanel view = ((JPanel)scrollPane.getViewport().getView());
             if (view != null) { // на этапе инициализации тут null
-                view.add(vv);
+                view.add(v);
             } else {
-                scrollPane.getViewport().add(vv);
+                scrollPane.getViewport().add(v);
             }
         }
     }
