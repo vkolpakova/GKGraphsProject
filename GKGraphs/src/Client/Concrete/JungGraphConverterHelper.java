@@ -1,4 +1,4 @@
-package Client;
+package Client.Concrete;
 
 import Logic.Kernel.Graph.Edge;
 import Logic.Kernel.Graph.PrimeNumberGraph;
@@ -29,7 +29,7 @@ public class JungGraphConverterHelper {
     /**
      * Метод производит построение и конвертацию графа для конкретной группы Лиева типа
      */
-    protected static Map<Integer, Graph<?, ?>> convertConcreteLieTypeGroupGraph(String groupDescription) {
+    public static Map<Integer, Graph<?, ?>> convertConcreteLieTypeGroupGraph(String groupDescription) {
         Map<Integer, Graph<?, ?>> result = Maps.newHashMap();
         Graph g = new UndirectedSparseGraph();
         if (!groupDescription.isEmpty()) {
@@ -45,7 +45,7 @@ public class JungGraphConverterHelper {
     /**
      * Метод производит построение и конвертацию графа Inndiag для конкретной группы Лиева типа
      */
-    protected static Map<Integer, Graph<?, ?>> convertConcreteInndiagLieTypeGroupGraph(String groupDescription) {
+    public static Map<Integer, Graph<?, ?>> convertConcreteInndiagLieTypeGroupGraph(String groupDescription) {
         Map<Integer, Graph<?, ?>> result = Maps.newHashMap();
         Graph g = new UndirectedSparseGraph();
         if (!groupDescription.isEmpty()) {
@@ -61,7 +61,7 @@ public class JungGraphConverterHelper {
     /**
      * Метод производит построение и конвертацию графа P:Phi для конкретной группы Лиева типа
      */
-    protected static Map<Integer, Graph<?, ?>> convertConcreteFieldAutLieTypeGroupGraph(String groupDescription) {
+    public static Map<Integer, Graph<?, ?>> convertConcreteFieldAutLieTypeGroupGraph(String groupDescription) {
         Map<Integer, Graph<?, ?>> result = Maps.newHashMap();
         if (!groupDescription.isEmpty()) {
             LieTypeGroup gr = LieTypeGroupTypeResolver.resolve(groupDescription);
@@ -81,7 +81,7 @@ public class JungGraphConverterHelper {
     /**
      * Метод производит построение и конвертацию графа P:Gamma для конкретной группы Лиева типа
      */
-    protected static Map<Integer, Graph<?, ?>> convertConcreteGammaAutLieTypeGroupGraph(String groupDescription) {
+    public static Map<Integer, Graph<?, ?>> convertConcreteGammaAutLieTypeGroupGraph(String groupDescription) {
         Map<Integer, Graph<?, ?>> result = Maps.newHashMap();
         if (!groupDescription.isEmpty()) {
             LieTypeGroup gr = LieTypeGroupTypeResolver.resolve(groupDescription);
@@ -103,7 +103,7 @@ public class JungGraphConverterHelper {
      * @param png --- конвертируемый граф
      * @param jg --- результат конвертации
      */
-    private static void convertToJungGraph(PrimeNumberGraph png, UndirectedSparseGraph jg) {
+    public static void convertToJungGraph(PrimeNumberGraph png, UndirectedSparseGraph jg) {
         NUMERATOR = 1;
         List<Vertex<?>> vertices = png.getVerticesList();
         for (Vertex<?> v : vertices) {
