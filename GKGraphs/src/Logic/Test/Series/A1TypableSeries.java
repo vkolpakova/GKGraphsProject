@@ -25,4 +25,12 @@ public interface A1TypableSeries {
     public static final String A1_5_V   = "2,r,s,t,r_1,s_1";
     public static final String A1_5_E   = "{r,s},{r,t},{s,t},{r_1,s_1}";
 
+    public static final String A1_6     = "A_1(p^m), pi(q - epsilon1) = {2, s, r}, pi((q + epsilon1) / 2) = {r_1, s_1}, epsilon = +";
+    public static final String A1_6_V   = "2,r,s,r_1,s_1,p";
+    public static final String A1_6_E   = "{2,r},{2,s},{s,r},{r_1,s_1}";
+
+    public static final String A1_7     = "A_1(p^m), pi(q - epsilon1) = {2, s, r}, pi((q + epsilon1) / 2) = {r_1, s_1}, epsilon = -";
+    public static final String A1_7_V   = "2,r,s,r_1,s_1,p";
+    public static final String A1_7_E   = "{2,r},{2,s},{s,r},{r_1,s_1}";
+
 }

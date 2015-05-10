@@ -116,7 +116,7 @@ public class A1Series extends ASeries {
 				// очевидно, для любой вершины справедливо условие "1 = 2_r = n_r < (q - 1)_r > 2"
 				oneComponentConditionsMap.put(vertex, CONDITION_R_1);
 			} else if (vertex.getVertex().equals(SymbolVertex.TWO)) {
-				if (this.getVertexCondition(vertex).equals(P_ODD_COMP_1)) {
+				if (this.getVertexComponentName(vertex).equals(this.P_ODD_COMP_1)) {
 					oneComponentConditionsMap.put(vertex, CONDITION_R_1);
 				} else {
 					oneComponentConditionsMap.put(vertex, CONDITION_R_3);

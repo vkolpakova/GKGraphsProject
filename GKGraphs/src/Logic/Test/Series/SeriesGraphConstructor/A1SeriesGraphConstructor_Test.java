@@ -30,4 +30,19 @@ public class A1SeriesGraphConstructor_Test extends AbstractSeriesGroup_Test impl
         Assert.assertTrue(checkEquality(A1_4, A1_4_V, A1_4_E));
     }
 
+    @Test
+    public void A1_5_Test() {
+        Assert.assertTrue(checkEquality(A1_5, A1_5_V, A1_5_E));
+    }
+
+    @Test
+    public void A1_6_Test() {
+        Assert.assertTrue(checkEquality(A1_6, A1_6_V, A1_6_E));
+    }
+
+    @Test
+    public void A1_7_Test() {
+        Assert.assertTrue(checkEquality(A1_7, A1_7_V, A1_7_E));
+    }
+
 }

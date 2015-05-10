@@ -25,6 +25,7 @@ import java.util.Properties;
 /**
  *  омпонента построени€ графов дл€ серий
  * TODO вынести текст в properties
+ * TODO вынести все строки и магические константы в переменные
  * Created by v.kolpakova on 08.05.2015.
  */
 public class MainSeriesApplication extends JFrame {
@@ -403,6 +404,8 @@ public class MainSeriesApplication extends JFrame {
         String result = "";
         if (this.name.equals("A_1") && this.characteristic.startsWith("2")) {
             result = computeASeries2CharDescription();
+        } else if (this.name.equals("A_1") && !this.characteristic.startsWith("2")) {
+            result = computeASeriesPCharDescription();
         }
         return result;
     }
@@ -419,6 +422,26 @@ public class MainSeriesApplication extends JFrame {
             sb.append(elementMap.get(key).getText());
             sb.append("}, ");
         }
+        return  sb.toString();
+    }
+
+    private String computeASeriesPCharDescription() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.name);
+        sb.append("(");
+        sb.append(characteristic);
+        sb.append("), ");
+        for (String key : elementMap.keySet()) {
+            if (!key.equals("epsilon")) {
+                sb.append(key);
+                sb.append(" = {");
+                sb.append(elementMap.get(key).getText());
+                sb.append("}, ");
+            }
+        }
+        sb.append(" epsilon");
+        sb.append(" = ");
+        sb.append(elementMap.get("epsilon").getText());
         return  sb.toString();
     }
 

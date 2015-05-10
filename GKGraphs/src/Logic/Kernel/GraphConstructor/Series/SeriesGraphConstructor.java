@@ -145,8 +145,8 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 		protected boolean check(Edge edge) {
 			SymbolVertex a = (SymbolVertex) edge.getVertexA();
 			SymbolVertex b = (SymbolVertex) edge.getVertexB();
-			return (((a.getVertex().equals(this.series.getP())) && (!b.getVertex().equals(SymbolVertex.TWO))) || 
-					((b.getVertex().equals(this.series.getP()))  && (!a.getVertex().equals(SymbolVertex.TWO))));
+			return ((a.getVertex().equals(this.series.getP())) ||
+					(b.getVertex().equals(this.series.getP())));
 		}
 		
 		protected SymbolVertex getVertexR(SymbolVertex a, SymbolVertex b) {

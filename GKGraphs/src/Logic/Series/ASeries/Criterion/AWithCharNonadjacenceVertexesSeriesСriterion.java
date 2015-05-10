@@ -19,7 +19,7 @@ public class AWithCharNonadjacenceVertexesSeriesСriterion extends WithCharNonad
 			SymbolVertex r = super.getVertexR((SymbolVertex)edge.getVertexA(), (SymbolVertex)edge.getVertexB());
 			return (series.getVertexM(r) > (this.series.getN() - 1)) ||
 					((this.series.getN() == 1) && (r.getVertex().equals(SymbolVertex.TWO))) ||
-					((this.series.getN() == 3) && (r.getVertex().equals(SymbolVertex.THREE)) && 
+					((this.series.getN() == 2) && (r.getVertex().equals(SymbolVertex.THREE)) &&
 							(ASeries.CHAR_CRITERION_LIST.contains(((ASeries)this.series).getVerticesCondMap().get(new SymbolVertex(SymbolVertex.THREE)))));
 		} // TODO проверить, что поиск по ключу будет производиться корректно (т.к. используется новый экземпляр SymbolVertex)
 		return false;
