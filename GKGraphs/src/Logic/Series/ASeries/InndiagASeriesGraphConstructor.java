@@ -3,6 +3,8 @@ package Logic.Series.ASeries;
 import java.util.List;
 import java.util.Set;
 
+import Logic.Kernel.Graph.SymbolVertex;
+import Logic.Series.ASeries.A1.A1Series;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
@@ -34,12 +36,25 @@ public class InndiagASeriesGraphConstructor extends InndiagSeriesGraphConstructo
 		for (SimplePolynom setPoly : simplePolynomSet) {
 			if ((!isQM1Poly(setPoly)) || ((isQM1Poly(setPoly)) && (qm1Count > 1))) {
 				this.partitionsPolynoms.put(setPoly, super.getPolynomCompose(setPoly));
+				qm1Count--;
 			}
 		}
 	}
 	
 	protected boolean isQM1Poly(SimplePolynom poly) {
 		return ((poly.getN() == 1) && (poly.getEpsilon().equals(SimplePolynom.MINUS)));
+	}
+
+	private void computePolyAdditionToPartitionPolynoms(SimplePolynom setPoly) {
+		if (!(this.group instanceof A1Series) || ((this.group instanceof  A1Series) && (this.group.getP().equals(SymbolVertex.TWO)))) {
+			this.partitionsPolynoms.put(setPoly, super.getPolynomCompose(setPoly));
+		} else {
+			if (((A1Series)this.group).getEpsilon().equals(A1Series.EPSILON_PLUS)) {
+				switch (setPoly.getEpsilon()) {
+					case SimplePolynom.MINUS : this.partitionsPolynoms.put(setPoly, super.getPolynomCompose(setPoly));
+				}
+			}
+		}
 	}
 	
 	@Override

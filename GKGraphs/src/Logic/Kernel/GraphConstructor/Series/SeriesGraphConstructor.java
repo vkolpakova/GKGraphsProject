@@ -93,11 +93,15 @@ public abstract class SeriesGraphConstructor extends AbstractGraphConstructor<Se
 		List<Vertex<?>> allVertices = this.series.getAllVerticesList();
 		for (int i=0; i < allVertices.size(); i++) {
 			for (int j=i+1; j < allVertices.size(); j++) {
-				Edge newEdge = new Edge(new SymbolVertex((String) allVertices.get(i).getVertex()), 
-						new SymbolVertex((String) allVertices.get(j).getVertex()));
-				if (!resultList.contains(newEdge)) {
-					// проверку приходится делать, поскольку в соотв. set-е все равно появляются дубли
-					resultList.add(newEdge);
+				String iVertex = (String) allVertices.get(i).getVertex();
+				String jVertex = (String) allVertices.get(j).getVertex();
+				if (!iVertex.equals(jVertex)) {
+					Edge newEdge = new Edge(new SymbolVertex((String) allVertices.get(i).getVertex()),
+							new SymbolVertex((String) allVertices.get(j).getVertex()));
+					if (!resultList.contains(newEdge)) {
+						// проверку приходится делать, поскольку в соотв. set-е все равно появляются дубли
+						resultList.add(newEdge);
+					}
 				}
 			}
 		}

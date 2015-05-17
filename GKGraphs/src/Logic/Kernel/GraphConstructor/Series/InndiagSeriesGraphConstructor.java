@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import Logic.Kernel.Resolvers.Series.SeriesGraphConstructorResolver;
+import Logic.Series.ASeries.A1.A1Series;
+import Logic.Series.ASeries.ASeries;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -68,10 +71,28 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 		String epsilon = poly.getEpsilon();
 		if (epsilon.equals(SimplePolynom.MINUS)) {
 			if (n == 1) {
-				result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QM1)));
+				IndecomposablePolynom polynom = null;
+				if (!(this.group instanceof A1Series) || ( this.group instanceof A1Series && this.group.getP().equals(SymbolVertex.TWO))) {
+					polynom = this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QM1);
+				} else {
+					if (this.group instanceof A1Series) {
+						switch (((A1Series)this.group).getEpsilon()) {
+							case A1Series.EPSILON_PLUS : polynom = this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QME1);
+								break;
+							case A1Series.EPSILON_MINUS : polynom = this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QPE1);
+								break;
+ 						}
+					}
+				}
+				result.add(new IndecomposablePolynom(polynom));
 			} else if (n == 2) {
-				result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QP1)));
-				result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QM1)));
+				if (!(this.group instanceof A1Series) || ( this.group instanceof A1Series && this.group.getP().equals(SymbolVertex.TWO))) {
+					result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QP1)));
+					result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QM1)));
+				} else {
+					result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QPE1)));
+					result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QME1)));
+				}
 			} else if (n == 3) {
 				result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.QM1)));
 				result.add(new IndecomposablePolynom(this.group.getSeriesOrder().getMultiplierByDescr(PolynomConstants.Q2PQP1)));
@@ -128,6 +149,9 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 	 * @return
 	 */
 	protected PrimeNumberGraph constructTorusGKGraph(List<SimplePolynom> torus) {
+		if (this.groupGraph == null) {
+			this.groupGraph = SeriesGraphConstructorResolver.resolve(this.group).constructGKGraph();
+		}
 		PrimeNumberGraph originalGoupGraph = this.groupGraph;
 		if (this.checkNotTrivial()) {
 			Set<SymbolVertex> allVertices = getAllVerticesOfTorus(torus);
@@ -158,11 +182,13 @@ public class InndiagSeriesGraphConstructor extends AutSubgroupSeriesGraphConstru
 	 */
 	protected Set<SymbolVertex> getAllVerticesOfSimplePolynom(SimplePolynom polynom) {
 		Set<SymbolVertex> result = Sets.newHashSet();
-		Set<IndecomposablePolynom> polys = Sets.newHashSet(partitionsPolynoms.get(polynom));		
-		for (IndecomposablePolynom poly : polys) {
-			List<String> verNames = this.group.getSeriesOrder().getMultiplierByDescr(poly.getDescription()).getSimpleDevisors();
-			for (String verName : verNames) {
-				result.add(new SymbolVertex(verName));
+		if (partitionsPolynoms.get(polynom) != null) {
+			Set<IndecomposablePolynom> polys = Sets.newHashSet(partitionsPolynoms.get(polynom));
+			for (IndecomposablePolynom poly : polys) {
+				List<String> verNames = this.group.getSeriesOrder().getMultiplierByDescr(poly.getDescription()).getSimpleDevisors();
+				for (String verName : verNames) {
+					result.add(new SymbolVertex(verName));
+				}
 			}
 		}
 		return result;

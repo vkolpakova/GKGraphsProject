@@ -25,6 +25,7 @@ public class ASeries extends Series {
 	
 	public static final String CONDITION3_1_1 = "n_3 <= (q - 1)_3 = 3";
 	public static final String CONDITION3_1_2 = "n_3 > (q - 1)_3 = 3";
+	public static final String CONDITION3_2_0 = "n_3 < (q - 1)_3 > 3"; // (q - 1)_3 > 3
 	public static final String CONDITION3_2_1 = "n_3 <= (q - 1)_3 > 3"; // (q - 1)_3 > 3
 	public static final String CONDITION3_2_2 = "n_3 > (q - 1)_3 > 3";  // (q - 1)_3 > 3
 	public static final String CONDITION3_2_3 = "n_3 > (q - 1)_3 = 1";  // (q - 1)_3 = 1
@@ -35,7 +36,7 @@ public class ASeries extends Series {
 	
 	public static final List<String> CHAR_CRITERION_LIST = Lists.newArrayList(CONDITION3_1_1, CONDITION3_1_2);
 	public static final List<String> TWO_CRITERION_LIST_1 = Lists.newArrayList(CONDITION_R_1, CONDITION_R_2, CONDITION3_1_1, CONDITION3_2_1);
-	public static final List<String> TWO_CRITERION_LIST_2 = Lists.newArrayList(CONDITION_R_3, CONDITION3_2_3);
+	public static final List<String> TWO_CRITERION_LIST_2 = Lists.newArrayList(CONDITION_R_3, CONDITION3_1_1);
 	
 	public static final List<String> ALL_3_CONDITIONS = Lists.newArrayList(CONDITION3_1_1, CONDITION3_1_2, CONDITION3_2_1, CONDITION3_2_2, CONDITION3_2_3, ELSE);
 	public static final List<String> ALL_R_CONDITIONS = Lists.newArrayList(CONDITION_R_1, CONDITION_R_2, CONDITION_R_3, ELSE);
@@ -143,7 +144,7 @@ public class ASeries extends Series {
 				return 1;
 			}
 		}
-		return this.n;
+		return this.n + 1;
 	}
 	
 	@Override

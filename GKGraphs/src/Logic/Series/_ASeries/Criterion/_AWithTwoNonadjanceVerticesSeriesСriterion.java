@@ -20,9 +20,9 @@ public class _AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjan
 			SymbolVertex r = returnR(a, b), s = (a.equals(r)) ? b : a;
 			if (checkS(s)) {
 				boolean cond1 = ((_ASeries.TWO_CRITERION_LIST_1.contains(((_ASeries)this.series).getVertexCondition(r))) && 
-						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN() - 1)));
+						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN() + 1)));
 				boolean cond2 = ((_ASeries.TWO_CRITERION_LIST_2.contains(((_ASeries)this.series).getVertexCondition(r))) && 
-						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN() - 2)));
+						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN())));
 				return (cond1 || cond2);
 				
 			} else {

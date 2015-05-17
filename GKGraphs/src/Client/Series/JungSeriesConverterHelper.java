@@ -45,8 +45,13 @@ public class JungSeriesConverterHelper {
         Graph g = new UndirectedSparseGraph();
         if (!groupDescription.isEmpty()) {
             Series series = SeriesResolver.resolve(groupDescription);
-            PrimeNumberGraph png = InndiagSeriesGraphConstructorResolver.resolve(series).constructGKGraph();
-            JungGraphConverterHelper.convertToJungGraph(png, (UndirectedSparseGraph) g);
+            List<PrimeNumberGraph> pngs = InndiagSeriesGraphConstructorResolver.resolve(series).constructGKGraphs();
+            for (PrimeNumberGraph png : pngs) {
+                Graph gr = new UndirectedSparseGraph();
+                JungGraphConverterHelper.convertToJungGraph(png, (UndirectedSparseGraph) gr);
+                result.put(1, gr);
+            }
+            return result;
         }
         result.put(1, g);
         return result;

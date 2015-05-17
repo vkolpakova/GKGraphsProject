@@ -23,9 +23,8 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Компонента построения графов для серий
- * TODO вынести текст в properties
- * TODO вынести все строки и магические константы в переменные
+ * РћСЃРЅРѕРІРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ (GUI) РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РіСЂР°С„РѕРІ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» СЃРµСЂРёР№ РїСЂРѕСЃС‚С‹С… РіСЂСѓРїРї.
+ * TODO РґРѕР±Р°РІРёС‚СЊ С‚РµРєСЃС‚ РІ properties
  * Created by v.kolpakova on 08.05.2015.
  */
 public class MainSeriesApplication extends JFrame {
@@ -33,10 +32,10 @@ public class MainSeriesApplication extends JFrame {
     protected Map<Integer, Graph<?, ?>> g = Maps.newHashMap();
     protected ArrayList<BasicVisualizationServer<Object, Object>> vv;
 
-    /** Файл с текстовыми элементами интерфейса */
+    /** Р¤Р°Р№Р» СЃ С‚РµРєСЃС‚РѕРІС‹РјРё СЌР»РµРјРµРЅС‚Р°РјРё РёРЅС‚РµСЂС„РµР№СЃР° */
     protected static Properties properties;
 
-    /** Первоначальная панель с выбором серии */
+    /** РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РїР°РЅРµР»СЊ РІС‹Р±РѕСЂР° СЃРµСЂРёРё */
     protected JPanel initPanel;
     protected JLabel selectSeriesLabel;
     protected static ButtonGroup seriesGroup;
@@ -54,7 +53,7 @@ public class MainSeriesApplication extends JFrame {
     protected static final String AC_G = "g";
     protected static final String AC_SZ = "sz";
 
-    /** Панель выбора серии A */
+    /** РџР°РЅРµР»СЊ РІС‹Р±РѕСЂР° С‚РёРїР° A */
     protected JPanel aInitPanel;
     protected static ButtonGroup aSeriesGroup;
     protected Box aSeriesBox;
@@ -67,13 +66,13 @@ public class MainSeriesApplication extends JFrame {
     protected static final String AC_A2 = "a2";
     protected static final String AC_A3 = "a3";
 
-    /** Панель ввода характеристики поля для серии типа A */
+    /** РџР°РЅРµР»СЊ РІРІРѕРґР° С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё СЃРµСЂРёРё С‚РёРїР° A */
     protected JPanel aCharInitPanel;
     protected JLabel aCharLabel;
     protected JTextField aCharText;
     protected JButton aCharOkButton;
 
-    /** Панель выбора серии _A */
+    /** РџР°РЅРµР»СЊ РІС‹Р±РѕСЂР° СЃРµСЂРёРё С‚РёРїР° _A */
     protected JPanel _aInitPanel;
     protected static ButtonGroup _aSeriesGroup;
     protected Box _aSeriesBox;
@@ -84,33 +83,33 @@ public class MainSeriesApplication extends JFrame {
     protected static final String AC__A2 = "_a2";
     protected static final String AC__A3 = "_a3";
 
-    /** Map для хранения текстовых полей с описанием группы */
+    /** Map РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ, СЃРѕРѕС‚РІ. РєРѕРјРїРѕРЅРµРЅС‚Р°Рј */
     protected Map<String, JTextField> elementMap;
 
-    /** Наименование группы (формат: Класс_ранг)*/
+    /** РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЃРµСЂРёРё (С„РѕСЂРјР°С‚ РўРёРї_СЂР°РЅРі)*/
     private String name;
-    /** Мощность поля */
+    /** РњРѕС‰РЅРѕСЃС‚СЊ РїРѕР»СЏ */
     private String characteristic;
 
-    /** Основная панель, в которой происходит отрисовка графов */
+    /** РћСЃРЅРѕРІРЅР°СЏ РїР°РЅРµР»СЊ, РІ РєРѕС‚РѕСЂРѕР№ РїСЂРѕРёСЃС…РѕРґРёС‚ РѕС‚СЂРёСЃРѕРІРєР° РіСЂР°С„РѕРІ */
     protected JScrollPane scrollPane;
-    /** Панель с окном ввода наименования группы и кнопками управления */
+    /** РџР°РЅРµР»СЊ СЃ РѕРєРЅРѕРј РІРІРѕРґР° РЅР°РёРјРµРЅРѕРІР°РЅРёСЏ РіСЂСѓРїРїС‹ Рё РєРЅРѕРїРєР°РјРё СѓРїСЂР°РІР»РµРЅРёСЏ */
     protected JPanel upperPanel;
-    /** Бокс для расположения радио-кнопок вертикально */
+    /** Р‘РѕРєСЃ РґР»СЏ СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ СЂР°РґРёРѕ-РєРЅРѕРїРѕРє РІРµСЂС‚РёРєР°Р»СЊРЅРѕ */
     protected Box verticalBox;
-    /** Группа для радио-кнопок с выбором вида графа */
+    /** Р“СЂСѓРїРїР° РґР»СЏ СЂР°РґРёРѕ-РєРЅРѕРїРѕРє СЃ РІС‹Р±РѕСЂРѕРј РІРёРґР° РіСЂР°С„Р° */
     protected static ButtonGroup radioGroup;
-    /** Кнопка для построения графа */
+    /** РљРЅРѕРїРєР° РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РіСЂР°С„Р° */
     protected JButton okButton;
-    /** Кнопка для сброса наименования группы и очистки формы с графами */
+    /** РљРЅРѕРїРєР° РґР»СЏ СЃР±СЂРѕСЃР° РЅР°РёРјРµРЅРѕРІР°РЅРёСЏ РіСЂСѓРїРїС‹ Рё РѕС‡РёСЃС‚РєРё С„РѕСЂРјС‹ СЃ РіСЂР°С„Р°РјРё */
     protected JButton resetButton;
-    /** Радио-кнопка для построения ГПЧ группы */
+    /** Р Р°РґРёРѕ-РєРЅРѕРїРєР° РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ Р“РџР§ РіСЂСѓРїРїС‹ */
     protected JRadioButton groupGraphRadio;
-    /** Радио-кнопка для построения графа Inndiag группы */
+    /** Р Р°РґРёРѕ-РєРЅРѕРїРєР° РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РіСЂР°С„Р° Inndiag РіСЂСѓРїРїС‹ */
     protected JRadioButton inndiagGraphRadio;
-    /** Радио-кнопка для построения графа расширения полевым автоморфизмом группы */
+    /** Р Р°РґРёРѕ-РєРЅРѕРїРєР° РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РіСЂР°С„Р° СЂР°СЃС€РёСЂРµРЅРёСЏ РїРѕР»РµРІС‹Рј Р°РІС‚РѕРјРѕСЂС„РёР·РјРѕРј РіСЂСѓРїРїС‹ */
     protected JRadioButton fieldAutGraphRadio;
-    /** Радио-кнопка для построения графа расширения графовым автоморфизмом группы */
+    /** Р Р°РґРёРѕ-РєРЅРѕРїРєР° РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РіСЂР°С„Р° СЂР°СЃС€РёСЂРµРЅРёСЏ РіСЂР°С„РѕРІС‹Рј Р°РІС‚РѕРјРѕСЂС„РёР·РјРѕРј РіСЂСѓРїРїС‹ */
     protected JRadioButton graphAutGraphRadio;
 
     protected static final String EMPTY_STRING = "";
@@ -119,7 +118,7 @@ public class MainSeriesApplication extends JFrame {
     protected static final String FIELD_RADIO_AC = "field";
     protected static final String GRAPH_RADIO_AC = "graph";
 
-    private static final String TITLE = "Графы простых чисел";
+    private static final String TITLE = "Р“СЂР°С„С‹ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР»";
 
 
     public MainSeriesApplication() {
@@ -148,7 +147,7 @@ public class MainSeriesApplication extends JFrame {
         initPanel.setLayout(new BorderLayout());
         seriesRadioBox = Box.createVerticalBox();
         seriesGroup = new ButtonGroup();
-        selectSeriesLabel = new JLabel("Выберете тип серии");
+        selectSeriesLabel = new JLabel("Р’С‹Р±РµСЂРµС‚Рµ С‚РёРї СЃРµСЂРёРё");
         aSeries = new JRadioButton("L_n(q)");
         aSeries.setActionCommand(AC_A);
         _aSeries = new JRadioButton("U_n(q)");
@@ -167,8 +166,8 @@ public class MainSeriesApplication extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (seriesGroup.getSelection() == null) {
-                    // TODO оформить окно в стиле ошибки
-                    JOptionPane.showMessageDialog(null, "Выберете что-нибудь");
+                    // TODO РїРµСЂРµРІРµСЃС‚Рё РІ С„РѕСЂРјР°С‚ РѕС€РёР±РєРё
+                    JOptionPane.showMessageDialog(null, "Р’С‹Р±РµСЂРµС‚Рµ С‡С‚Рѕ-РЅРёР±СѓРґСЊ");
                 } else {
                     switch (seriesGroup.getSelection().getActionCommand()) {
                         case AC_A:
@@ -207,7 +206,7 @@ public class MainSeriesApplication extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (aSeriesGroup.getSelection() == null) {
-                    JOptionPane.showMessageDialog(null, "Выберете что-нибудь");
+                    JOptionPane.showMessageDialog(null, "Р’С‹Р±РµСЂРµС‚Рµ С‡С‚Рѕ-РЅРёР±СѓРґСЊ");
                 } else {
                     switch (aSeriesGroup.getSelection().getActionCommand()) {
                         case AC_A1:
@@ -230,7 +229,7 @@ public class MainSeriesApplication extends JFrame {
     private void initASeriesCharInitPanel(final Container container) {
         aCharInitPanel = new JPanel();
         aCharInitPanel.setLayout(new FlowLayout());
-        aCharLabel = new JLabel("Мощность поля");
+        aCharLabel = new JLabel("РњРѕС‰РЅРѕСЃС‚СЊ РїРѕР»СЏ");
         aCharText = new JTextField(10);
         aCharText.addActionListener(new ActionListener() {
             @Override
@@ -245,7 +244,7 @@ public class MainSeriesApplication extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (aCharText.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Введите мощность поля");
+                    JOptionPane.showMessageDialog(null, "Р’РІРµРґРёС‚Рµ РјРѕС‰РЅРѕСЃС‚СЊ РїРѕР»СЏ");
                 } else {
                     characteristic = aCharText.getText();
                     if (characteristic.startsWith("2")) {
@@ -350,8 +349,8 @@ public class MainSeriesApplication extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (aSeriesGroup.getSelection() == null) {
-                    JOptionPane.showMessageDialog(null, "Выберете что-нибудь");
-                } // TODO добавить логику
+                    JOptionPane.showMessageDialog(null, "Р’С‹Р±РµСЂРµС‚Рµ С‡С‚Рѕ-РЅРёР±СѓРґСЊ");
+                } // TODO РґРѕР±Р°РІРёС‚СЊ Р»РѕРіРёРєСѓ
             }
 
         });
@@ -494,8 +493,8 @@ public class MainSeriesApplication extends JFrame {
         // The Layout<V, E> is parametrized by the vertex and edge types
         this.g = computeG(groupName);
         if (vv != null) {
-            // нужно, чтобы поле с графом очистилось перед построением нового.
-            // по-нормальному не получается обновлять значение пересчитанного графа, поэтому удаляем и создаем новые компоненты.
+            // РЅСѓР¶РЅРѕ, С‡С‚РѕР±С‹ РїРѕР»Рµ СЃ РіСЂР°С„РѕРј РѕС‡РёСЃС‚РёР»РѕСЃСЊ РїРµСЂРµРґ РїРѕСЃС‚СЂРѕРµРЅРёРµРј РЅРѕРІРѕРіРѕ.
+            // РїРѕ-РЅРѕСЂРјР°Р»СЊРЅРѕРјСѓ РЅРµ РїРѕР»СѓС‡Р°РµС‚СЃСЏ РѕР±РЅРѕРІР»СЏС‚СЊ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµСЃС‡РёС‚Р°РЅРЅРѕРіРѕ РіСЂР°С„Р°, РїРѕСЌС‚РѕРјСѓ СѓРґР°Р»СЏРµРј Рё СЃРѕР·РґР°РµРј РЅРѕРІС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹.
             clearVv();
         }
         initVisualizationServer();
@@ -527,7 +526,7 @@ public class MainSeriesApplication extends JFrame {
         }
         for (BasicVisualizationServer<?, ?> v : vv) {
             JPanel view = ((JPanel)scrollPane.getViewport().getView());
-            if (view != null) { // на этапе инициализации тут null
+            if (view != null) { // РЅР° СЌС‚Р°РїРµ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё С‚СѓС‚ null
                 view.add(v);
             } else {
                 scrollPane.getViewport().add(v);

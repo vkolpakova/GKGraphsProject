@@ -30,7 +30,7 @@ public class _AWithCharNonadjacenceVertexesSeriesСriterion extends WithCharNona
 	
 	protected boolean condition2(SymbolVertex r) {
 		if (this.series.getN() == 2) {
-			return ((r.getVertex().equals(SymbolVertex.THREE)) && 
+			return ((r.getVertex().equals(SymbolVertex.THREE)) &&
 					(_ASeries.CHAR_CRITERION_LIST.contains(((_ASeries)this.series).getVertexCondition(r))));
 		} else {
 			return false;

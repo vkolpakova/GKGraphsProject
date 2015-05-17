@@ -34,7 +34,7 @@ public class _ASeries extends Series {
 	
 	public static final List<String> CHAR_CRITERION_LIST = Lists.newArrayList(CONDITION3_1_1, CONDITION3_1_2);
 	public static final List<String> TWO_CRITERION_LIST_1 = Lists.newArrayList(CONDITIONR_1, CONDITIONR_2, CONDITION3_1_1, CONDITION3_2_1);
-	public static final List<String> TWO_CRITERION_LIST_2 = Lists.newArrayList(CONDITIONR_3, CONDITION3_2_3);
+	public static final List<String> TWO_CRITERION_LIST_2 = Lists.newArrayList(CONDITIONR_3, CONDITION3_2_3, CONDITION3_1_1);
 	
 	public static final List<String> ALL_3_CONDITIONS = Lists.newArrayList(CONDITION3_1_1, CONDITION3_1_2, CONDITION3_2_1, CONDITION3_2_2, CONDITION3_2_3, ELSE);
 	public static final List<String> ALL_R_CONDITIONS = Lists.newArrayList(CONDITIONR_1, CONDITIONR_2, CONDITIONR_3, ELSE);
@@ -58,7 +58,13 @@ public class _ASeries extends Series {
 	}
 	
 	public String getVertexCondition(SymbolVertex v) {
-		return this.verticesCondMap.get(v);
+		//return this.verticesCondMap.get(v);
+		for (SymbolVertex vertex : verticesCondMap.keySet()) {
+			if (vertex.getVertex().equals(v.getVertex())) {
+				return this.verticesCondMap.get(vertex);
+			}
+		}
+		return null;
 	}
 
 	/**

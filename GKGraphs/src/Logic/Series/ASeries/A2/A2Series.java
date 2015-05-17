@@ -83,5 +83,15 @@ public class A2Series extends ASeries {
 			super.constructVerticesCondMap(oneComponentMap);
 		}
 	}
-	
+
+	@Override
+	protected Map<SymbolVertex, String> computeObviousRConditions(Map<SymbolVertex, String> oneComponentConditionsMap) {
+		Map<SymbolVertex, String> result = super.computeObviousRConditions(oneComponentConditionsMap);
+		for (SymbolVertex vertex : this.getComponentByM(1).getVertices()) {
+			if (!this.getP().equals(SymbolVertex.THREE) && !vertex.getVertex().equals(SymbolVertex.THREE)) {
+				result.put(vertex, ASeries.CONDITION_R_1);
+			}
+		}
+		return result;
+	}
 }
