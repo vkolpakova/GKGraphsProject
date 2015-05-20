@@ -7,6 +7,8 @@ import Logic.Kernel.GraphConstructor.Series.SeriesGraphConstructor.WithTwoNonadj
 import Logic.Kernel.Utils.ArithmeticUtils;
 import Logic.Series._ASeries._ASeries;
 
+import java.util.List;
+
 public class _AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjanceVerticesSeriesСriterion {
 
 	public _AWithTwoNonadjanceVerticesSeriesСriterion(SeriesGraphConstructor seriesGraphConstructor, _ASeries series) {
@@ -19,10 +21,11 @@ public class _AWithTwoNonadjanceVerticesSeriesСriterion extends WithTwoNonadjan
 		if (isRExist(a, b)) {
 			SymbolVertex r = returnR(a, b), s = (a.equals(r)) ? b : a;
 			if (checkS(s)) {
-				boolean cond1 = ((_ASeries.TWO_CRITERION_LIST_1.contains(((_ASeries)this.series).getVertexCondition(r))) && 
-						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN() + 1)));
-				boolean cond2 = ((_ASeries.TWO_CRITERION_LIST_2.contains(((_ASeries)this.series).getVertexCondition(r))) && 
-						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN())));
+				String vertexCondition = ((_ASeries)this.series).getVertexCondition(r);
+				boolean cond1 = _ASeries.TWO_CRITERION_LIST_1.contains(vertexCondition) &&
+						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN() + 1));
+				boolean cond2 = _ASeries.TWO_CRITERION_LIST_2.contains(vertexCondition) &&
+						(ArithmeticUtils.nu(this.series.getVertexM(s)) == (this.series.getN()));
 				return (cond1 || cond2);
 				
 			} else {

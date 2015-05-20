@@ -77,7 +77,7 @@ public class Main {
 	 * Метод производит построение графов для некоторой серии групп Лиева типа
 	 */
 	protected static void processSeries() {
-		String seriesStr = "A_2(2^m),pi(q - 1) = {r}, pi(q + 1) = {3, s}, pi((q^2 + q + 1) / (3, q - 1)) = {7, t}, conditions {3:n_3 <= (q - 1)_3 == 3}";
+		String seriesStr = "_A_2(p),pi(q - 1) = {2}, pi(q + 1) = {2, 3, r}, pi((q^2 - q + 1) / (3, q + 1)) = {s, t}, conditions {3:n_3 <= (q + 1)_3 = 3}";
 		// построение графа группы, принадлежащей некоторой серии
 		Series series = SeriesResolver.resolve(seriesStr);
 		SeriesGraphConstructor constr = SeriesGraphConstructorResolver.resolve(series);

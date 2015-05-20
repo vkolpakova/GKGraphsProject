@@ -1,6 +1,7 @@
 package Logic.Series._ASeries._A2;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -63,5 +64,18 @@ public class _A2Series extends _ASeries {
 			this.seriesOrder.setDevisorsForMultiplier(PolynomConstants.Q2PQP1, this.getSimpleDivisorsOfConcreteComponent(6));
 		}
 	}
-	
+
+	@Override
+	protected Map<SymbolVertex, String> computeObviousRConditions(Map<SymbolVertex, String> oneComponentConditionsMap) {
+		// нас интеерсуют только те вершины, у которых nu(e(.)) равно 1, т.е. это вершины компонеты (q + 1)
+		List<SymbolVertex> vertexList = this.getComponentByM(2).getVertices();
+		for (SymbolVertex v : vertexList) {
+			if (oneComponentConditionsMap.get(v) == null) {
+				if (!v.getVertex().equals(SymbolVertex.THREE)) {
+					oneComponentConditionsMap.put(v, _ASeries.CONDITIONR_1);
+				}
+			}
+		}
+		return super.computeObviousRConditions(oneComponentConditionsMap);
+	}
 }
